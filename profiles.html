@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVER - Editor Profiles</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Teko:wght@600&display=swap" rel="stylesheet">
 
+    <style>
+        @font-face {
+            font-family: 'MultiCraft';
+            src: url('fonts/MultiCraftFont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: 'MultiCraft', monospace;
+            background: radial-gradient(circle, rgba(42,10,116,1) 0%, rgba(13,4,43,1) 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-link {
+            color: #55efc4;
+            text-decoration: none;
+            font-size: 18px;
+            margin-bottom: 30px;
+            border: 2px solid #55efc4;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background: rgba(0,0,0,0.3);
+        }
+        .back-link:hover {
+            background: #55efc4;
+            color: black;
+        }
+
+        .profile-container {
+            width: 100%;
+            max-width: 720px;
+            margin-bottom: 50px;
+            scroll-margin-top: 20px;
+        }
+
+        .profile-box {
+            background: #000000;
+            border: 3px solid #3895d3;
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: left;
+            border-radius: 6px;
+        }
+
+        .profile-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .profile-name {
+            font-family: 'MultiCraft', monospace;
+            font-size: 32px;
+            margin: 0;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+
+        .profile-tag {
+            font-family: 'Teko', sans-serif;
+            font-size: 36px;
+            color: #55efc4;
+            margin: -5px 0 0 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .big-badge {
+            font-family: 'MultiCraft', monospace;
+            font-size: 42px;
+            width: 90px;
+            height: 90px;
+            border: 3px solid #7f8c8d;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        /* Color configurations for big badges */
+        .b-Aminus   { border-color: #a3cb38; color: #a3cb38; box-shadow: 0 0 15px rgba(163,203,56,0.3); }
+        .b-Bplus    { border-color: #fff200; color: #fff200; box-shadow: 0 0 15px rgba(255,242,0,0.3); }
+        .b-B        { border-color: #ffc312; color: #ffc312; box-shadow: 0 0 15px rgba(255,195,18,0.3); }
+        .b-Bminus   { border-color: #f79f1f; color: #f79f1f; box-shadow: 0 0 15px rgba(247,159,31,0.3); }
+        .b-Cplus    { border-color: #ff7f50; color: #ff7f50; box-shadow: 0 0 15px rgba(255,127,80,0.3); }
+        .b-unknown  { border-color: #7f8c8d; color: #7f8c8d; }
+
+        .profile-divider {
+            border: none;
+            height: 4px;
+            background: #444;
+            margin-bottom: 30px;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 110px;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            font-weight: bold;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            text-align: center;
+            height: 12px;
+        }
+
+        .pill-badge {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 25px;
+            padding: 2px 14px 2px 2px;
+            border: 2px solid #444;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 12px;
+            border: 2px solid transparent;
+        }
+
+        .sub-grade {
+            font-family: 'MultiCraft', monospace;
+            font-size: 18px;
+            margin-left: auto;
+        }
+
+        /* Border color themes based on the letter grade */
+        .g-A     { border-color: #a3cb38; color: #a3cb38; }
+        .g-B     { border-color: #fff200; color: #fff200; }
+        .g-C     { border-color: #ffc312; color: #ffc312; }
+        .g-D     { border-color: #ff7f50; color: #ff7f50; }
+        .g-E     { border-color: #ff4757; color: #ff4757; }
+        .g-none  { border-color: #7f8c8d; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">&larr; Return to Leaderboard</a>
+
+    <div id="profiles-root"></div>
+
+    <script>
+        // ==========================================
+        // EASY EDIT CONTROL CENTER
+        // Just change the tier letters here! 
+        // ==========================================
+        const editorsData = {
+            "confuxion": { rank: "#1", mainTier: "A-", kf: "A",  ct: "A-", ve: "B+", te: "B"  },
+            "sxmple":    { rank: "#2", mainTier: "B+", kf: "D",  ct: "B+", ve: "B+", te: "C+" },
+            "timmyloal": { rank: "#3", mainTier: "B+", kf: "B",  ct: "B+", ve: "B",  te: "B-" },
+            "game1k":    { rank: "#4", mainTier: "B+", kf: "C+", ct: "B+", ve: "B",  te: "B"  },
+            "vorthexis": { rank: "#5", mainTier: "B",  kf: "E",  ct: "B",  ve: "B",  te: "B+" },
+            "normal":    { rank: "#6", mainTier: "B-", kf: "C",  ct: "C+", ve: "B-", te: "B-" },
+            "x9jm":      { rank: "#7", mainTier: "C+", kf: "D",  ct: "C+", ve: "C",  te: "C+" },
+            "posessed":  { rank: "#8", mainTier: "C+", kf: "C",  ct: "C",  ve: "D+", te: "C+" },
+            "blade":     { rank: "#9", mainTier: "C+", kf: "C-", ct: "C+", ve: "C",  te: "D"  },
+            "unknown":   { rank: "#10", mainTier: "?",  kf: "-",  ct: "-",  ve: "-",  te: "-"  }
+        };
+
+        // Helper function that calculates matching border colors automatically
+        function getColorClass(grade) {
+            if (!grade || grade === "-") return "g-none";
+            const upper = grade.toUpperCase();
+            if (upper.startsWith("A")) return "g-A";
+            if (upper.startsWith("B")) return "g-B";
+            if (upper.startsWith("C")) return "g-C";
+            if (upper.startsWith("D")) return "g-D";
+            if (upper.startsWith("E")) return "g-E";
+            return "g-none";
+        }
+
+        // Helper function to return css class clean string names
+        function cleanBadgeClass(tier) {
+            if (tier === "?") return "b-unknown";
+            return "b-" + tier.replace("-", "minus").replace("+", "plus");
+        }
+
+        // Render profile markup automatically
+        const root = document.getElementById("profiles-root");
+        Object.keys(editorsData).forEach(id => {
+            const data = editorsData[id];
+            
+            // Format printable name cleanly
+            let printableName = id === "unknown" ? "???" : id;
+            if(id === "posessed") printableName = "Posessed_YT";
+
+            const profileHTML = `
+                <div id="profile-${id}" class="profile-container">
+                    <div class="profile-box">
+                        <div class="profile-header-container">
+                            <div>
+                                <h2 class="profile-name">${printableName}</h2>
+                                <p class="profile-tag">Rank ${data.rank} Editor</p>
+                            </div>
+                            <div class="big-badge ${cleanBadgeClass(data.mainTier)}">${data.mainTier}</div>
+                        </div>
+                        <hr class="profile-divider">
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <span class="stat-label">Keyframes</span>
+                                <div class="pill-badge ${getColorClass(data.kf)}">
+                                    <div class="stat-icon">&diamond;</div>
+                                    <span class="sub-grade">${data.kf}</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cuts & Transitions</span>
+                                <div class="pill-badge ${getColorClass(data.ct)}">
+                                    <div class="stat-icon">&sharp;</div>
+                                    <span class="sub-grade">${data.ct}</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Visual Effects</span>
+                                <div class="pill-badge ${getColorClass(data.ve)}">
+                                    <div class="stat-icon">&#10022;</div>
+                                    <span class="sub-grade">${data.ve}</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Text Effects</span>
+                                <div class="pill-badge ${getColorClass(data.te)}">
+                                    <div class="stat-icon">Aa</div>
+                                    <span class="sub-grade">${data.te}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            root.insertAdjacentHTML('beforeend', profileHTML);
+        });
+    </script>
+</body>
+</html>
