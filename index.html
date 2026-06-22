@@ -9,7 +9,7 @@
 
     <style>
         /* Define the custom local font path */
-        font-face {
+        @font-face {
             font-family: 'MultiCraft';
             src: url('fonts/MultiCraftFont.ttf') format('truetype');
             font-weight: normal;
@@ -35,6 +35,18 @@
             text-align: center;
             padding: 40px 0 20px 0;
             border-bottom: 4px solid #55efc4; /* Mint green separator line */
+        }
+
+        .header-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* Spaces the sword and text apart */
+        }
+
+        .header-logo {
+            height: 64px; /* Adjust height to match the title size */
+            width: auto;
         }
 
         .header-title {
@@ -356,7 +368,10 @@
 <body>
 
     <div class="header-section">
-        <h1 class="header-title">MVER</h1>
+        <div class="header-title-container">
+            <img src="mver-logo.png" alt="MVER Sword Logo" class="header-logo">
+            <h1 class="header-title">MVER</h1>
+        </div>
         <div class="header-subtitle">MultiCraft Visual Editing Rankings</div>
     </div>
 
@@ -585,4 +600,3 @@
 
 </body>
 </html>
-
