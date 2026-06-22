@@ -69,14 +69,17 @@
             box-shadow: 0 0 25px rgba(52, 152, 219, 0.2);
         }
 
+        /* SMART CLOSE LINK LINKED TO ACTIONS */
         .close-view {
             position: absolute;
             top: 15px;
             right: 20px;
             color: #7f8c8d;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 32px;
             font-family: sans-serif;
+            cursor: pointer;
+            line-height: 1;
         }
         .close-view:hover { color: white; }
 
@@ -109,13 +112,12 @@
             font-size: 72px;
             width: 110px;
             height: 110px;
-            border: 4px solid #fff200;
-            color: #fff200;
+            border: 4px solid #3498db;
+            color: #3498db;
             display: flex;
             align-items: center;
             justify-content: center;
             background: transparent;
-            box-shadow: 0 0 20px rgba(255, 242, 0, 0.2);
         }
 
         .horizontal-line {
@@ -183,7 +185,7 @@
             font-weight: bold;
         }
 
-        /* Color Layout Injectors */
+        /* Unified Palette Rules */
         .t-P, .t-O, .t-S, .t-A { border-color: #55efc4; color: #55efc4; }
         .t-B { border-color: #fff200; color: #fff200; }
         .t-C { border-color: #ff9f43; color: #ff9f43; }
@@ -216,7 +218,6 @@
     <div class="profile-card-frame" id="profile-card-output"></div>
 
     <script>
-        // Central Control Registry updated with all requested members 
         const editorsData = {
             "confuxion": { rank: "#1", mainTier: "A",  kf: "A",  ct: "A-", ve: "B+", te: "B"  },
             "sxmple":    { rank: "#2", mainTier: "B+", kf: "D",  ct: "B+", ve: "B+", te: "C+" },
@@ -228,7 +229,6 @@
             "posessed":  { rank: "#8", mainTier: "C+", kf: "C",  ct: "C",  ve: "D+", te: "C+" },
             "blade":     { rank: "#9", mainTier: "C+", kf: "C-", ct: "C+", ve: "C",  te: "D"  },
             
-            // New items added to register on matrix without leaderboard number
             "husky_multicraft": { rank: "", mainTier: "D", kf: "-", ct: "-", ve: "-", te: "-" },
             "system1117":       { rank: "", mainTier: "D", kf: "-", ct: "-", ve: "-", te: "-" },
             "aston":            { rank: "", mainTier: "D", kf: "-", ct: "-", ve: "-", te: "-" },
@@ -253,6 +253,17 @@
             return "t-none";
         }
 
+        // Return Action Handler
+        function handleProfileExit() {
+            if (document.referrer.includes('index.html')) {
+                // If they came from the main index, jump backward chronologically to avoid breaking their active tabs
+                window.history.back();
+            } else {
+                // Fallback default redirect to home state
+                window.location.href = "index.html";
+            }
+        }
+
         const params = new URLSearchParams(window.location.search);
         let userKey = params.get('user');
 
@@ -262,14 +273,12 @@
 
         const user = editorsData[userKey];
         let displayName = userKey === "unknown" ? "???" : (nameMapping[userKey] || userKey);
-
-        // Conditional layout string for cleaner output if a user has a designated top rank number
         const subtitleText = user.rank ? `Rank ${user.rank} Editor` : "Official Editor";
 
         const targetContainer = document.getElementById("profile-card-output");
         
         targetContainer.innerHTML = `
-            <a href="index.html" class="close-view">&times;</a>
+            <div class="close-view" onclick="handleProfileExit()">&times;</div>
             <div class="profile-main-header">
                 <div class="profile-titles">
                     <h2>${displayName}</h2>
