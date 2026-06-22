@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVER - Editors Leaderboard</title>
     
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Teko:wght@600&display=swap" rel="stylesheet">
@@ -183,6 +183,166 @@
         .C       { background: #ff4757; color: white; }
         .Cminus  { background: #ee5253; color: white; }
         .unknown { background: #7f8c8d; color: white; } /* Default gray for unknown rank */
+
+        /* PROFILE MODAL OVERLAYS */
+        .profile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(42,10,116,0.9) 0%, rgba(13,4,43,0.95) 100%);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Triggers popup visibility when clicked */
+        .profile-overlay:target {
+            display: flex;
+        }
+
+        .profile-box {
+            position: relative;
+            background: #000000;
+            width: 90%;
+            max-width: 720px;
+            border: 3px solid #3895d3;
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: bold;
+            opacity: 0.7;
+        }
+        .close-btn:hover { opacity: 1; }
+
+        .profile-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .profile-name {
+            font-family: 'MultiCraft', monospace;
+            font-size: 32px;
+            margin: 0;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+
+        .profile-tag {
+            font-family: 'Teko', sans-serif;
+            font-size: 36px;
+            color: #55efc4;
+            margin: -5px 0 0 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .big-badge {
+            font-family: 'MultiCraft', monospace;
+            font-size: 42px;
+            width: 90px;
+            height: 90px;
+            border: 3px solid #fff200;
+            color: #fff200;
+            box-shadow: 0 0 15px rgba(255, 242, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .profile-divider {
+            border: none;
+            height: 4px;
+            background: #444;
+            margin-bottom: 30px;
+        }
+
+        /* SUB-STATS GRID DESIGN */
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 110px;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            font-weight: bold;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            text-align: center;
+            height: 12px;
+        }
+
+        .pill-badge {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 25px;
+            padding: 2px 14px 2px 2px;
+            border: 2px solid #444;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 12px;
+            border: 2px solid transparent;
+        }
+
+        .sub-grade {
+            font-family: 'MultiCraft', monospace;
+            font-size: 18px;
+            margin-left: auto;
+        }
+
+        /* Theme Color variants per sub-stats types */
+        .kf-icon { border-color: #ff4757; color: #fff; }
+        .kf-grade { color: #ee5253; }
+        .kf-pill { border-color: #ee5253; }
+
+        .ct-icon { border-color: #fff200; color: #fff; }
+        .ct-grade { color: #ffc312; }
+        .ct-pill { border-color: #ffc312; }
+
+        .ve-icon { border-color: #fff200; color: #fff; }
+        .ve-grade { color: #ffc312; }
+        .ve-pill { border-color: #ffc312; }
+
+        .te-icon { border-color: #fff200; color: #fff; }
+        .te-grade { color: #ffc312; }
+        .te-pill { border-color: #ffc312; }
     </style>
 </head>
 <body>
@@ -217,7 +377,7 @@
             </div>
         </a>
 
-        <a href="editor2.html" class="card">
+        <a href="#profile-sxmple" class="card">
             <div class="left-side">
                 <span class="rank">#2</span>
                 <span class="divider">|</span>
@@ -253,7 +413,7 @@
             </div>
         </a>
 
-        <a href="editor5.html" class="card">
+        <a href="#profile-vorthexis" class="card">
             <div class="left-side">
                 <span class="rank">#5</span>
                 <span class="divider">|</span>
@@ -267,65 +427,3 @@
 
         <a href="editor6.html" class="card">
             <div class="left-side">
-                <span class="rank">#6</span>
-                <span class="divider">|</span>
-                <span class="name">Normal</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Bminus">B-</div>
-            </div>
-        </a>
-
-        <a href="editor7.html" class="card">
-            <div class="left-side">
-                <span class="rank">#7</span>
-                <span class="divider">|</span>
-                <span class="name">x9jm</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Cplus">C+</div>
-            </div>
-        </a>
-
-        <a href="editor8.html" class="card">
-            <div class="left-side">
-                <span class="rank">#8</span>
-                <span class="divider">|</span>
-                <span class="name">Posessed_YT</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Cplus">C+</div>
-            </div>
-        </a>
-
-        <a href="editor9.html" class="card">
-            <div class="left-side">
-                <span class="rank">#9</span>
-                <span class="divider">|</span>
-                <span class="name">Blade</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Cplus">C+</div>
-            </div>
-        </a>
-
-        <a href="editor10.html" class="card">
-            <div class="left-side">
-                <span class="rank">#10</span>
-                <span class="divider">|</span>
-                <span class="name">???</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier unknown">?</div>
-            </div>
-        </a>
-
-    </div>
-
-</body>
-</html>
