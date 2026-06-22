@@ -107,6 +107,11 @@
             letter-spacing: 3px;
         }
 
+        /* Custom style class for waitlist text variant */
+        .profile-titles p.status-waitlist {
+            color: #fff200;
+        }
+
         /* SQUARE BIG TIER BADGE */
         .square-badge {
             font-size: 72px;
@@ -232,7 +237,7 @@
             "husky_multicraft": { rank: "", mainTier: "D", kf: "-", ct: "-", ve: "-", te: "-" },
             "system1117":       { rank: "", mainTier: "-", kf: "-", ct: "-", ve: "-", te: "-" },
             "Aston":            { rank: "", mainTier: "-", kf: "-", ct: "C", ve: "-", te: "-" },
-            "ItzFroco":            { rank: "", mainTier: "D", kf: "C-", ct: "D", ve: "D+", te: "D" },
+            "ItzFroco":         { rank: "", mainTier: "D", kf: "C-", ct: "D", ve: "D+", te: "D" },
             "chillpotato":      { rank: "", mainTier: "E", kf: "-", ct: "-", ve: "-", te: "-" },
             
             "unknown":   { rank: "#10", mainTier: "?",  kf: "-",  ct: "-",  ve: "-",  te: "-"  }
@@ -256,10 +261,8 @@
         // Return Action Handler
         function handleProfileExit() {
             if (document.referrer.includes('index.html')) {
-                // If they came from the main index, jump backward chronologically to avoid breaking their active tabs
                 window.history.back();
             } else {
-                // Fallback default redirect to home state
                 window.location.href = "index.html";
             }
         }
@@ -272,8 +275,18 @@
         }
 
         const user = editorsData[userKey];
-        let displayName = userKey === "unknown" ? "???" : (nameMapping[userKey] || userKey);
-        const subtitleText = user.rank ? `Rank ${user.rank} Editor` : "Official Editor";
+        let displayName = userKey === "unknown" ? "???" : (nameMapping[userKey.toLowerCase()] || userKey);
+        
+        // Custom subtitle and styling rules based on rank or waitlist status
+        let subtitleText = "Official Editor";
+        let titleClass = "";
+        
+        if (user.rank) {
+            subtitleText = `Rank ${user.rank} Editor`;
+        } else if (user.mainTier === "-") {
+            subtitleText = "Waitlist (Pending Evaluation)";
+            titleClass = 'class="status-waitlist"';
+        }
 
         const targetContainer = document.getElementById("profile-card-output");
         
@@ -282,7 +295,7 @@
             <div class="profile-main-header">
                 <div class="profile-titles">
                     <h2>${displayName}</h2>
-                    <p>${subtitleText}</p>
+                    <p ${titleClass}>${subtitleText}</p>
                 </div>
                 <div class="square-badge ${getThemeClass(user.mainTier)}">${user.mainTier}</div>
             </div>
