@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVER - Editors Leaderboard</title>
+    <title>MVER - MultiCraft Visual Editing Rankings</title>
     
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Teko:wght@600&display=swap" rel="stylesheet">
 
     <style>
-        /* Define the custom local font path */
         @font-face {
             font-family: 'MultiCraft';
             src: url('fonts/MultiCraftFont.ttf') format('truetype');
@@ -20,333 +19,69 @@
             margin: 0;
             padding: 0;
             font-family: 'MultiCraft', monospace;
-            background: url('mver-bg.png') center/cover no-repeat fixed;
+            background: #000000 url('mver-bg.png') center/cover no-repeat fixed;
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
-        /* HEADER SECTION */
+        /* NAVIGATION HEADER */
+        .top-navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        .nav-branding {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .nav-branding img { height: 28px; }
+        .nav-branding span { font-size: 22px; font-weight: bold; }
+        
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-menu a {
+            color: #b2bec3;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .nav-menu a:hover, .nav-menu a.active-tab { color: #55efc4; }
+
+        /* HERO MAIN HEADER */
         .header-section {
             width: 100%;
             background: rgba(0, 0, 0, 0.4);
             text-align: center;
             padding: 40px 0 20px 0;
-            border-bottom: 4px solid #55efc4;
+            border-bottom: 4px solid #3498db;
         }
-
         .header-title-container {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
         }
+        .header-logo { height: 64px; }
+        .header-title { font-size: 80px; text-transform: uppercase; margin: 0; line-height: 1; }
+        .header-subtitle { font-size: 11px; font-weight: bold; margin-top: 5px; color: #dcdde1; }
 
-        .header-logo {
-            height: 64px;
-            width: auto;
-        }
+        /* VIEW CONTAINERS */
+        .view-content { display: none; width: 100%; max-width: 800px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; }
+        .view-content.active-view { display: block; }
 
-        .header-title {
-            font-family: 'MultiCraft', monospace;
-            font-size: 80px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-            line-height: 1;
-        }
-
-        .header-subtitle {
-            font-size: 11px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            margin-top: 5px;
-            color: #dcdde1;
-        }
-
-        /* WELCOME BANNER (BLACK SECTION) */
-        .welcome-banner {
-            width: 100%;
-            background: #000000;
-            padding: 30px 0;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .welcome-content {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 13px;
-            color: #b2bec3;
-            line-height: 1.6;
-        }
-
-        .welcome-content h3 {
-            color: white;
-            margin: 0 0 10px 0;
-            font-size: 16px;
-        }
-
-        /* TIERS BUTTON */
-        .tiers-btn {
-            background: #2f3640;
-            border: 2px solid #7f8c8d;
-            color: #f5f6fa;
-            padding: 6px 24px;
-            font-size: 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        /* MAIN LEADERBOARD CONTAINER */
-        .leaderboard-container {
-            width: 100%;
-            max-width: 480px;
-            margin: 40px auto;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-
-        .main-title {
-            font-family: 'MultiCraft', monospace;
-            font-size: 36px;
-            text-align: center;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            color: #222;
-            text-shadow: 1px 1px 0px #fff;
-        }
-
-        /* CARD DESIGN */
-        .card {
-            background: #0652dd;
-            border: 3px solid #000000;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 12px;
-            margin-bottom: 8px;
-            box-shadow: 0px 4px 0px rgba(0,0,0,0.3);
-            text-decoration: none;
-            color: white;
-            transition: transform 0.1s ease;
-        }
-
-        .card:hover {
-            transform: scale(1.02);
-            background: #1e3799;
-        }
-
-        /* LEFT CONTENT */
-        .left-side {
-            display: flex;
-            align-items: center;
-            font-family: 'MultiCraft', monospace;
-            font-size: 26px;
-        }
-
-        .rank {
-            color: #ff9f43;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .divider {
-            color: white;
-            margin-right: 12px;
-            font-weight: normal;
-        }
-
-        .name {
-            letter-spacing: 1px;
-        }
-
-        /* RIGHT CONTENT */
-        .right-side {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .rank-label {
-            font-size: 9px;
-            font-weight: bold;
-            color: #fff;
-            opacity: 0.8;
-        }
-
-        /* TIER BADGES */
-        .tier {
-            font-family: 'MultiCraft', monospace;
-            font-size: 18px;
-            font-weight: bold;
-            width: 42px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            border: 2px solid #000;
-        }
-
-        .Aminus  { background: #a3cb38; color: black; }
-        .Bplus   { background: #fff200; color: black; }
-        .B       { background: #ffc312; color: black; }
-        .Bminus  { background: #f79f1f; color: black; }
-        .Cplus   { background: #ff7f50; color: black; }
-        .C       { background: #ff4757; color: white; }
-        .Cminus  { background: #ee5253; color: white; }
-        .unknown { background: #7f8c8d; color: white; }
-    </style>
-</head>
-<body>
-
-    <div class="header-section">
-        <div class="header-title-container">
-            <img src="mver-logo.png" alt="MVER Sword Logo" class="header-logo">
-            <h1 class="header-title">MVER</h1>
-        </div>
-        <div class="header-subtitle">MultiCraft Visual Editing Rankings</div>
-    </div>
-
-    <div class="welcome-banner">
-        <div class="welcome-content">
-            <h3>Welcome to MultiCraft Visual Editing Rankings (MVER)</h3>
-            <p>The MultiCraft Visual Editing Ranking is a tier slot system to rank your editing skills from... <br>
-            Join and compete others on a top 10 leaderboard</p>
-            <button class="tiers-btn">Tiers</button>
-        </div>
-    </div>
-
-    <div class="leaderboard-container">
-        
-        <h2 class="main-title">EDITORS LEADERBOARD</h2>
-
-        <a href="profiles.html#profile-confuxion" class="card">
-            <div class="left-side">
-                <span class="rank">#1</span>
-                <span class="divider">|</span>
-                <span class="name">confuxion</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Aminus">A-</div>
-            </div>
-        </a>
-
-        <a href="profiles.html#profile-sxmple" class="card">
-            <div class="left-side">
-                <span class="rank">#2</span>
-                <span class="divider">|</span>
-                <span class="name">sxmple</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Bplus">B+</div>
-            </div>
-        </a>
-
-        <a href="profiles.html#profile-timmyloal" class="card">
-            <div class="left-side">
-                <span class="rank">#3</span>
-                <span class="divider">|</span>
-                <span class="name">TimmyLoal</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Bplus">B+</div>
-            </div>
-        </a>
-
-        <a href="profiles.html#profile-game1k" class="card">
-            <div class="left-side">
-                <span class="rank">#4</span>
-                <span class="divider">|</span>
-                <span class="name">Game1K</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Bplus">B+</div>
-            </div>
-        </a>
-
-        <a href="profiles.html#profile-vorthexis" class="card">
-            <div class="left-side">
-                <span class="rank">#5</span>
-                <span class="divider">|</span>
-                <span class="name">Vorthexis</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier B">B</div>
-            </div>
-        </a>
-
-        <a href="profiles.html#profile-normal" class="card">
-            <div class="left-side">
-                <span class="rank">#6</span>
-                <span class="divider">|</span>
-                <span class="name">Normal</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Bminus">B-</div>
-            </div>
-        </a>
-
-        <a href="profiles.html#profile-x9jm" class="card">
-            <div class="left-side">
-                <span class="rank">#7</span>
-                <span class="divider">|</span>
-                <span class="name">x9jm</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Cplus">C+</div>
-            </div>
-        </a>
-
-        <a href="profiles.html#profile-posessed" class="card">
-            <div class="left-side">
-                <span class="rank">#8</span>
-                <span class="divider">|</span>
-                <span class="name">Posessed_YT</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Cplus">C+</div>
-            </div>
-        </a>
-
-        <a href="profiles.html#profile-blade" class="card">
-            <div class="left-side">
-                <span class="rank">#9</span>
-                <span class="divider">|</span>
-                <span class="name">Blade</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier Cplus">C+</div>
-            </div>
-        </a>
-
-        <a href="profiles.html#profile-unknown" class="card">
-            <div class="left-side">
-                <span class="rank">#10</span>
-                <span class="divider">|</span>
-                <span class="name">???</span>
-            </div>
-            <div class="right-side">
-                <span class="rank-label">RANK:</span>
-                <div class="tier unknown">?</div>
-            </div>
-        </a>
-
-    </div>
-
-</body>
-</html>
+        /* HOME SPECIFIC STYLES */
+        .welcome-banner { width: 100%; background: #000000; padding: 30px 0; text-align: center; box-sizing: border-box; margin-bottom: 20px; border: 2px solid #222;}
+        .welcome-content { max-width: 600px; margin: 0 auto; font-size: 13px; color: #b2bec3; line-height: 1.6; }
+        .welcome-content h3 { color: white; margin: 0 0 10px 0; font-size:
