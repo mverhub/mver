@@ -222,36 +222,9 @@
 
     <div class="profile-card-frame" id="profile-card-output"></div>
 
+    <script src="data.js"></script>
+
     <script>
-        // Data entries are stored cleanly in lowercase keys to fix the lookup bug
-        const editorsData = {
-            "confuxion": { rank: "#1", mainTier: "A",  kf: "A",  ct: "A-", ve: "B+", te: "B"  },
-            "sxmple":    { rank: "#2", mainTier: "B+", kf: "D",  ct: "B+", ve: "B+", te: "C+" },
-            "timmyloal": { rank: "#3", mainTier: "B+", kf: "B",  ct: "B+", ve: "B",  te: "B-" },
-            "game1k":    { rank: "#4", mainTier: "B+", kf: "C+", ct: "B+", ve: "B",  te: "B"  },
-            "vorthexis": { rank: "#5", mainTier: "B",  kf: "E",  ct: "B",  ve: "B",  te: "B+" },
-            "normal":    { rank: "#6", mainTier: "B-", kf: "C",  ct: "C+", ve: "B-", te: "B-" },
-            "x9jm":      { rank: "#7", mainTier: "C+", kf: "D",  ct: "C+", ve: "C",  te: "C+" },
-            "possessed_yt":  { rank: "#8", mainTier: "C+", kf: "C",  ct: "C",  ve: "D+", te: "C+" },
-            "blade":     { rank: "#9", mainTier: "C+", kf: "C-", ct: "C+", ve: "C",  te: "D"  },
-            
-            "husky_multicraft": { rank: "", mainTier: "D", kf: "-", ct: "-", ve: "-", te: "-" },
-            "system1117":       { rank: "", mainTier: "-", kf: "-", ct: "-", ve: "-", te: "-" },
-            "aston":            { rank: "", mainTier: "-", kf: "-", ct: "C", ve: "-", te: "-" },
-            "itzfroco":         { rank: "", mainTier: "D", kf: "C-", ct: "D", ve: "D+", te: "D" },
-            "chillpotato":      { rank: "", mainTier: "-", kf: "-", ct: "-", ve: "-", te: "-" },
-            
-            "???":   { rank: "#10", mainTier: "?",  kf: "-",  ct: "-",  ve: "-",  te: "-"  }
-        };
-
-        const nameMapping = {
-            "confuxion": "confuxion", "sxmple": "sxmple", "timmyloal": "TimmyLoal",
-            "game1k": "Game1K", "vorthexis": "Vorthexis", "normal": "Normal",
-            "x9jm": "x9jm", "blade": "Blade", "possessed_yt": "Possessed_YT",
-            "husky_multicraft": "Husky_MultiCraft", "system1117": "system1117",
-            "aston": "Aston", "itzfroco": "ItzFroco", "chillpotato": "ChillPotato"
-        };
-
         function getThemeClass(grade) {
             if(!grade || grade === "-") return "t-none";
             const topChar = grade.charAt(0).toUpperCase();
@@ -271,68 +244,4 @@
         let userQuery = params.get('user');
         let userKey = userQuery ? userQuery.toLowerCase() : "unknown";
 
-        if (!editorsData[userKey]) {
-            userKey = "unknown"; 
-        }
-
-        const user = editorsData[userKey];
-        let displayName = userKey === "unknown" ? "???" : (nameMapping[userKey] || userQuery);
-        
-        let subtitleText = "Official Editor";
-        let titleClass = "";
-        
-        if (user.rank) {
-            subtitleText = `Rank ${user.rank} Editor`;
-        } else if (user.mainTier === "-") {
-            subtitleText = "Waitlist (Pending Evaluation)";
-            titleClass = 'class="status-waitlist"';
-        }
-
-        const targetContainer = document.getElementById("profile-card-output");
-        
-        targetContainer.innerHTML = `
-            <div class="close-view" onclick="handleProfileExit()">&times;</div>
-            <div class="profile-main-header">
-                <div class="profile-titles">
-                    <h2>${displayName}</h2>
-                    <p ${titleClass}>${subtitleText}</p>
-                </div>
-                <div class="square-badge ${getThemeClass(user.mainTier)}">${user.mainTier}</div>
-            </div>
-            
-            <hr class="horizontal-line">
-
-            <div class="stats-grid-row">
-                <div class="stat-column">
-                    <span class="stat-column-label">Keyframes</span>
-                    <div class="oval-pill ${getThemeClass(user.kf)}">
-                        <div class="oval-circle-icon i-kf">&diamond;</div>
-                        <span class="oval-letter">${user.kf}</span>
-                    </div>
-                </div>
-                <div class="stat-column">
-                    <span class="stat-column-label">Cuts and Transitions</span>
-                    <div class="oval-pill ${getThemeClass(user.ct)}">
-                        <div class="oval-circle-icon i-ct">&#9874;</div>
-                        <span class="oval-letter">${user.ct}</span>
-                    </div>
-                </div>
-                <div class="stat-column">
-                    <span class="stat-column-label">Visual Effects</span>
-                    <div class="oval-pill ${getThemeClass(user.ve)}">
-                        <div class="oval-circle-icon i-ve">&#10022;</div>
-                        <span class="oval-letter">${user.ve}</span>
-                    </div>
-                </div>
-                <div class="stat-column">
-                    <span class="stat-column-label">Text Effects</span>
-                    <div class="oval-pill ${getThemeClass(user.te)}">
-                        <div class="oval-circle-icon i-te">Aa</div>
-                        <span class="oval-letter">${user.te}</span>
-                    </div>
-                </div>
-            </div>
-        `;
-    </script>
-</body>
-</html>
+        // Check against data loaded from data.js
