@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 <title>MVER</title>
@@ -83,6 +82,43 @@ nav a:hover{
     cursor:pointer;
 }
 
+/* TIER SYSTEM */
+.tier-section{
+    max-width:900px;
+    margin:40px auto;
+    text-align:center;
+}
+
+.tier-title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.tier-grid{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap:10px;
+    padding:10px;
+}
+
+.tier-box{
+    background:#111827;
+    border:1px solid rgba(255,255,255,0.1);
+    padding:15px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.s{background:#f43f5e;}
+.a{background:#f97316;}
+.b{background:#eab308;}
+.c{background:#22c55e;}
+.d{background:#3b82f6;}
+.e{background:#6366f1;}
+.f{background:#6b7280;}
+
+/* LEADERBOARD */
 .leaderboard{
     max-width:800px;
     margin:40px auto;
@@ -108,6 +144,12 @@ nav a:hover{
 
 .rank{
     color:#38bdf8;
+    font-weight:bold;
+}
+
+.tier{
+    margin-left:10px;
+    color:#fbbf24;
     font-weight:bold;
 }
 
@@ -148,7 +190,7 @@ nav a:hover{
 <h1>Welcome to MultiCraft Visual Editing Rankings (MVER)</h1>
 
 <p>
-The MultiCraft Visual Editing Ranking is a tier list system to rank your editing skills from A-F and compete against others on a Top 10 leaderboard.
+The MultiCraft Visual Editing Ranking is a tier list system to rank your editing skills from S-F and compete against others on a Top 10 leaderboard.
 </p>
 
 <a href="tiers.html">
@@ -156,57 +198,72 @@ The MultiCraft Visual Editing Ranking is a tier list system to rank your editing
 </a>
 </div>
 
+<!-- TIER SYSTEM -->
+<div class="tier-section">
+    <div class="tier-title">🏆 TIER RANKS</div>
+
+    <div class="tier-grid">
+        <div class="tier-box s">S ?</div>
+        <div class="tier-box a">A ?</div>
+        <div class="tier-box b">B ?</div>
+        <div class="tier-box c">C ?</div>
+        <div class="tier-box d">D ?</div>
+        <div class="tier-box e">E ?</div>
+        <div class="tier-box f">F ?</div>
+    </div>
+</div>
+
 <div class="leaderboard">
 
 <div class="title">🏆 TOP 10 EDITORS</div>
 
 <div class="card">
-<span><span class="rank">#1</span> Editor 1</span>
+<span><span class="rank">#1</span> Editor 1 <span class="tier">Tier: ?</span></span>
 <a href="editor1.html"><button class="profile-btn">Profile</button></a>
 </div>
 
 <div class="card">
-<span><span class="rank">#2</span> Editor 2</span>
+<span><span class="rank">#2</span> Editor 2 <span class="tier">Tier: ?</span></span>
 <a href="editor2.html"><button class="profile-btn">Profile</button></a>
 </div>
 
 <div class="card">
-<span><span class="rank">#3</span> Editor 3</span>
+<span><span class="rank">#3</span> Editor 3 <span class="tier">Tier: ?</span></span>
 <a href="editor3.html"><button class="profile-btn">Profile</button></a>
 </div>
 
 <div class="card">
-<span><span class="rank">#4</span> Editor 4</span>
+<span><span class="rank">#4</span> Editor 4 <span class="tier">Tier: ?</span></span>
 <a href="editor4.html"><button class="profile-btn">Profile</button></a>
 </div>
 
 <div class="card">
-<span><span class="rank">#5</span> Editor 5</span>
+<span><span class="rank">#5</span> Editor 5 <span class="tier">Tier: ?</span></span>
 <a href="editor5.html"><button class="profile-btn">Profile</button></a>
 </div>
 
 <div class="card">
-<span><span class="rank">#6</span> Editor 6</span>
+<span><span class="rank">#6</span> Editor 6 <span class="tier">Tier: ?</span></span>
 <a href="editor6.html"><button class="profile-btn">Profile</button></a>
 </div>
 
 <div class="card">
-<span><span class="rank">#7</span> Editor 7</span>
+<span><span class="rank">#7</span> Editor 7 <span class="tier">Tier: ?</span></span>
 <a href="editor7.html"><button class="profile-btn">Profile</button></a>
 </div>
 
 <div class="card">
-<span><span class="rank">#8</span> Editor 8</span>
+<span><span class="rank">#8</span> Editor 8 <span class="tier">Tier: ?</span></span>
 <a href="editor8.html"><button class="profile-btn">Profile</button></a>
 </div>
 
 <div class="card">
-<span><span class="rank">#9</span> Editor 9</span>
+<span><span class="rank">#9</span> Editor 9 <span class="tier">Tier: ?</span></span>
 <a href="editor9.html"><button class="profile-btn">Profile</button></a>
 </div>
 
 <div class="card">
-<span><span class="rank">#10</span> Editor 10</span>
+<span><span class="rank">#10</span> Editor 10 <span class="tier">Tier: ?</span></span>
 <a href="editor10.html"><button class="profile-btn">Profile</button></a>
 </div>
 
