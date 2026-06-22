@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MVER - Editors</title>
+<title>MVER - Editors Leaderboard</title>
 
 <style>
 body{
     margin:0;
     font-family:Arial, sans-serif;
+    background:#0b1220;
     color:white;
-
-    background:url('mver-bg.png') no-repeat center center fixed;
-    background-size:cover;
 }
 
-/* DARK OVERLAY LIKE MVER STYLE */
-body::before{
-    content:"";
-    position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background:rgba(0,0,0,0.35);
-    z-index:-1;
+/* HEADER BAR */
+.header{
+    background:url('mver-bg.png') center/cover no-repeat;
+    height:200px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:50px;
+    font-weight:bold;
+    letter-spacing:4px;
+    border-bottom:3px solid #38bdf8;
 }
 
 /* TITLE */
 .title{
     text-align:center;
+    margin:25px 0;
     font-size:28px;
-    margin-top:30px;
     letter-spacing:2px;
 }
 
-/* CENTER CONTAINER */
+/* CENTER WRAPPER */
 .leaderboard{
-    width:520px;
-    margin:30px auto;
+    width:650px;
+    margin:auto;
 }
 
-/* CARD */
+/* CARD STYLE (MATCH MVER) */
 .card{
-    background:#0b1a3a;
+    background:#0c1a3a;
     border:2px solid #1f4fff;
-    border-radius:10px;
+    border-radius:12px;
 
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 
-    padding:10px 12px;
+    padding:12px 14px;
     margin:10px 0;
 }
 
@@ -55,16 +56,15 @@ body::before{
 .left{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
 }
 
-/* RANK BOX (#1 etc) */
+/* RANK BOX */
 .rank{
     background:#1f4fff;
     padding:6px 10px;
     border-radius:6px;
     font-weight:bold;
-    color:white;
 }
 
 /* NAME */
@@ -78,165 +78,179 @@ body::before{
     align-items:center;
     gap:10px;
     font-size:12px;
-    opacity:0.9;
 }
 
 /* PROFILE BUTTON */
-.profile-btn{
+.profile{
     background:#1e293b;
-    color:white;
     border:none;
+    color:white;
     padding:6px 10px;
     border-radius:6px;
     cursor:pointer;
 }
 
-/* TIER BADGES */
+.profile:hover{
+    background:#334155;
+}
+
+/* TIER BOXES */
 .tier{
     padding:6px 10px;
     border-radius:6px;
     font-weight:bold;
-    min-width:32px;
+    min-width:35px;
     text-align:center;
 }
 
-/* COLORS (LIKE IMAGE) */
-.Aminus{ background:#7CFF4D; color:black; }
-.Bplus{ background:#FFD84D; color:black; }
-.B{ background:#FFB000; color:black; }
-.Bminus{ background:#FF9A3D; color:black; }
-.Cplus{ background:#FF7A00; color:black; }
-.C{ background:#FF4D00; color:white; }
-.Cminus{ background:#FF2E2E; color:white; }
-
+/* COLORS (MATCH SCREENSHOT STYLE) */
+.Aminus{background:#7CFF4D;color:black;}
+.Bplus{background:#FFD84D;color:black;}
+.B{background:#FFB000;color:black;}
+.Bminus{background:#FF9A3D;color:black;}
+.Cplus{background:#FF7A00;color:black;}
+.C{background:#FF4D00;color:white;}
 </style>
+
 </head>
 
 <body>
+
+<div class="header">MVER</div>
 
 <div class="title">EDITORS LEADERBOARD</div>
 
 <div class="leaderboard">
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#1</div>
-            <div class="name">confuxion</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier Aminus">A-</div>
-            <a href="editor1.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #1 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#1</div>
+        <div class="name">confuxion</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier Aminus">A-</div>
+        <a href="editor1.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#2</div>
-            <div class="name">sxmple</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier Bplus">B+</div>
-            <a href="editor2.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #2 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#2</div>
+        <div class="name">sxmple</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier Bplus">B+</div>
+        <a href="editor2.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#3</div>
-            <div class="name">TimmyLoal</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier Bplus">B+</div>
-            <a href="editor3.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #3 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#3</div>
+        <div class="name">TimmyLoal</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier Bplus">B+</div>
+        <a href="editor3.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#4</div>
-            <div class="name">Game1K</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier Bplus">B+</div>
-            <a href="editor4.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #4 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#4</div>
+        <div class="name">Game1K</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier Bplus">B+</div>
+        <a href="editor4.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#5</div>
-            <div class="name">Vorthexis</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier B">B</div>
-            <a href="editor5.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #5 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#5</div>
+        <div class="name">Vorthexis</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier B">B</div>
+        <a href="editor5.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#6</div>
-            <div class="name">Normal</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier Bminus">B-</div>
-            <a href="editor6.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #6 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#6</div>
+        <div class="name">Normal</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier Bminus">B-</div>
+        <a href="editor6.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#7</div>
-            <div class="name">x9jm</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier Cplus">C+</div>
-            <a href="editor7.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #7 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#7</div>
+        <div class="name">x9jm</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier Cplus">C+</div>
+        <a href="editor7.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#8</div>
-            <div class="name">Possessed_YT</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier Cplus">C+</div>
-            <a href="editor8.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #8 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#8</div>
+        <div class="name">Possessed_YT</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier Cplus">C+</div>
+        <a href="editor8.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#9</div>
-            <div class="name">Blade</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier Cplus">C+</div>
-            <a href="editor9.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #9 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#9</div>
+        <div class="name">Blade</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier Cplus">C+</div>
+        <a href="editor9.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
-    <div class="card">
-        <div class="left">
-            <div class="rank">#10</div>
-            <div class="name">???</div>
-        </div>
-        <div class="right">
-            RANK:
-            <div class="tier Cminus">? ?</div>
-            <a href="editor10.html"><button class="profile-btn">Profile</button></a>
-        </div>
+<!-- #10 -->
+<div class="card">
+    <div class="left">
+        <div class="rank">#10</div>
+        <div class="name">???</div>
     </div>
+    <div class="right">
+        RANK:
+        <div class="tier C">? ?</div>
+        <a href="editor10.html"><button class="profile">Profile</button></a>
+    </div>
+</div>
 
 </div>
 
