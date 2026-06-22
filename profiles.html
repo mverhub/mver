@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVER - Editor Profiles</title>
+    <title>MVER - Profile View</title>
     
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Teko:wght@600&display=swap" rel="stylesheet">
 
@@ -17,179 +17,218 @@
 
         body {
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
             font-family: 'MultiCraft', monospace;
-            background: radial-gradient(circle, rgba(42,10,116,1) 0%, rgba(13,4,43,1) 100%);
+            background: #000000 url('mver-bg.png') center/cover no-repeat fixed;
             color: white;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-        }
-
-        .back-link {
-            color: #55efc4;
-            text-decoration: none;
-            font-size: 18px;
-            margin-bottom: 30px;
-            border: 2px solid #55efc4;
-            padding: 8px 16px;
-            border-radius: 4px;
-            background: rgba(0,0,0,0.3);
-        }
-        .back-link:hover {
-            background: #55efc4;
-            color: black;
-        }
-
-        .profile-container {
-            width: 100%;
-            max-width: 720px;
-            margin-bottom: 50px;
-            scroll-margin-top: 20px;
-        }
-
-        .profile-box {
-            background: #000000;
-            border: 3px solid #3895d3;
-            padding: 30px;
+            min-height: 100vh;
             box-sizing: border-box;
-            text-align: left;
-            border-radius: 6px;
         }
 
-        .profile-header-container {
+        /* HEADER NAV OVERLAY */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(0,0,0,0.85);
+            box-sizing: border-box;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        .nav-logo-side {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo-side img { height: 24px; }
+        .nav-logo-side span { font-size: 20px; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a {
+            color: #b2bec3;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: sans-serif;
+            font-weight: 600;
+        }
+        .nav-links a:hover, .nav-links a.active { color: white; }
+
+        /* MAIN CARD WRAPPER MATCHING IMAGE 1 */
+        .profile-card-frame {
+            background: #000000;
+            width: 90%;
+            max-width: 780px;
+            border: 3px solid #3498db;
+            border-radius: 6px;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            margin-top: 60px;
+            box-shadow: 0 0 25px rgba(52, 152, 219, 0.2);
         }
 
-        .profile-name {
-            font-family: 'MultiCraft', monospace;
-            font-size: 32px;
+        .close-view {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 24px;
+            font-family: sans-serif;
+        }
+        .close-view:hover { color: white; }
+
+        .profile-main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .profile-titles h2 {
+            font-size: 64px;
             margin: 0;
-            color: #ffffff;
-            letter-spacing: -1px;
+            line-height: 1;
+            letter-spacing: 1px;
+            font-weight: normal;
         }
 
-        .profile-tag {
+        .profile-titles p {
             font-family: 'Teko', sans-serif;
-            font-size: 36px;
+            font-size: 32px;
             color: #55efc4;
-            margin: -5px 0 0 0;
+            margin: 5px 0 0 0;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
-        .big-badge {
-            font-family: 'MultiCraft', monospace;
-            font-size: 42px;
-            width: 90px;
-            height: 90px;
-            border: 3px solid #7f8c8d;
-            color: #fff;
+        /* SQUARE BIG TIER BADGE */
+        .square-badge {
+            font-size: 72px;
+            width: 110px;
+            height: 110px;
+            border: 4px solid #fff200;
+            color: #fff200;
             display: flex;
             align-items: center;
             justify-content: center;
             background: transparent;
+            box-shadow: 0 0 20px rgba(255, 242, 0, 0.2);
         }
 
-        /* Color configurations for big badges */
-        .b-Aminus   { border-color: #a3cb38; color: #a3cb38; box-shadow: 0 0 15px rgba(163,203,56,0.3); }
-        .b-Bplus    { border-color: #fff200; color: #fff200; box-shadow: 0 0 15px rgba(255,242,0,0.3); }
-        .b-B        { border-color: #ffc312; color: #ffc312; box-shadow: 0 0 15px rgba(255,195,18,0.3); }
-        .b-Bminus   { border-color: #f79f1f; color: #f79f1f; box-shadow: 0 0 15px rgba(247,159,31,0.3); }
-        .b-Cplus    { border-color: #ff7f50; color: #ff7f50; box-shadow: 0 0 15px rgba(255,127,80,0.3); }
-        .b-unknown  { border-color: #7f8c8d; color: #7f8c8d; }
-
-        .profile-divider {
+        .horizontal-line {
             border: none;
             height: 4px;
-            background: #444;
-            margin-bottom: 30px;
+            background: #2c3e50;
+            margin-bottom: 40px;
         }
 
-        .stats-row {
+        /* HORIZONTAL OVAL PILL BADGES */
+        .stats-grid-row {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            gap: 20px;
             flex-wrap: wrap;
-            gap: 15px;
         }
 
-        .stat-item {
+        .stat-column {
             display: flex;
             flex-direction: column;
             align-items: center;
             flex: 1;
-            min-width: 110px;
+            min-width: 140px;
         }
 
-        .stat-label {
-            font-size: 10px;
+        .stat-column-label {
+            font-size: 11px;
+            font-family: sans-serif;
             font-weight: bold;
-            color: #888;
-            margin-bottom: 8px;
+            color: #7f8c8d;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            text-align: center;
-            height: 12px;
         }
 
-        .pill-badge {
+        .oval-pill {
             display: flex;
             align-items: center;
-            background: #111;
-            border-radius: 25px;
-            padding: 2px 14px 2px 2px;
-            border: 2px solid #444;
+            background: #0d0d0d;
+            border-radius: 40px;
+            padding: 4px;
+            border: 2px solid #7f8c8d;
             width: 100%;
+            max-width: 150px;
             box-sizing: border-box;
         }
 
-        .stat-icon {
-            width: 36px;
-            height: 36px;
+        .oval-circle-icon {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
+            background: transparent;
+            border: 2px solid white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: bold;
-            margin-right: 12px;
-            border: 2px solid transparent;
         }
 
-        .sub-grade {
-            font-family: 'MultiCraft', monospace;
-            font-size: 18px;
+        .oval-letter {
+            font-size: 26px;
             margin-left: auto;
+            margin-right: 18px;
+            font-weight: bold;
         }
 
-        /* Border color themes based on the letter grade */
-        .g-A     { border-color: #a3cb38; color: #a3cb38; }
-        .g-B     { border-color: #fff200; color: #fff200; }
-        .g-C     { border-color: #ffc312; color: #ffc312; }
-        .g-D     { border-color: #ff7f50; color: #ff7f50; }
-        .g-E     { border-color: #ff4757; color: #ff4757; }
-        .g-none  { border-color: #7f8c8d; color: #7f8c8d; }
+        /* Dynamic Color Layout Injectors */
+        .t-P, .t-O, .t-S, .t-A { border-color: #a3cb38; color: #a3cb38; }
+        .t-B { border-color: #fff200; color: #fff200; }
+        .t-C { border-color: #ff9f43; color: #ff9f43; }
+        .t-D { border-color: #ff7f50; color: #ff7f50; }
+        .t-E, .t-F { border-color: #ff4757; color: #ff4757; }
+        .t-none { border-color: #7f8c8d; color: #7f8c8d; }
+
+        /* Icon circular specific borders */
+        .i-kf { border-color: #ff4757; }
+        .i-ct { border-color: #fff200; }
+        .i-ve { border-color: #fff200; }
+        .i-te { border-color: #fff200; }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="back-link">&larr; Return to Leaderboard</a>
+    <div class="top-nav">
+        <div class="nav-logo-side">
+            <img src="mver-logo.png" alt="MVER Logo">
+            <span>MVER</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Leaderboard / Home Page</a>
+            <a href="index.html?page=tiers">[Tiers]</a>
+            <a href="index.html?page=editors">[Editors]</a>
+            <a href="index.html?page=submit">[Submit Edits]</a>
+            <a href="index.html?page=credits">[Credits]</a>
+        </div>
+    </div>
 
-    <div id="profiles-root"></div>
+    <div class="profile-card-frame" id="profile-card-output">
+        </div>
 
     <script>
-        // ==========================================
-        // EASY EDIT CONTROL CENTER
-        // Just change the tier letters here! 
-        // ==========================================
+        // Data Registry
         const editorsData = {
             "confuxion": { rank: "#1", mainTier: "A-", kf: "A",  ct: "A-", ve: "B+", te: "B"  },
             "sxmple":    { rank: "#2", mainTier: "B+", kf: "D",  ct: "B+", ve: "B+", te: "C+" },
-            "timmyloal": { rank: "#3", mainTier: "B+", kf: "A-",  ct: "B+", ve: "B+",  te: "A-" },
-            "game1k":    { rank: "#4", mainTier: "B+", kf: "B+", ct: "B", ve: "B+",  te: "A-"  },
-            "vorthexis": { rank: "#5", mainTier: "B",  kf: "D+",  ct: "B",  ve: "B",  te: "A-" },
+            "timmyloal": { rank: "#3", mainTier: "B+", kf: "B",  ct: "B+", ve: "B",  te: "B-" },
+            "game1k":    { rank: "#4", mainTier: "B+", kf: "C+", ct: "B+", ve: "B",  te: "B"  },
+            "vorthexis": { rank: "#5", mainTier: "B",  kf: "E",  ct: "B",  ve: "B",  te: "B+" },
             "normal":    { rank: "#6", mainTier: "B-", kf: "C",  ct: "C+", ve: "B-", te: "B-" },
             "x9jm":      { rank: "#7", mainTier: "C+", kf: "D",  ct: "C+", ve: "C",  te: "C+" },
             "posessed":  { rank: "#8", mainTier: "C+", kf: "C",  ct: "C",  ve: "D+", te: "C+" },
@@ -197,79 +236,70 @@
             "unknown":   { rank: "#10", mainTier: "?",  kf: "-",  ct: "-",  ve: "-",  te: "-"  }
         };
 
-        // Helper function that calculates matching border colors automatically
-        function getColorClass(grade) {
-            if (!grade || grade === "-") return "g-none";
-            const upper = grade.toUpperCase();
-            if (upper.startsWith("A")) return "g-A";
-            if (upper.startsWith("B")) return "g-B";
-            if (upper.startsWith("C")) return "g-C";
-            if (upper.startsWith("D")) return "g-D";
-            if (upper.startsWith("E")) return "g-E";
-            return "g-none";
+        function getThemeClass(grade) {
+            if(!grade || grade === "-") return "t-none";
+            const topChar = grade.charAt(0).toUpperCase();
+            if(["P","O","S","A","B","C","D","E","F"].includes(topChar)) return "t-" + topChar;
+            return "t-none";
         }
 
-        // Helper function to return css class clean string names
-        function cleanBadgeClass(tier) {
-            if (tier === "?") return "b-unknown";
-            return "b-" + tier.replace("-", "minus").replace("+", "plus");
+        // Get parameter from URL string path (e.g. profiles.html?user=vorthexis)
+        const params = new URLSearchParams(window.location.search);
+        let userKey = params.get('user');
+
+        if (!userKey || !editorsData[userKey]) {
+            userKey = "unknown"; 
         }
 
-        // Render profile markup automatically
-        const root = document.getElementById("profiles-root");
-        Object.keys(editorsData).forEach(id => {
-            const data = editorsData[id];
+        const user = editorsData[userKey];
+        let displayName = userKey === "unknown" ? "???" : userKey;
+        if(userKey === "posessed") displayName = "Posessed_YT";
+
+        const targetContainer = document.getElementById("profile-card-output");
+        
+        targetContainer.innerHTML = `
+            <a href="index.html" class="close-view">&times;</a>
+            <div class="profile-main-header">
+                <div class="profile-titles">
+                    <h2>${displayName}</h2>
+                    <p>Profile</p>
+                </div>
+                <div class="square-badge ${getThemeClass(user.mainTier)}">${user.mainTier}</div>
+            </div>
             
-            // Format printable name cleanly
-            let printableName = id === "unknown" ? "???" : id;
-            if(id === "posessed") printableName = "Posessed_YT";
+            <hr class="horizontal-line">
 
-            const profileHTML = `
-                <div id="profile-${id}" class="profile-container">
-                    <div class="profile-box">
-                        <div class="profile-header-container">
-                            <div>
-                                <h2 class="profile-name">${printableName}</h2>
-                                <p class="profile-tag">Rank ${data.rank} Editor</p>
-                            </div>
-                            <div class="big-badge ${cleanBadgeClass(data.mainTier)}">${data.mainTier}</div>
-                        </div>
-                        <hr class="profile-divider">
-                        <div class="stats-row">
-                            <div class="stat-item">
-                                <span class="stat-label">Keyframes</span>
-                                <div class="pill-badge ${getColorClass(data.kf)}">
-                                    <div class="stat-icon">&diamond;</div>
-                                    <span class="sub-grade">${data.kf}</span>
-                                </div>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">Cuts & Transitions</span>
-                                <div class="pill-badge ${getColorClass(data.ct)}">
-                                    <div class="stat-icon">&sharp;</div>
-                                    <span class="sub-grade">${data.ct}</span>
-                                </div>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">Visual Effects</span>
-                                <div class="pill-badge ${getColorClass(data.ve)}">
-                                    <div class="stat-icon">&#10022;</div>
-                                    <span class="sub-grade">${data.ve}</span>
-                                </div>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">Text Effects</span>
-                                <div class="pill-badge ${getColorClass(data.te)}">
-                                    <div class="stat-icon">Aa</div>
-                                    <span class="sub-grade">${data.te}</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="stats-grid-row">
+                <div class="stat-column">
+                    <span class="stat-column-label">Keyframes</span>
+                    <div class="oval-pill ${getThemeClass(user.kf)}">
+                        <div class="oval-circle-icon i-kf">&diamond;</div>
+                        <span class="oval-letter">${user.kf}</span>
                     </div>
                 </div>
-            `;
-            root.insertAdjacentHTML('beforeend', profileHTML);
-        });
+                <div class="stat-column">
+                    <span class="stat-column-label">Cuts and Transitions</span>
+                    <div class="oval-pill ${getThemeClass(user.ct)}">
+                        <div class="oval-circle-icon i-ct">&#9874;</div>
+                        <span class="oval-letter">${user.ct}</span>
+                    </div>
+                </div>
+                <div class="stat-column">
+                    <span class="stat-column-label">Visual Effects</span>
+                    <div class="oval-pill ${getThemeClass(user.ve)}">
+                        <div class="oval-circle-icon i-ve">&#10022;</div>
+                        <span class="oval-letter">${user.ve}</span>
+                    </div>
+                </div>
+                <div class="stat-column">
+                    <span class="stat-column-label">Text Effects</span>
+                    <div class="oval-pill ${getThemeClass(user.te)}">
+                        <div class="oval-circle-icon i-te">Aa</div>
+                        <span class="oval-letter">${user.te}</span>
+                    </div>
+                </div>
+            </div>
+        `;
     </script>
 </body>
 </html>
