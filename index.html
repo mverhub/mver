@@ -1,85 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MVER</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    color:white;
+    background-image:url('mver-bg.png');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* HEADER */
+.banner{
+    height:220px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,0.45);
+    border-bottom:3px solid #38bdf8;
+}
+
+.logo-banner{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    width:80px;
+    height:auto;
+    filter:drop-shadow(0 0 15px #38bdf8);
+}
+
+.banner-title{
+    font-size:70px;
+    font-weight:bold;
+    letter-spacing:4px;
+}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    background:#0a0a0a;
+    padding:15px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:50px 20px;
+    background:rgba(0,0,0,0.55);
+}
+
+.hero h1{
+    font-size:40px;
+}
+
+.hero p{
+    max-width:800px;
+    margin:auto;
+    color:#d1d5db;
+}
+
+.tier-btn{
+    margin-top:20px;
+    padding:12px 30px;
+    background:#38bdf8;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* LEADERBOARD */
+.leaderboard{
+    max-width:800px;
+    margin:40px auto;
+}
+
+.title{
+    text-align:center;
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.card{
+    background:#111827;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px;
+    padding:15px;
+    margin:12px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.rank{
+    color:#38bdf8;
+    font-weight:bold;
+}
+
+.profile-btn{
+    background:#1e293b;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.profile-btn:hover{
+    background:#334155;
+}
+
+.tier-box-small{
+    margin-left:10px;
+    padding:5px 10px;
+    background:#0f172a;
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:6px;
+    font-weight:bold;
+    color:#fbbf24;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="banner">
+    <div class="logo-banner">
+        <img src="mver-logo.png" alt="MVER Logo" class="logo">
+        <div class="banner-title">MVER</div>
+    </div>
+</div>
+
+<!-- NAV -->
+<nav>
+    <a href="index.html">HOME</a>
+    <a href="tiers.html">TIERS</a>
+    <a href="editors.html">EDITORS</a>
+    <a href="submit.html">SUBMIT EDITS</a>
+    <a href="credits.html">CREDITS</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Welcome to MultiCraft Visual Editing Rankings (MVER)</h1>
+
+    <p>
+        The MultiCraft Visual Editing Ranking is a tier list system to rank editing skills from S-F.
+    </p>
+
+    <a href="tiers.html">
+        <button class="tier-btn">View Tiers</button>
+    </a>
+</div>
+
+<!-- LEADERBOARD -->
 <div class="leaderboard">
 
-<div class="title">EDITORS LEADERBOARD</div>
+    <div class="title">🏆 TOP 10 EDITORS</div>
 
-<div class="card">
-<span><span class="rank">#1</span> Editor 1</span>
-<div>
-    <a href="editor1.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">S ?</span>
-</div>
+    <div class="card">
+        <span><span class="rank">#1</span> Editor 1</span>
+        <div>
+            <a href="editor1.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">S ?</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <span><span class="rank">#2</span> Editor 2</span>
+        <div>
+            <a href="editor2.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">A ?</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <span><span class="rank">#3</span> Editor 3</span>
+        <div>
+            <a href="editor3.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">B ?</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <span><span class="rank">#4</span> Editor 4</span>
+        <div>
+            <a href="editor4.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">C ?</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <span><span class="rank">#5</span> Editor 5</span>
+        <div>
+            <a href="editor5.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">D ?</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <span><span class="rank">#6</span> Editor 6</span>
+        <div>
+            <a href="editor6.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">E ?</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <span><span class="rank">#7</span> Editor 7</span>
+        <div>
+            <a href="editor7.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">F ?</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <span><span class="rank">#8</span> Editor 8</span>
+        <div>
+            <a href="editor8.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">? ?</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <span><span class="rank">#9</span> Editor 9</span>
+        <div>
+            <a href="editor9.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">? ?</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <span><span class="rank">#10</span> Editor 10</span>
+        <div>
+            <a href="editor10.html"><button class="profile-btn">Profile</button></a>
+            <span class="tier-box-small">? ?</span>
+        </div>
+    </div>
+
 </div>
 
-<div class="card">
-<span><span class="rank">#2</span> Editor 2</span>
-<div>
-    <a href="editor2.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">A ?</span>
-</div>
-</div>
-
-<div class="card">
-<span><span class="rank">#3</span> Editor 3</span>
-<div>
-    <a href="editor3.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">B ?</span>
-</div>
-</div>
-
-<div class="card">
-<span><span class="rank">#4</span> Editor 4</span>
-<div>
-    <a href="editor4.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">C ?</span>
-</div>
-</div>
-
-<div class="card">
-<span><span class="rank">#5</span> Editor 5</span>
-<div>
-    <a href="editor5.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">D ?</span>
-</div>
-</div>
-
-<div class="card">
-<span><span class="rank">#6</span> Editor 6</span>
-<div>
-    <a href="editor6.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">E ?</span>
-</div>
-</div>
-
-<div class="card">
-<span><span class="rank">#7</span> Editor 7</span>
-<div>
-    <a href="editor7.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">F ?</span>
-</div>
-</div>
-
-<div class="card">
-<span><span class="rank">#8</span> Editor 8</span>
-<div>
-    <a href="editor8.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">? ?</span>
-</div>
-</div>
-
-<div class="card">
-<span><span class="rank">#9</span> Editor 9</span>
-<div>
-    <a href="editor9.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">? ?</span>
-</div>
-</div>
-
-<div class="card">
-<span><span class="rank">#10</span> Editor 10</span>
-<div>
-    <a href="editor10.html"><button class="profile-btn">Profile</button></a>
-    <span class="tier-box-small">? ?</span>
-</div>
-</div>
-
-</div>
+</body>
+</html>
