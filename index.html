@@ -209,3 +209,267 @@
         .info-list { margin: 0; padding-left: 20px; line-height: 1.6; font-size: 18px; }
         .info-list li { margin-bottom: 10px; }
         .info-list strong { color: #55efc4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav nav-menu">
+        <div class="nav-logo-side">
+            <img src="mver-logo.png" alt="MVER Logo">
+            <span>MVER</span>
+        </div>
+        <div class="nav-links">
+            <a id="link-home" onclick="switchView('home')">Leaderboard / Home Page</a>
+            <a id="link-tiers" onclick="switchView('tiers')">[Tiers]</a>
+            <a id="link-editors" onclick="switchView('editors')">[Editors]</a>
+            <a id="link-submit" onclick="switchView('submit')">[Submit Edits]</a>
+            <a id="link-credits" onclick="switchView('credits')">[Credits]</a>
+        </div>
+    </div>
+
+    <div class="view-content" id="view-home">
+        <h2 class="matrix-title">MVER OFFICIALLY ASSIGNED MATRIX</h2>
+        <div id="matrix-root"></div>
+    </div>
+
+    <div class="view-content" id="view-tiers">
+        <h2 class="matrix-title">TIER ARCHITECTURE SPECIFICATIONS</h2>
+        
+        <div class="tier-shelf">
+            <h3 class="shelf-title">EVALUATION BREAKDOWN CATEGORIES</h3>
+            <ul class="info-list">
+                <li><strong>Keyframes (&diamond;):</strong> Consistency, tracking accuracy, speed changes, and physics control properties.</li>
+                <li><strong>Cuts & Transitions (&#9874;):</strong> Flow pacing, synchronization elements, audio layering, and scene stitching.</li>
+                <li><strong>Visual Effects (&#10022;):</strong> Color grading accuracy, masking tools, lighting layouts, spatial manipulation.</li>
+                <li><strong>Text Effects (Aa):</strong> Typography choices, styling integration, tracking, and composition styling.</li>
+            </ul>
+        </div>
+
+        <div class="tier-shelf">
+            <h3 class="shelf-title">DIVISION BREAKDOWN</h3>
+            <ul class="info-list">
+                <li><span style="color:#55efc4;">Prodigy / Overlord / Supreme / Alpha (P, O, S, A):</span> Top-tier mastery. Peak mechanics and flawless composition designs.</li>
+                <li><span style="color:#fff200;">Beta Division (B):</span> Advanced expertise. Displays great control over pacing and standard visual layouts.</li>
+                <li><span style="color:#ff9f43;">Competent Division (C):</span> Intermediate capability. Solid conceptual awareness with minor technical mistakes.</li>
+                <li><span style="color:#ff7f50;">Developing Division (D):</span> Foundational structure. Understands mechanics but requires refinement.</li>
+                <li><span style="color:#ff4757;">Entry / Foundation (E, F):</span> Introductory level. Actively learning raw timing tools and keyframe placements.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="view-content" id="view-editors">
+        <h2 class="matrix-title">ACTIVE ROSTER ENCYCLOPEDIA</h2>
+        <div id="directory-root" class="directory-grid"></div>
+    </div>
+
+    <div class="view-content" id="view-submit">
+        <h2 class="matrix-title">SUBMIT EVALUATION REQUESTS</h2>
+        <div class="tier-shelf" style="text-align: center;">
+            <h3 class="shelf-title">APPLICATION INSTANCES</h3>
+            <div class="portal-container">
+                <p style="font-size: 18px; line-height: 1.5; max-width: 600px; margin: 0 auto 15px auto;">
+                    Ready to submit your edits for ranking or promotions? Click the form button below to launch the evaluation queue script processing panel.
+                </p>
+                <a href="https://forms.google.com" target="_blank" class="portal-btn">Open Submission Form</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="view-content" id="view-credits">
+        <h2 class="matrix-title">PROJECT MANAGEMENT CREDITS</h2>
+        <div class="tier-shelf">
+            <h3 class="shelf-title">MVER SYSTEM CREATORS</h3>
+            <p style="font-size: 18px; line-height: 1.6; margin: 0;">
+                • <strong>Project Lead / Main Architecture:</strong> System Administration Panel<br>
+                • <strong>Ranking Council Moderators:</strong> Senior MultiCraft Evaluators Group<br>
+                • <strong>Frontend Interface Construction:</strong> Custom Layout Rendering Engines
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // FIXED USER LIST ROUTING MAP
+        const assignments = {
+            "P+": [], "P": [], "P-": [],
+            "O+": [], "O": [], "O-": [],
+            "S+": [], "S": [], "S-": [],
+            "A+": [], "A": ["confuxion"], "A-": [],
+            "B+": ["sxmple", "TimmyLoal", "Game1k"], "B": ["Vorthexis"], "B-": ["Normal"],
+            "C+": ["x9jm", "Blade", "Possessed_YT"], "C": [], "C-": [],
+            "D+": [], "D": ["husky_multicraft", "ItzFroco"], "D-": [],
+            "E+": [], "E": [], "E-": [],
+            "F+": [], "F": [], "F-": [],
+            "WAITLIST": ["aston", "system1117", "chillpotato"] 
+        };
+
+        const nameMapping = {
+            "confuxion": "confuxion", "sxmple": "sxmple", "timmyloal": "TimmyLoal",
+            "game1k": "Game1K", "vorthexis": "Vorthexis", "normal": "Normal",
+            "x9jm": "x9jm", "blade": "Blade", "possessed_yt": "Possessed_YT",
+            "husky_multicraft": "Husky_MultiCraft", "system1117": "system1117",
+            "aston": "Aston", "itzfroco": "ItzFroco", "chillpotato": "ChillPotato"
+        };
+
+        const editorsData = {
+            "confuxion": { rank: "#1", mainTier: "A",  kf: "A",  ct: "A-", ve: "B+", te: "B"  },
+            "sxmple":    { rank: "#2", mainTier: "B+", kf: "D",  ct: "B+", ve: "B+", te: "C+" },
+            "timmyloal": { rank: "#3", mainTier: "B+", kf: "B",  ct: "B+", ve: "B",  te: "B-" },
+            "game1k":    { rank: "#4", mainTier: "B+", kf: "C+", ct: "B+", ve: "B",  te: "B"  },
+            "vorthexis": { rank: "#5", mainTier: "B",  kf: "E",  ct: "B",  ve: "B",  te: "B+" },
+            "normal":    { rank: "#6", mainTier: "B-", kf: "C",  ct: "C+", ve: "B-", te: "B-" },
+            "x9jm":      { rank: "#7", mainTier: "C+", kf: "D",  ct: "C+", ve: "C",  te: "C+" },
+            "possessed_yt":  { rank: "#8", mainTier: "C+", kf: "C",  ct: "C",  ve: "D+", te: "C+" },
+            "blade":     { rank: "#9", mainTier: "C+", kf: "C-", ct: "C+", ve: "C",  te: "D"  },
+            
+            "husky_multicraft": { rank: "", mainTier: "D", kf: "-", ct: "-", ve: "-", te: "-" },
+            "system1117":       { rank: "", mainTier: "-", kf: "-", ct: "-", ve: "-", te: "-" },
+            "aston":            { rank: "", mainTier: "-", kf: "-", ct: "C", ve: "-", te: "-" },
+            "itzfroco":         { rank: "", mainTier: "D", kf: "C-", ct: "D", ve: "D+", te: "D" },
+            "chillpotato":      { rank: "-", mainTier: "-", kf: "-", ct: "-", ve: "-", te: "-" },
+            
+            "unknown":   { rank: "#10", mainTier: "?",  kf: "-",  ct: "-",  ve: "-",  te: "-"  }
+        };
+
+        function switchView(viewId) {
+            sessionStorage.setItem('mver_active_tab', viewId);
+            document.querySelectorAll('.view-content').forEach(view => view.classList.remove('active-view'));
+            document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('active-tab'));
+
+            const selectedView = document.getElementById('view-' + viewId);
+            if(selectedView) selectedView.classList.add('active-view');
+
+            const selectedLink = document.getElementById('link-' + viewId);
+            if(selectedLink) selectedLink.classList.add('active-tab');
+            
+            window.scrollTo(0, 0);
+        }
+
+        function getStyleRules(grade) {
+            if(!grade || grade === "-") return { border: "#7f8c8d", color: "#7f8c8d", bg: "rgba(255,255,255,0.03)" };
+            const topChar = grade.charAt(0).toUpperCase();
+            if(["P","O","S","A"].includes(topChar)) return { border: "#55efc4", color: "#55efc4", bg: "rgba(85,239,196,0.05)" };
+            if(topChar === "B") return { border: "#fff200", color: "#fff200", bg: "rgba(255,242,0,0.05)" };
+            if(topChar === "C") return { border: "#ff9f43", color: "#ff9f43", bg: "rgba(255,159,67,0.05)" };
+            if(topChar === "D") return { border: "#ff7f50", color: "#ff7f50", bg: "rgba(255,127,80,0.05)" };
+            if(["E","F"].includes(topChar)) return { border: "#ff4757", color: "#ff4757", bg: "rgba(255,71,87,0.05)" };
+            return { border: "#7f8c8d", color: "#7f8c8d", bg: "rgba(255,255,255,0.03)" };
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // GEN 1: CORE MATRIX GENERATION
+            const divisions = [
+                { name: "PRODIGY DIVISION (P)", prefix: "P", class: "p-div" },
+                { name: "OVERLORD DIVISION (O)", prefix: "O", class: "o-div" },
+                { name: "SUPREME DIVISION (S)", prefix: "S", class: "s-div" },
+                { name: "ALPHA DIVISION (A)", prefix: "A", class: "a-div" },
+                { name: "BETA DIVISION (B)", prefix: "B", class: "b-div" },
+                { name: "COMPETENT DIVISION (C)", prefix: "C", class: "c-div" },
+                { name: "DEVELOPING DIVISION (D)", prefix: "D", class: "d-div" },
+                { name: "ENTRY DIVISION (E)", prefix: "E", class: "e-div" },
+                { name: "FOUNDATION DIVISION (F)", prefix: "F", class: "f-div" }
+            ];
+
+            const container = document.getElementById("matrix-root");
+            if (container) {
+                container.innerHTML = "";
+
+                divisions.forEach(div => {
+                    let shelfHTML = `
+                        <div class="tier-shelf">
+                            <h3 class="shelf-title">${div.name}</h3>
+                    `;
+                    
+                    ["+", "", "-"].forEach(suffix => {
+                        const fullTierKey = div.prefix + suffix;
+                        const members = assignments[fullTierKey] || [];
+                        
+                        let listContent = "";
+                        if (members.length === 0) {
+                            listContent = `<span class="empty-slot">-</span>`;
+                        } else {
+                            members.forEach(m => {
+                                const labelName = nameMapping[m.toLowerCase()] || m;
+                                listContent += `<a href="profiles.html?user=${m}" class="editor-item-link">${labelName}</a>`;
+                            });
+                        }
+
+                        shelfHTML += `
+                            <div class="sub-row">
+                                <div class="badge ${div.class}">${fullTierKey}</div>
+                                <div class="editors-list">${listContent}</div>
+                            </div>
+                        `;
+                    });
+
+                    shelfHTML += `</div>`;
+                    container.insertAdjacentHTML('beforeend', shelfHTML);
+                });
+
+                // Generate Waitlist Section
+                if(assignments["WAITLIST"] && assignments["WAITLIST"].length > 0) {
+                    let waitlistHTML = `
+                        <div class="tier-shelf" style="border-color: #fff200;">
+                            <h3 class="shelf-title" style="color: #fff200; border-bottom-color: #574b14;">MVER OFFICIAL WAITLIST</h3>
+                            <div class="sub-row">
+                                <div class="badge w-div">WAIT</div>
+                                <div class="editors-list">
+                    `;
+                    
+                    assignments["WAITLIST"].forEach(m => {
+                        const labelName = nameMapping[m.toLowerCase()] || m;
+                        waitlistHTML += `<a href="profiles.html?user=${m}" class="editor-item-link" style="border-color:#fff200; background:rgba(255,242,0,0.08);">${labelName}</a>`;
+                    });
+
+                    waitlistHTML += `
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', waitlistHTML);
+                }
+            }
+
+            // GEN 2: DYNAMIC ROSTER DIRECTORY SYSTEM
+            const directoryRoot = document.getElementById("directory-root");
+            if (directoryRoot) {
+                directoryRoot.innerHTML = "";
+                
+                Object.keys(editorsData).forEach(key => {
+                    if(key === "unknown" || key === "???") return;
+                    
+                    const item = editorsData[key];
+                    const label = nameMapping[key] || key;
+                    const visualTheme = getStyleRules(item.mainTier);
+                    
+                    let rankSub = item.rank ? `Rank ${item.rank}` : "Pending Evaluation";
+                    if (item.mainTier === "-") rankSub = "Waitlist Account";
+
+                    const cardHTML = `
+                        <a href="profiles.html?user=${key}" class="directory-card" style="border-color: ${visualTheme.border}">
+                            <div class="directory-name">${label}</div>
+                            <div class="directory-rank">${rankSub}</div>
+                            <div class="directory-tier-badge" style="color: ${visualTheme.color}; background: ${visualTheme.bg}; border-color: ${visualTheme.border}">
+                                Tier: ${item.mainTier}
+                            </div>
+                        </a>
+                    `;
+                    directoryRoot.insertAdjacentHTML('beforeend', cardHTML);
+                });
+            }
+
+            // GEN 3: INTERACTIVE TAB NAVIGATION ROUTING
+            const urlParams = new URLSearchParams(window.location.search);
+            const pageParam = urlParams.get('page');
+            const storedTab = sessionStorage.getItem('mver_active_tab');
+
+            if(pageParam) {
+                switchView(pageParam);
+            } else if (storedTab) {
+                switchView(storedTab);
+            } else {
+                switchView('home');
+            }
+        });
+    </script>
+</body>
+</html>
