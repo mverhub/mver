@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVER - Main Matrix</title>
+    <title>MVER - MultiCraft Visual Editing Rankings</title>
     
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Teko:wght@600&display=swap" rel="stylesheet">
 
@@ -25,200 +25,102 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            box-sizing: border-box;
         }
 
-        /* HEADER NAV OVERLAY */
-        .top-nav {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* NAVIGATION HEADER */
+        .top-navbar {
             width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            background: rgba(0,0,0,0.85);
             box-sizing: border-box;
             border-bottom: 2px solid rgba(255,255,255,0.1);
-            z-index: 10;
         }
-        .nav-logo-side { display: flex; align-items: center; gap: 10px; }
-        .nav-logo-side img { height: 24px; }
-        .nav-logo-side span { font-size: 20px; letter-spacing: 1px; }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a {
-            color: #b2bec3;
-            text-decoration: none;
-            font-size: 14px;
-            font-family: sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .nav-links a:hover, .nav-links a.active-tab { color: white; }
-
-        /* VIEW CONTAINER SYSTEM */
-        .view-content {
-            display: none;
-            width: 90%;
-            max-width: 1000px;
-            margin-top: 100px;
-            margin-bottom: 40px;
-            box-sizing: border-box;
-        }
-        .active-view { display: block; }
-
-        /* MATRIX TIERS SPECIFIC STYLING */
-        .matrix-title {
-            text-align: center;
-            font-size: 48px;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-        }
-
-        .tier-shelf {
-            background: rgba(0, 0, 0, 0.75);
-            border: 2px solid #3498db;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(52, 152, 219, 0.1);
-        }
-
-        .shelf-title {
-            margin: 0 0 15px 0;
-            font-size: 24px;
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        .sub-row {
+        .nav-branding {
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
+            gap: 10px;
+            cursor: pointer;
         }
-        .sub-row:last-child { margin-bottom: 0; }
+        .nav-branding img { height: 28px; }
+        .nav-branding span { font-size: 22px; font-weight: bold; }
+        
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-menu a {
+            color: #b2bec3;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .nav-menu a:hover, .nav-menu a.active-tab { color: #55efc4; }
 
-        .badge {
-            width: 65px;
-            height: 35px;
+        /* HERO MAIN HEADER */
+        .header-section {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            text-align: center;
+            padding: 40px 0 20px 0;
+            border-bottom: 4px solid #3498db;
+        }
+        .header-title-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 4px;
-            border: 2px solid white;
-            margin-right: 20px;
-            flex-shrink: 0;
+            gap: 15px;
         }
+        .header-logo { height: 64px; }
+        .header-title { font-size: 80px; text-transform: uppercase; margin: 0; line-height: 1; }
+        .header-subtitle { font-size: 11px; font-weight: bold; margin-top: 5px; color: #dcdde1; }
 
-        /* Division Color Schemes */
-        .p-div, .o-div, .s-div, .a-div { border-color: #55efc4; color: #55efc4; background: rgba(85,239,196,0.05); }
-        .b-div { border-color: #fff200; color: #fff200; background: rgba(255,242,0,0.05); }
-        .c-div { border-color: #ff9f43; color: #ff9f43; background: rgba(255,159,67,0.05); }
-        .d-div { border-color: #ff7f50; color: #ff7f50; background: rgba(255,127,80,0.05); }
-        .e-div, .f-div { border-color: #ff4757; color: #ff4757; background: rgba(255,71,87,0.05); }
-        .w-div { border-color: #fff200; color: #fff200; background: rgba(255,242,0,0.08); }
+        /* VIEW CONTAINERS */
+        .view-content { display: none; width: 100%; max-width: 800px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; }
+        .view-content.active-view { display: block; }
 
-        .editors-list {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
+        /* HOME SPECIFIC STYLES */
+        .welcome-banner { width: 100%; background: #000000; padding: 30px 0; text-align: center; box-sizing: border-box; margin-bottom: 20px; border: 2px solid #222;}
+        .welcome-content { max-width: 600px; margin: 0 auto; font-size: 13px; color: #b2bec3; line-height: 1.6; }
+        .welcome-content h3 { color: white; margin: 0 0 10px 0; font-size: 16px; }
+        .tiers-btn { background: #2f3640; border: 2px solid #7f8c8d; color: #f5f6fa; padding: 6px 24px; font-size: 14px; border-radius: 4px; cursor: pointer; margin-top: 15px; font-weight: bold; }
+        .tiers-btn:hover { background: #353b48; border-color: #55efc4; }
 
-        .editor-item-link {
-            color: white;
-            text-decoration: none;
-            padding: 6px 14px;
-            border: 2px solid #7f8c8d;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.03);
-            font-size: 16px;
-            transition: all 0.2s ease;
+        .leaderboard-container { max-width: 480px; margin: 0 auto; }
+        .main-title { font-size: 36px; text-align: center; margin-bottom: 20px; color: white; }
+        
+        .card {
+            background: #000000; border: 3px solid #3498db; border-radius: 6px; display: flex; justify-content: space-between;
+            align-items: center; padding: 12px 16px; margin-bottom: 10px; box-shadow: 0 0 15px rgba(52, 152, 219, 0.1);
+            text-decoration: none; color: white; transition: transform 0.1s ease, border-color 0.2s;
         }
-        .editor-item-link:hover {
-            border-color: white;
-            background: rgba(255,255,255,0.15);
-            transform: scale(1.03);
-        }
+        .card:hover { transform: scale(1.02); border-color: #55efc4; }
+        .left-side { display: flex; align-items: center; font-size: 26px; }
+        .rank { color: #55efc4; font-weight: bold; margin-right: 12px; }
+        .divider { color: #333; margin-right: 12px; }
+        .right-side { display: flex; align-items: center; gap: 8px; }
+        .rank-label { font-size: 10px; font-family: sans-serif; font-weight: bold; opacity: 0.6; }
+        .tier { font-size: 18px; font-weight: bold; width: 42px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px solid #55efc4; color: #55efc4; }
 
-        .empty-slot {
-            color: #555;
-            font-size: 20px;
-            margin-left: 5px;
-        }
+        /* BOX TEMPLATE */
+        .generic-box { background: rgba(0,0,0,0.9); padding: 40px; border-radius: 6px; border: 3px solid #3498db; box-shadow: 0 0 20px rgba(52, 152, 219, 0.15); }
+        .generic-box h2 { margin-top: 0; font-size: 48px; color: white; margin-bottom: 15px; }
+        .generic-box p { font-family: sans-serif; line-height: 1.6; color: #b2bec3; font-size: 15px; }
 
-        /* DIRECTORY LAYOUT ELEMENTS */
-        .directory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .directory-card {
-            background: rgba(10, 10, 10, 0.85);
-            border: 2px solid #7f8c8d;
-            border-radius: 6px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            color: white;
-        }
-        .directory-card:hover {
-            border-color: #3498db;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-        }
-        .directory-name { font-size: 24px; margin: 0 0 5px 0; }
-        .directory-rank { font-size: 14px; color: #3498db; font-family: sans-serif; font-weight: bold; margin-bottom: 10px; }
-        .directory-tier-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            font-weight: bold;
-            border-radius: 4px;
-            border: 1px solid;
-            font-size: 14px;
-        }
-
-        /* PORTAL IFRAME/FORM DESIGN */
-        .portal-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        .portal-btn {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-family: 'MultiCraft', monospace;
-            font-size: 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.2s;
-            text-decoration: none;
-        }
-        .portal-btn:hover { background: #2980b9; }
-
-        /* DOCUMENTATION LISTS */
-        .info-list { margin: 0; padding-left: 20px; line-height: 1.6; font-size: 18px; }
-        .info-list li { margin-bottom: 10px; }
-        .info-list strong { color: #55efc4; }
+        .editor-link-btn { display: inline-block; background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 16px; text-decoration: none; margin-top: 15px; font-weight: bold; }
+        .editor-link-btn:hover { background: #2980b9; }
     </style>
 </head>
 <body>
 
-    <div class="top-nav nav-menu">
-        <div class="nav-logo-side">
+    <div class="top-navbar">
+        <div class="nav-branding" onclick="switchView('home')">
             <img src="mver-logo.png" alt="MVER Logo">
-            <span>MVER</span>
+            <span>MVER SYSTEM</span>
         </div>
-        <div class="nav-links">
+        <div class="nav-menu">
             <a id="link-home" onclick="switchView('home')">Leaderboard / Home Page</a>
             <a id="link-tiers" onclick="switchView('tiers')">[Tiers]</a>
             <a id="link-editors" onclick="switchView('editors')">[Editors]</a>
@@ -227,111 +129,100 @@
         </div>
     </div>
 
-    <div class="view-content" id="view-home">
-        <h2 class="matrix-title">MVER OFFICIALLY ASSIGNED MATRIX</h2>
-        <div id="matrix-root"></div>
-    </div>
-
-    <div class="view-content" id="view-tiers">
-        <h2 class="matrix-title">TIER ARCHITECTURE SPECIFICATIONS</h2>
-        
-        <div class="tier-shelf">
-            <h3 class="shelf-title">EVALUATION BREAKDOWN CATEGORIES</h3>
-            <ul class="info-list">
-                <li><strong>Keyframes (&diamond;):</strong> Consistency, tracking accuracy, speed changes, and physics control properties.</li>
-                <li><strong>Cuts & Transitions (&#9874;):</strong> Flow pacing, synchronization elements, audio layering, and scene stitching.</li>
-                <li><strong>Visual Effects (&#10022;):</strong> Color grading accuracy, masking tools, lighting layouts, spatial manipulation.</li>
-                <li><strong>Text Effects (Aa):</strong> Typography choices, styling integration, tracking, and composition styling.</li>
-            </ul>
+    <div class="header-section">
+        <div class="header-title-container">
+            <img src="mver-logo.png" alt="MVER Sword Logo" class="header-logo">
+            <h1 class="header-title">MVER</h1>
         </div>
-
-        <div class="tier-shelf">
-            <h3 class="shelf-title">DIVISION BREAKDOWN</h3>
-            <ul class="info-list">
-                <li><span style="color:#55efc4;">Prodigy / Overlord / Supreme / Alpha (P, O, S, A):</span> Top-tier mastery. Peak mechanics and flawless composition designs.</li>
-                <li><span style="color:#fff200;">Beta Division (B):</span> Advanced expertise. Displays great control over pacing and standard visual layouts.</li>
-                <li><span style="color:#ff9f43;">Competent Division (C):</span> Intermediate capability. Solid conceptual awareness with minor technical mistakes.</li>
-                <li><span style="color:#ff7f50;">Developing Division (D):</span> Foundational structure. Understands mechanics but requires refinement.</li>
-                <li><span style="color:#ff4757;">Entry / Foundation (E, F):</span> Introductory level. Actively learning raw timing tools and keyframe placements.</li>
-            </ul>
-        </div>
+        <div class="header-subtitle">MultiCraft Visual Editing Rankings</div>
     </div>
 
-    <div class="view-content" id="view-editors">
-        <h2 class="matrix-title">ACTIVE ROSTER ENCYCLOPEDIA</h2>
-        <div id="directory-root" class="directory-grid"></div>
-    </div>
-
-    <div class="view-content" id="view-submit">
-        <h2 class="matrix-title">SUBMIT EVALUATION REQUESTS</h2>
-        <div class="tier-shelf" style="text-align: center;">
-            <h3 class="shelf-title">APPLICATION INSTANCES</h3>
-            <div class="portal-container">
-                <p style="font-size: 18px; line-height: 1.5; max-width: 600px; margin: 0 auto 15px auto;">
-                    Ready to submit your edits for ranking or promotions? Click the form button below to launch the evaluation queue script processing panel.
-                </p>
-                <a href="https://forms.google.com" target="_blank" class="portal-btn">Open Submission Form</a>
+    <div id="view-home" class="view-content active-view">
+        <div class="welcome-banner">
+            <div class="welcome-content">
+                <h3>Welcome to MultiCraft Visual Editing Rankings (MVER)</h3>
+                <p>The MultiCraft Visual Editing Ranking is a tier slot system to rank your editing skills.<br>Join and compete with others on our top 10 leaderboard.</p>
+                <button class="tiers-btn" onclick="switchView('tiers')">Tiers</button>
             </div>
         </div>
+
+        <div class="leaderboard-container">
+            <h2 class="main-title">EDITORS LEADERBOARD</h2>
+
+            <a href="profiles.html?user=confuxion" class="card">
+                <div class="left-side"><span class="rank">#1</span><span class="divider">|</span><span class="name">confuxion</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">A-</div></div>
+            </a>
+            <a href="profiles.html?user=sxmple" class="card">
+                <div class="left-side"><span class="rank">#2</span><span class="divider">|</span><span class="name">sxmple</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
+            </a>
+            <a href="profiles.html?user=timmyloal" class="card">
+                <div class="left-side"><span class="rank">#3</span><span class="divider">|</span><span class="name">TimmyLoal</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
+            </a>
+            <a href="profiles.html?user=game1k" class="card">
+                <div class="left-side"><span class="rank">#4</span><span class="divider">|</span><span class="name">Game1K</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
+            </a>
+            <a href="profiles.html?user=vorthexis" class="card">
+                <div class="left-side"><span class="rank">#5</span><span class="divider">|</span><span class="name">Vorthexis</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B</div></div>
+            </a>
+            <a href="profiles.html?user=normal" class="card">
+                <div class="left-side"><span class="rank">#6</span><span class="divider">|</span><span class="name">Normal</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B-</div></div>
+            </a>
+            <a href="profiles.html?user=x9jm" class="card">
+                <div class="left-side"><span class="rank">#7</span><span class="divider">|</span><span class="name">x9jm</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">C+</div></div>
+            </a>
+            <a href="profiles.html?user=posessed" class="card">
+                <div class="left-side"><span class="rank">#8</span><span class="divider">|</span><span class="name">Posessed_YT</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">C+</div></div>
+            </a>
+            <a href="profiles.html?user=blade" class="card">
+                <div class="left-side"><span class="rank">#9</span><span class="divider">|</span><span class="name">Blade</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">C+</div></div>
+            </a>
+            <a href="profiles.html?user=unknown" class="card">
+                <div class="left-side"><span class="rank">#10</span><span class="divider">|</span><span class="name">???</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">?</div></div>
+            </a>
+        </div>
     </div>
 
-    <div class="view-content" id="view-credits">
-        <h2 class="matrix-title">PROJECT MANAGEMENT CREDITS</h2>
-        <div class="tier-shelf">
-            <h3 class="shelf-title">MVER SYSTEM CREATORS</h3>
-            <p style="font-size: 18px; line-height: 1.6; margin: 0;">
-                • <strong>Project Lead / Main Architecture:</strong> System Administration Panel<br>
-                • <strong>Ranking Council Moderators:</strong> Senior MultiCraft Evaluators Group<br>
-                • <strong>Frontend Interface Construction:</strong> Custom Layout Rendering Engines
-            </p>
+    <div id="view-tiers" class="view-content">
+        <div class="generic-box">
+            <h2>MVER Tier Breakdown</h2>
+            <p>Ranks are sorted categorically into grouped visual clusters based on editing complexity, fluidity, composition asset values, and design logic choices.</p>
+        </div>
+    </div>
+
+    <div id="view-editors" class="view-content">
+        <div class="generic-box" style="text-align: center;">
+            <h2>Editors Tier Matrix</h2>
+            <p>The complete hierarchy ranking tier sheet has been moved into its own optimized workspace profile file.</p>
+            <a href="editors.html" class="editor-link-btn">Open editors.html Hierarchy &rarr;</a>
+        </div>
+    </div>
+
+    <div id="view-submit" class="view-content">
+        <div class="generic-box">
+            <h2>Submit Your Portfolio</h2>
+            <p>Ready to climb the ladder? Submit your video montages or motion clips to the visual evaluation council to receive an official skill badge score bracket placement.</p>
+        </div>
+    </div>
+
+    <div id="view-credits" class="view-content">
+        <div class="generic-box">
+            <h2>Credits & Development</h2>
+            <p>MVER Framework engineered for MultiCraft editors ecosystem.</p>
         </div>
     </div>
 
     <script>
-        // FIXED USER LIST ROUTING MAP
-        const assignments = {
-            "P+": [], "P": [], "P-": [],
-            "O+": [], "O": [], "O-": [],
-            "S+": [], "S": [], "S-": [],
-            "A+": [], "A": ["confuxion"], "A-": [],
-            "B+": ["sxmple", "TimmyLoal", "Game1k"], "B": ["Vorthexis"], "B-": ["Normal"],
-            "C+": ["x9jm", "Blade", "Possessed_YT"], "C": [], "C-": [],
-            "D+": [], "D": ["husky_multicraft", "ItzFroco"], "D-": [],
-            "E+": [], "E": [], "E-": [],
-            "F+": [], "F": [], "F-": [],
-            "WAITLIST": ["aston", "system1117", "chillpotato"] 
-        };
-
-        const nameMapping = {
-            "confuxion": "confuxion", "sxmple": "sxmple", "timmyloal": "TimmyLoal",
-            "game1k": "Game1K", "vorthexis": "Vorthexis", "normal": "Normal",
-            "x9jm": "x9jm", "blade": "Blade", "possessed_yt": "Possessed_YT",
-            "husky_multicraft": "Husky_MultiCraft", "system1117": "system1117",
-            "aston": "Aston", "itzfroco": "ItzFroco", "chillpotato": "ChillPotato"
-        };
-
-        const editorsData = {
-            "confuxion": { rank: "#1", mainTier: "A",  kf: "A",  ct: "A-", ve: "B+", te: "B"  },
-            "sxmple":    { rank: "#2", mainTier: "B+", kf: "D",  ct: "B+", ve: "B+", te: "C+" },
-            "timmyloal": { rank: "#3", mainTier: "B+", kf: "B",  ct: "B+", ve: "B",  te: "B-" },
-            "game1k":    { rank: "#4", mainTier: "B+", kf: "C+", ct: "B+", ve: "B",  te: "B"  },
-            "vorthexis": { rank: "#5", mainTier: "B",  kf: "E",  ct: "B",  ve: "B",  te: "B+" },
-            "normal":    { rank: "#6", mainTier: "B-", kf: "C",  ct: "C+", ve: "B-", te: "B-" },
-            "x9jm":      { rank: "#7", mainTier: "C+", kf: "D",  ct: "C+", ve: "C",  te: "C+" },
-            "possessed_yt":  { rank: "#8", mainTier: "C+", kf: "C",  ct: "C",  ve: "D+", te: "C+" },
-            "blade":     { rank: "#9", mainTier: "C+", kf: "C-", ct: "C+", ve: "C",  te: "D"  },
-            
-            "husky_multicraft": { rank: "", mainTier: "D", kf: "-", ct: "-", ve: "-", te: "-" },
-            "system1117":       { rank: "", mainTier: "-", kf: "-", ct: "-", ve: "-", te: "-" },
-            "aston":            { rank: "", mainTier: "-", kf: "-", ct: "C", ve: "-", te: "-" },
-            "itzfroco":         { rank: "", mainTier: "D", kf: "C-", ct: "D", ve: "D+", te: "D" },
-            "chillpotato":      { rank: "-", mainTier: "-", kf: "-", ct: "-", ve: "-", te: "-" },
-            
-            "unknown":   { rank: "#10", mainTier: "?",  kf: "-",  ct: "-",  ve: "-",  te: "-"  }
-        };
-
         function switchView(viewId) {
-            sessionStorage.setItem('mver_active_tab', viewId);
             document.querySelectorAll('.view-content').forEach(view => view.classList.remove('active-view'));
             document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('active-tab'));
 
@@ -344,132 +235,12 @@
             window.scrollTo(0, 0);
         }
 
-        function getStyleRules(grade) {
-            if(!grade || grade === "-") return { border: "#7f8c8d", color: "#7f8c8d", bg: "rgba(255,255,255,0.03)" };
-            const topChar = grade.charAt(0).toUpperCase();
-            if(["P","O","S","A"].includes(topChar)) return { border: "#55efc4", color: "#55efc4", bg: "rgba(85,239,196,0.05)" };
-            if(topChar === "B") return { border: "#fff200", color: "#fff200", bg: "rgba(255,242,0,0.05)" };
-            if(topChar === "C") return { border: "#ff9f43", color: "#ff9f43", bg: "rgba(255,159,67,0.05)" };
-            if(topChar === "D") return { border: "#ff7f50", color: "#ff7f50", bg: "rgba(255,127,80,0.05)" };
-            if(["E","F"].includes(topChar)) return { border: "#ff4757", color: "#ff4757", bg: "rgba(255,71,87,0.05)" };
-            return { border: "#7f8c8d", color: "#7f8c8d", bg: "rgba(255,255,255,0.03)" };
+        // Handle inner query parameter checks (?page=xyz)
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageParam = urlParams.get('page');
+        if(pageParam) {
+            switchView(pageParam);
         }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // GEN 1: CORE MATRIX GENERATION
-            const divisions = [
-                { name: "PRODIGY DIVISION (P)", prefix: "P", class: "p-div" },
-                { name: "OVERLORD DIVISION (O)", prefix: "O", class: "o-div" },
-                { name: "SUPREME DIVISION (S)", prefix: "S", class: "s-div" },
-                { name: "ALPHA DIVISION (A)", prefix: "A", class: "a-div" },
-                { name: "BETA DIVISION (B)", prefix: "B", class: "b-div" },
-                { name: "COMPETENT DIVISION (C)", prefix: "C", class: "c-div" },
-                { name: "DEVELOPING DIVISION (D)", prefix: "D", class: "d-div" },
-                { name: "ENTRY DIVISION (E)", prefix: "E", class: "e-div" },
-                { name: "FOUNDATION DIVISION (F)", prefix: "F", class: "f-div" }
-            ];
-
-            const container = document.getElementById("matrix-root");
-            if (container) {
-                container.innerHTML = "";
-
-                divisions.forEach(div => {
-                    let shelfHTML = `
-                        <div class="tier-shelf">
-                            <h3 class="shelf-title">${div.name}</h3>
-                    `;
-                    
-                    ["+", "", "-"].forEach(suffix => {
-                        const fullTierKey = div.prefix + suffix;
-                        const members = assignments[fullTierKey] || [];
-                        
-                        let listContent = "";
-                        if (members.length === 0) {
-                            listContent = `<span class="empty-slot">-</span>`;
-                        } else {
-                            members.forEach(m => {
-                                const labelName = nameMapping[m.toLowerCase()] || m;
-                                listContent += `<a href="profiles.html?user=${m}" class="editor-item-link">${labelName}</a>`;
-                            });
-                        }
-
-                        shelfHTML += `
-                            <div class="sub-row">
-                                <div class="badge ${div.class}">${fullTierKey}</div>
-                                <div class="editors-list">${listContent}</div>
-                            </div>
-                        `;
-                    });
-
-                    shelfHTML += `</div>`;
-                    container.insertAdjacentHTML('beforeend', shelfHTML);
-                });
-
-                // Generate Waitlist Section
-                if(assignments["WAITLIST"] && assignments["WAITLIST"].length > 0) {
-                    let waitlistHTML = `
-                        <div class="tier-shelf" style="border-color: #fff200;">
-                            <h3 class="shelf-title" style="color: #fff200; border-bottom-color: #574b14;">MVER OFFICIAL WAITLIST</h3>
-                            <div class="sub-row">
-                                <div class="badge w-div">WAIT</div>
-                                <div class="editors-list">
-                    `;
-                    
-                    assignments["WAITLIST"].forEach(m => {
-                        const labelName = nameMapping[m.toLowerCase()] || m;
-                        waitlistHTML += `<a href="profiles.html?user=${m}" class="editor-item-link" style="border-color:#fff200; background:rgba(255,242,0,0.08);">${labelName}</a>`;
-                    });
-
-                    waitlistHTML += `
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    container.insertAdjacentHTML('beforeend', waitlistHTML);
-                }
-            }
-
-            // GEN 2: DYNAMIC ROSTER DIRECTORY SYSTEM
-            const directoryRoot = document.getElementById("directory-root");
-            if (directoryRoot) {
-                directoryRoot.innerHTML = "";
-                
-                Object.keys(editorsData).forEach(key => {
-                    if(key === "unknown" || key === "???") return;
-                    
-                    const item = editorsData[key];
-                    const label = nameMapping[key] || key;
-                    const visualTheme = getStyleRules(item.mainTier);
-                    
-                    let rankSub = item.rank ? `Rank ${item.rank}` : "Pending Evaluation";
-                    if (item.mainTier === "-") rankSub = "Waitlist Account";
-
-                    const cardHTML = `
-                        <a href="profiles.html?user=${key}" class="directory-card" style="border-color: ${visualTheme.border}">
-                            <div class="directory-name">${label}</div>
-                            <div class="directory-rank">${rankSub}</div>
-                            <div class="directory-tier-badge" style="color: ${visualTheme.color}; background: ${visualTheme.bg}; border-color: ${visualTheme.border}">
-                                Tier: ${item.mainTier}
-                            </div>
-                        </a>
-                    `;
-                    directoryRoot.insertAdjacentHTML('beforeend', cardHTML);
-                });
-            }
-
-            // GEN 3: INTERACTIVE TAB NAVIGATION ROUTING
-            const urlParams = new URLSearchParams(window.location.search);
-            const pageParam = urlParams.get('page');
-            const storedTab = sessionStorage.getItem('mver_active_tab');
-
-            if(pageParam) {
-                switchView(pageParam);
-            } else if (storedTab) {
-                switchView(storedTab);
-            } else {
-                switchView('home');
-            }
-        });
     </script>
 </body>
 </html>
