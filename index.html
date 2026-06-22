@@ -1,4 +1,211 @@
-<script src="data.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVER - Main Matrix</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Teko:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'MultiCraft';
+            src: url('fonts/MultiCraftFont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'MultiCraft', monospace;
+            background: #000000 url('mver-bg.png') center/cover no-repeat fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* HEADER NAV OVERLAY */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(0,0,0,0.85);
+            box-sizing: border-box;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            z-index: 10;
+        }
+        .nav-logo-side { display: flex; align-items: center; gap: 10px; }
+        .nav-logo-side img { height: 24px; }
+        .nav-logo-side span { font-size: 20px; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a {
+            color: #b2bec3;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .nav-links a:hover, .nav-links a.active-tab { color: white; }
+
+        /* VIEW CONTAINER SYSTEM */
+        .view-content {
+            display: none;
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 100px;
+            margin-bottom: 40px;
+            box-sizing: border-box;
+        }
+        .active-view { display: block; }
+
+        /* MATRIX TIERS SPECIFIC STYLING */
+        .matrix-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .tier-shelf {
+            background: rgba(0, 0, 0, 0.75);
+            border: 2px solid #3498db;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.1);
+        }
+
+        .shelf-title {
+            margin: 0 0 15px 0;
+            font-size: 24px;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .sub-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .sub-row:last-child { margin-bottom: 0; }
+
+        .badge {
+            width: 65px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 2px solid white;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Division Color Schemes */
+        .p-div, .o-div, .s-div, .a-div { border-color: #55efc4; color: #55efc4; background: rgba(85,239,196,0.05); }
+        .b-div { border-color: #fff200; color: #fff200; background: rgba(255,242,0,0.05); }
+        .c-div { border-color: #ff9f43; color: #ff9f43; background: rgba(255,159,67,0.05); }
+        .d-div { border-color: #ff7f50; color: #ff7f50; background: rgba(255,127,80,0.05); }
+        .e-div, .f-div { border-color: #ff4757; color: #ff4757; background: rgba(255,71,87,0.05); }
+        .w-div { border-color: #fff200; color: #fff200; background: rgba(255,242,0,0.08); }
+
+        .editors-list {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .editor-item-link {
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 2px solid #7f8c8d;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.03);
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        .editor-item-link:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.15);
+            transform: scale(1.03);
+        }
+
+        .empty-slot {
+            color: #555;
+            font-size: 20px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav nav-menu">
+        <div class="nav-logo-side">
+            <img src="mver-logo.png" alt="MVER Logo">
+            <span>MVER</span>
+        </div>
+        <div class="nav-links">
+            <a id="link-home" onclick="switchView('home')">Leaderboard / Home Page</a>
+            <a id="link-tiers" onclick="switchView('tiers')">[Tiers]</a>
+            <a id="link-editors" onclick="switchView('editors')">[Editors]</a>
+            <a id="link-submit" onclick="switchView('submit')">[Submit Edits]</a>
+            <a id="link-credits" onclick="switchView('credits')">[Credits]</a>
+        </div>
+    </div>
+
+    <div class="view-content" id="view-home">
+        <h2 class="matrix-title">MVER OFFICIALLY ASSIGNED MATRIX</h2>
+        <div id="matrix-root"></div>
+    </div>
+
+    <div class="view-content" id="view-tiers">
+        <h2 class="matrix-title">TIER ARCHITECTURE SPECIFICATIONS</h2>
+        <div class="tier-shelf">
+            <h3 class="shelf-title">STRUCTURE RULES</h3>
+            <p>This view displays system metrics documentation and tier requirements. Setup layout details here.</p>
+        </div>
+    </div>
+
+    <div class="view-content" id="view-editors">
+        <h2 class="matrix-title">ACTIVE ROSTER ENCYCLOPEDIA</h2>
+        <div class="tier-shelf">
+            <h3 class="shelf-title">ROSTER OVERVIEW</h3>
+            <p>Directory and chronological database sorting system configurations go here.</p>
+        </div>
+    </div>
+
+    <div class="view-content" id="view-submit">
+        <h2 class="matrix-title">SUBMIT EVALUATION REQUESTS</h2>
+        <div class="tier-shelf">
+            <h3 class="shelf-title">APPLICATION INSTRUCTIONS</h3>
+            <p>Connect your custom Google form processing layouts or ingestion pipes here.</p>
+        </div>
+    </div>
+
+    <div class="view-content" id="view-credits">
+        <h2 class="matrix-title">PROJECT MANAGEMENT CREDITS</h2>
+        <div class="tier-shelf">
+            <h3 class="shelf-title">MVER CREATORS</h3>
+            <p>System developers, evaluators, resource providers, and community contributors credits block.</p>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
 
     <script>
         function switchView(viewId) {
@@ -15,8 +222,7 @@
             window.scrollTo(0, 0);
         }
 
-        // assignments and nameMapping are now safely loaded from data.js!
-
+        // Structural mapping of rows generated down the home layout page
         const divisions = [
             { name: "PRODIGY DIVISION (P)", prefix: "P", class: "p-div" },
             { name: "OVERLORD DIVISION (O)", prefix: "O", class: "o-div" },
@@ -63,6 +269,7 @@
             container.insertAdjacentHTML('beforeend', shelfHTML);
         });
 
+        // Generate Waitlist Section dynamically if targets exist
         if(assignments["WAITLIST"] && assignments["WAITLIST"].length > 0) {
             let waitlistHTML = `
                 <div class="tier-shelf" style="border-color: #fff200;">
@@ -85,6 +292,7 @@
             container.insertAdjacentHTML('beforeend', waitlistHTML);
         }
 
+        // Deep view synchronization router rules
         const urlParams = new URLSearchParams(window.location.search);
         const pageParam = urlParams.get('page');
         const storedTab = sessionStorage.getItem('mver_active_tab');
@@ -97,3 +305,5 @@
             switchView('home');
         }
     </script>
+</body>
+</html>
