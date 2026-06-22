@@ -169,6 +169,7 @@
         .d-div { background: #ff7f50; }
         .e-div { background: #ff4757; }
         .f-div { background: #2d3436; color: white !important; }
+        .w-div { background: #fff200; color: black; }
 
         /* CREDITS TYPOGRAPHY */
         .credit-group { margin-bottom: 30px; }
@@ -216,25 +217,25 @@
 
             <a href="profiles.html?user=confuxion" class="card">
                 <div class="left-side"><span class="rank">#1</span><span class="divider">|</span><span class="name">confuxion</span></div>
-                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">A-</div></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">A</div></div>
             </a>
             <a href="profiles.html?user=sxmple" class="card">
                 <div class="left-side"><span class="rank">#2</span><span class="divider">|</span><span class="name">sxmple</span></div>
                 <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
             </a>
-            <a href="profiles.html?user=timmyloal" class="card">
+            <a href="profiles.html?user=TimmyLoal" class="card">
                 <div class="left-side"><span class="rank">#3</span><span class="divider">|</span><span class="name">TimmyLoal</span></div>
-                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">S+</div></div>
             </a>
-            <a href="profiles.html?user=game1k" class="card">
+            <a href="profiles.html?user=Game1k" class="card">
                 <div class="left-side"><span class="rank">#4</span><span class="divider">|</span><span class="name">Game1K</span></div>
                 <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
             </a>
-            <a href="profiles.html?user=vorthexis" class="card">
+            <a href="profiles.html?user=Vorthexis" class="card">
                 <div class="left-side"><span class="rank">#5</span><span class="divider">|</span><span class="name">Vorthexis</span></div>
                 <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B</div></div>
             </a>
-            <a href="profiles.html?user=normal" class="card">
+            <a href="profiles.html?user=Normal" class="card">
                 <div class="left-side"><span class="rank">#6</span><span class="divider">|</span><span class="name">Normal</span></div>
                 <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B-</div></div>
             </a>
@@ -242,11 +243,11 @@
                 <div class="left-side"><span class="rank">#7</span><span class="divider">|</span><span class="name">x9jm</span></div>
                 <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">C+</div></div>
             </a>
-            <a href="profiles.html?user=posessed" class="card">
-                <div class="left-side"><span class="rank">#8</span><span class="divider">|</span><span class="name">Posessed_YT</span></div>
+            <a href="profiles.html?user=Possessed_YT" class="card">
+                <div class="left-side"><span class="rank">#8</span><span class="divider">|</span><span class="name">Possessed_YT</span></div>
                 <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">C+</div></div>
             </a>
-            <a href="profiles.html?user=blade" class="card">
+            <a href="profiles.html?user=Blade" class="card">
                 <div class="left-side"><span class="rank">#9</span><span class="divider">|</span><span class="name">Blade</span></div>
                 <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">C+</div></div>
             </a>
@@ -302,9 +303,7 @@
 
     <script>
         function switchView(viewId) {
-            // Store the currently active tab identifier in browser session state storage
             sessionStorage.setItem('mver_active_tab', viewId);
-
             document.querySelectorAll('.view-content').forEach(view => view.classList.remove('active-view'));
             document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('active-tab'));
 
@@ -317,24 +316,26 @@
             window.scrollTo(0, 0);
         }
 
+        // Updated global array logic to match your updated profile listings!
         const assignments = {
             "P+": [], "P": [], "P-": [],
             "O+": [], "O": [], "O-": [],
-            "S+": [], "S": [], "S-": [],
+            "S+": ["TimmyLoal"], "S": [], "S-": [],
             "A+": [], "A": ["confuxion"], "A-": [],
-            "B+": ["sxmple", "timmyloal", "game1k"], "B": ["vorthexis"], "B-": ["normal"],
-            "C+": ["x9jm", "blade", "posessed"], "C": [], "C-": [],
-            "D+": [], "D": ["husky_multicraft", "system1117", "aston", "ItzFroco"], "D-": [],
-            "E+": [], "E": ["chillpotato"], "E-": [],
-            "F+": [], "F": [], "F-": []
+            "B+": ["sxmple", "Game1k"], "B": ["Vorthexis"], "B-": ["Normal"],
+            "C+": ["x9jm", "Blade", "Possessed_YT"], "C": [], "C-": [],
+            "D+": [], "D": ["husky_multicraft", "ItzFroco"], "D-": [],
+            "E+": [], "E": [], "E-": [],
+            "F+": [], "F": ["system1117", "chillpotato"], "F-": [],
+            "WAITLIST": ["aston"] // Custom tracking slot for tier "-" users
         };
 
         const nameMapping = {
             "confuxion": "confuxion", "sxmple": "sxmple", "timmyloal": "TimmyLoal",
             "game1k": "Game1K", "vorthexis": "Vorthexis", "normal": "Normal",
-            "x9jm": "x9jm", "blade": "Blade", "posessed": "Posessed_YT",
+            "x9jm": "x9jm", "blade": "Blade", "possessed_yt": "Possessed_YT",
             "husky_multicraft": "Husky_MultiCraft", "system1117": "system1117",
-            "aston": "Aston", "ItzFroco": "ItzFroco", "chillpotato": "ChillPotato"
+            "aston": "Aston", "itzfroco": "ItzFroco", "chillpotato": "ChillPotato"
         };
 
         const divisions = [
@@ -350,6 +351,8 @@
         ];
 
         const container = document.getElementById("matrix-root");
+        
+        // Render Standard Tiers
         divisions.forEach(div => {
             let shelfHTML = `
                 <div class="tier-shelf">
@@ -365,7 +368,7 @@
                     listContent = `<span class="empty-slot">-</span>`;
                 } else {
                     members.forEach(m => {
-                        const labelName = nameMapping[m] || m;
+                        const labelName = nameMapping[m.toLowerCase()] || m;
                         listContent += `<a href="profiles.html?user=${m}" class="editor-item-link">${labelName}</a>`;
                     });
                 }
@@ -382,7 +385,29 @@
             container.insertAdjacentHTML('beforeend', shelfHTML);
         });
 
-        // Smart routing initialization loop lookup
+        // Dynamic Waitlist Section Attachment
+        if(assignments["WAITLIST"] && assignments["WAITLIST"].length > 0) {
+            let waitlistHTML = `
+                <div class="tier-shelf" style="border-color: #fff200;">
+                    <h3 class="shelf-title" style="color: #fff200; border-bottom-color: #574b14;">MVER OFFICIAL WAITLIST</h3>
+                    <div class="sub-row">
+                        <div class="badge w-div">WAIT</div>
+                        <div class="editors-list">
+            `;
+            
+            assignments["WAITLIST"].forEach(m => {
+                const labelName = nameMapping[m.toLowerCase()] || m;
+                waitlistHTML += `<a href="profiles.html?user=${m}" class="editor-item-link" style="border-color:#fff200; background:rgba(255,242,0,0.08);">${labelName}</a>`;
+            });
+
+            waitlistHTML += `
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', waitlistHTML);
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
         const pageParam = urlParams.get('page');
         const storedTab = sessionStorage.getItem('mver_active_tab');
