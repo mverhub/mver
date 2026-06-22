@@ -84,4 +84,163 @@
         /* HOME SPECIFIC STYLES */
         .welcome-banner { width: 100%; background: #000000; padding: 30px 0; text-align: center; box-sizing: border-box; margin-bottom: 20px; border: 2px solid #222;}
         .welcome-content { max-width: 600px; margin: 0 auto; font-size: 13px; color: #b2bec3; line-height: 1.6; }
-        .welcome-content h3 { color: white; margin: 0 0 10px 0; font-size:
+        .welcome-content h3 { color: white; margin: 0 0 10px 0; font-size: 16px; }
+        .tiers-btn { background: #2f3640; border: 2px solid #7f8c8d; color: #f5f6fa; padding: 6px 24px; font-size: 14px; border-radius: 4px; cursor: pointer; margin-top: 15px; font-weight: bold; }
+        .tiers-btn:hover { background: #353b48; border-color: #55efc4; }
+
+        .leaderboard-container { max-width: 480px; margin: 0 auto; }
+        .main-title { font-size: 36px; text-align: center; margin-bottom: 20px; color: white; }
+        
+        .card {
+            background: #000000; border: 3px solid #3498db; border-radius: 6px; display: flex; justify-content: space-between;
+            align-items: center; padding: 12px 16px; margin-bottom: 10px; box-shadow: 0 0 15px rgba(52, 152, 219, 0.1);
+            text-decoration: none; color: white; transition: transform 0.1s ease, border-color 0.2s;
+        }
+        .card:hover { transform: scale(1.02); border-color: #55efc4; }
+        .left-side { display: flex; align-items: center; font-size: 26px; }
+        .rank { color: #55efc4; font-weight: bold; margin-right: 12px; }
+        .divider { color: #333; margin-right: 12px; }
+        .right-side { display: flex; align-items: center; gap: 8px; }
+        .rank-label { font-size: 10px; font-family: sans-serif; font-weight: bold; opacity: 0.6; }
+        .tier { font-size: 18px; font-weight: bold; width: 42px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 2px solid #55efc4; color: #55efc4; }
+
+        /* BOX TEMPLATE */
+        .generic-box { background: rgba(0,0,0,0.9); padding: 40px; border-radius: 6px; border: 3px solid #3498db; box-shadow: 0 0 20px rgba(52, 152, 219, 0.15); }
+        .generic-box h2 { margin-top: 0; font-size: 48px; color: white; margin-bottom: 15px; }
+        .generic-box p { font-family: sans-serif; line-height: 1.6; color: #b2bec3; font-size: 15px; }
+
+        .editor-link-btn { display: inline-block; background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 16px; text-decoration: none; margin-top: 15px; font-weight: bold; }
+        .editor-link-btn:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <div class="top-navbar">
+        <div class="nav-branding" onclick="switchView('home')">
+            <img src="mver-logo.png" alt="MVER Logo">
+            <span>MVER SYSTEM</span>
+        </div>
+        <div class="nav-menu">
+            <a id="link-home" onclick="switchView('home')">Leaderboard / Home Page</a>
+            <a id="link-tiers" onclick="switchView('tiers')">[Tiers]</a>
+            <a id="link-editors" onclick="switchView('editors')">[Editors]</a>
+            <a id="link-submit" onclick="switchView('submit')">[Submit Edits]</a>
+            <a id="link-credits" onclick="switchView('credits')">[Credits]</a>
+        </div>
+    </div>
+
+    <div class="header-section">
+        <div class="header-title-container">
+            <img src="mver-logo.png" alt="MVER Sword Logo" class="header-logo">
+            <h1 class="header-title">MVER</h1>
+        </div>
+        <div class="header-subtitle">MultiCraft Visual Editing Rankings</div>
+    </div>
+
+    <div id="view-home" class="view-content active-view">
+        <div class="welcome-banner">
+            <div class="welcome-content">
+                <h3>Welcome to MultiCraft Visual Editing Rankings (MVER)</h3>
+                <p>The MultiCraft Visual Editing Ranking is a tier slot system to rank your editing skills.<br>Join and compete with others on our top 10 leaderboard.</p>
+                <button class="tiers-btn" onclick="switchView('tiers')">Tiers</button>
+            </div>
+        </div>
+
+        <div class="leaderboard-container">
+            <h2 class="main-title">EDITORS LEADERBOARD</h2>
+
+            <a href="profiles.html?user=confuxion" class="card">
+                <div class="left-side"><span class="rank">#1</span><span class="divider">|</span><span class="name">confuxion</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">A-</div></div>
+            </a>
+            <a href="profiles.html?user=sxmple" class="card">
+                <div class="left-side"><span class="rank">#2</span><span class="divider">|</span><span class="name">sxmple</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
+            </a>
+            <a href="profiles.html?user=timmyloal" class="card">
+                <div class="left-side"><span class="rank">#3</span><span class="divider">|</span><span class="name">TimmyLoal</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
+            </a>
+            <a href="profiles.html?user=game1k" class="card">
+                <div class="left-side"><span class="rank">#4</span><span class="divider">|</span><span class="name">Game1K</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
+            </a>
+            <a href="profiles.html?user=vorthexis" class="card">
+                <div class="left-side"><span class="rank">#5</span><span class="divider">|</span><span class="name">Vorthexis</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B</div></div>
+            </a>
+            <a href="profiles.html?user=normal" class="card">
+                <div class="left-side"><span class="rank">#6</span><span class="divider">|</span><span class="name">Normal</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B-</div></div>
+            </a>
+            <a href="profiles.html?user=x9jm" class="card">
+                <div class="left-side"><span class="rank">#7</span><span class="divider">|</span><span class="name">x9jm</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">C+</div></div>
+            </a>
+            <a href="profiles.html?user=posessed" class="card">
+                <div class="left-side"><span class="rank">#8</span><span class="divider">|</span><span class="name">Posessed_YT</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">C+</div></div>
+            </a>
+            <a href="profiles.html?user=blade" class="card">
+                <div class="left-side"><span class="rank">#9</span><span class="divider">|</span><span class="name">Blade</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">C+</div></div>
+            </a>
+            <a href="profiles.html?user=unknown" class="card">
+                <div class="left-side"><span class="rank">#10</span><span class="divider">|</span><span class="name">???</span></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">?</div></div>
+            </a>
+        </div>
+    </div>
+
+    <div id="view-tiers" class="view-content">
+        <div class="generic-box">
+            <h2>MVER Tier Breakdown</h2>
+            <p>Ranks are sorted categorically into grouped visual clusters based on editing complexity, fluidity, composition asset values, and design logic choices.</p>
+        </div>
+    </div>
+
+    <div id="view-editors" class="view-content">
+        <div class="generic-box" style="text-align: center;">
+            <h2>Editors Tier Matrix</h2>
+            <p>The complete hierarchy ranking tier sheet has been moved into its own optimized workspace profile file.</p>
+            <a href="editors.html" class="editor-link-btn">Open editors.html Hierarchy &rarr;</a>
+        </div>
+    </div>
+
+    <div id="view-submit" class="view-content">
+        <div class="generic-box">
+            <h2>Submit Your Portfolio</h2>
+            <p>Ready to climb the ladder? Submit your video montages or motion clips to the visual evaluation council to receive an official skill badge score bracket placement.</p>
+        </div>
+    </div>
+
+    <div id="view-credits" class="view-content">
+        <div class="generic-box">
+            <h2>Credits & Development</h2>
+            <p>MVER Framework engineered for MultiCraft editors ecosystem.</p>
+        </div>
+    </div>
+
+    <script>
+        function switchView(viewId) {
+            document.querySelectorAll('.view-content').forEach(view => view.classList.remove('active-view'));
+            document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('active-tab'));
+
+            const selectedView = document.getElementById('view-' + viewId);
+            if(selectedView) selectedView.classList.add('active-view');
+
+            const selectedLink = document.getElementById('link-' + viewId);
+            if(selectedLink) selectedLink.classList.add('active-tab');
+            
+            window.scrollTo(0, 0);
+        }
+
+        // Handle inner query parameter checks (?page=xyz)
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageParam = urlParams.get('page');
+        if(pageParam) {
+            switchView(pageParam);
+        }
+    </script>
+</body>
+</html>
