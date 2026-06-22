@@ -1,258 +1,330 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>MVER - Editors Leaderboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVER - Editors Leaderboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Teko:wght@600&display=swap" rel="stylesheet">
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#0b1220;
-    color:white;
-}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            /* Matches the hazy sky background from the screenshot */
+            background: url('mver-bg.png') center/cover no-repeat fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* HEADER BAR */
-.header{
-    background:url('mver-bg.png') center/cover no-repeat;
-    height:200px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:50px;
-    font-weight:bold;
-    letter-spacing:4px;
-    border-bottom:3px solid #38bdf8;
-}
+        /* HEADER SECTION */
+        .header-section {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark tinted overlay for the top header image area */
+            text-align: center;
+            padding: 40px 0 20px 0;
+            border-bottom: 4px solid #55efc4; /* Mint green separator line */
+        }
 
-/* TITLE */
-.title{
-    text-align:center;
-    margin:25px 0;
-    font-size:28px;
-    letter-spacing:2px;
-}
+        .header-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 80px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1;
+        }
 
-/* CENTER WRAPPER */
-.leaderboard{
-    width:650px;
-    margin:auto;
-}
+        .header-subtitle {
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            color: #dcdde1;
+        }
 
-/* CARD STYLE (MATCH MVER) */
-.card{
-    background:#0c1a3a;
-    border:2px solid #1f4fff;
-    border-radius:12px;
+        /* WELCOME BANNER (BLACK SECTION) */
+        .welcome-banner {
+            width: 100%;
+            background: #000000;
+            padding: 30px 0;
+            text-align: center;
+            box-sizing: border-box;
+        }
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+        .welcome-content {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 13px;
+            color: #b2bec3;
+            line-height: 1.6;
+        }
 
-    padding:12px 14px;
-    margin:10px 0;
-}
+        .welcome-content h3 {
+            color: white;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
 
-/* LEFT SIDE */
-.left{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+        /* TIERS BUTTON */
+        .tiers-btn {
+            background: #2f3640;
+            border: 2px solid #7f8c8d;
+            color: #f5f6fa;
+            padding: 6px 24px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+        }
 
-/* RANK BOX */
-.rank{
-    background:#1f4fff;
-    padding:6px 10px;
-    border-radius:6px;
-    font-weight:bold;
-}
+        /* MAIN LEADERBOARD CONTAINER */
+        .leaderboard-container {
+            width: 100%;
+            max-width: 480px;
+            margin: 40px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
 
-/* NAME */
-.name{
-    font-weight:bold;
-}
+        .main-title {
+            font-family: 'VT323', monospace;
+            font-size: 36px;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #222; /* Dark text over the light sky background */
+            text-shadow: 1px 1px 0px #fff;
+        }
 
-/* RIGHT SIDE */
-.right{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:12px;
-}
+        /* CARD DESIGN */
+        .card {
+            background: #0652dd; /* Royal blue container background */
+            border: 3px solid #000000;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            box-shadow: 0px 4px 0px rgba(0,0,0,0.3);
+            text-decoration: none;
+            color: white;
+            transition: transform 0.1s ease;
+        }
 
-/* PROFILE BUTTON */
-.profile{
-    background:#1e293b;
-    border:none;
-    color:white;
-    padding:6px 10px;
-    border-radius:6px;
-    cursor:pointer;
-}
+        .card:hover {
+            transform: scale(1.02);
+            background: #1e3799;
+        }
 
-.profile:hover{
-    background:#334155;
-}
+        /* LEFT CONTENT */
+        .left-side {
+            display: flex;
+            align-items: center;
+            font-family: 'VT323', monospace;
+            font-size: 26px;
+        }
 
-/* TIER BOXES */
-.tier{
-    padding:6px 10px;
-    border-radius:6px;
-    font-weight:bold;
-    min-width:35px;
-    text-align:center;
-}
+        .rank {
+            color: #ff9f43; /* Orange color for numbers */
+            font-weight: bold;
+            margin-right: 8px;
+        }
 
-/* COLORS (MATCH SCREENSHOT STYLE) */
-.Aminus{background:#7CFF4D;color:black;}
-.Bplus{background:#FFD84D;color:black;}
-.B{background:#FFB000;color:black;}
-.Bminus{background:#FF9A3D;color:black;}
-.Cplus{background:#FF7A00;color:black;}
-.C{background:#FF4D00;color:white;}
-</style>
+        .divider {
+            color: white;
+            margin-right: 12px;
+            font-weight: normal;
+        }
 
+        .name {
+            letter-spacing: 1px;
+        }
+
+        /* RIGHT CONTENT */
+        .right-side {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rank-label {
+            font-size: 9px;
+            font-weight: bold;
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        /* TIER BADGES */
+        .tier {
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            width: 42px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            border: 2px solid #000;
+        }
+
+        /* Color classes matching the screenshot tiers */
+        .Aminus  { background: #a3cb38; color: black; }
+        .Bplus   { background: #fff200; color: black; }
+        .B       { background: #ffc312; color: black; }
+        .Bminus  { background: #f79f1f; color: black; }
+        .Cplus   { background: #ff7f50; color: black; }
+        .C       { background: #ff4757; color: white; }
+        .Cminus  { background: #ee5253; color: white; }
+    </style>
 </head>
-
 <body>
 
-<div class="header">MVER</div>
+    <div class="header-section">
+        <h1 class="header-title">MVER</h1>
+        <div class="header-subtitle">MultiCraft Visual Editing Rankings</div>
+    </div>
 
-<div class="title">EDITORS LEADERBOARD</div>
+    <div class="welcome-banner">
+        <div class="welcome-content">
+            <h3>Welcome to MultiCraft Visual Editing Rankings (MVER)</h3>
+            <p>The MultiCraft Visual Editing Ranking is a tier slot system to rank your editing skills from... <br>
+            Join and compete others on a top 10 leaderboard</p>
+            <button class="tiers-btn">Tiers</button>
+        </div>
+    </div>
 
-<div class="leaderboard">
+    <div class="leaderboard-container">
+        
+        <h2 class="main-title">EDITORS LEADERBOARD</h2>
 
-<!-- #1 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#1</div>
-        <div class="name">confuxion</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier Aminus">A-</div>
-        <a href="editor1.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor1.html" class="card">
+            <div class="left-side">
+                <span class="rank">#1</span>
+                <span class="divider">|</span>
+                <span class="name">confuxion</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier Aminus">A-</div>
+            </div>
+        </a>
 
-<!-- #2 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#2</div>
-        <div class="name">sxmple</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier Bplus">B+</div>
-        <a href="editor2.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor2.html" class="card">
+            <div class="left-side">
+                <span class="rank">#2</span>
+                <span class="divider">|</span>
+                <span class="name">sxmple</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier Bplus">B+</div>
+            </div>
+        </a>
 
-<!-- #3 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#3</div>
-        <div class="name">TimmyLoal</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier Bplus">B+</div>
-        <a href="editor3.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor3.html" class="card">
+            <div class="left-side">
+                <span class="rank">#3</span>
+                <span class="divider">|</span>
+                <span class="name">TimmyLoal</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier Bplus">B+</div>
+            </div>
+        </a>
 
-<!-- #4 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#4</div>
-        <div class="name">Game1K</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier Bplus">B+</div>
-        <a href="editor4.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor4.html" class="card">
+            <div class="left-side">
+                <span class="rank">#4</span>
+                <span class="divider">|</span>
+                <span class="name">Game1K</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier Bplus">B+</div>
+            </div>
+        </a>
 
-<!-- #5 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#5</div>
-        <div class="name">Vorthexis</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier B">B</div>
-        <a href="editor5.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor5.html" class="card">
+            <div class="left-side">
+                <span class="rank">#5</span>
+                <span class="divider">|</span>
+                <span class="name">Vorthexis</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier B">B</div>
+            </div>
+        </a>
 
-<!-- #6 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#6</div>
-        <div class="name">Normal</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier Bminus">B-</div>
-        <a href="editor6.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor6.html" class="card">
+            <div class="left-side">
+                <span class="rank">#6</span>
+                <span class="divider">|</span>
+                <span class="name">Normal</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier Bminus">B-</div>
+            </div>
+        </a>
 
-<!-- #7 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#7</div>
-        <div class="name">x9jm</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier Cplus">C+</div>
-        <a href="editor7.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor7.html" class="card">
+            <div class="left-side">
+                <span class="rank">#7</span>
+                <span class="divider">|</span>
+                <span class="name">x9jm</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier Cplus">C+</div>
+            </div>
+        </a>
 
-<!-- #8 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#8</div>
-        <div class="name">Possessed_YT</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier Cplus">C+</div>
-        <a href="editor8.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor8.html" class="card">
+            <div class="left-side">
+                <span class="rank">#8</span>
+                <span class="divider">|</span>
+                <span class="name">Possessed_YT</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier C">C</div>
+            </div>
+        </a>
 
-<!-- #9 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#9</div>
-        <div class="name">Blade</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier Cplus">C+</div>
-        <a href="editor9.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor9.html" class="card">
+            <div class="left-side">
+                <span class="rank">#9</span>
+                <span class="divider">|</span>
+                <span class="name">KhiBietNoi</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier C">C</div>
+            </div>
+        </a>
 
-<!-- #10 -->
-<div class="card">
-    <div class="left">
-        <div class="rank">#10</div>
-        <div class="name">???</div>
-    </div>
-    <div class="right">
-        RANK:
-        <div class="tier C">? ?</div>
-        <a href="editor10.html"><button class="profile">Profile</button></a>
-    </div>
-</div>
+        <a href="editor10.html" class="card">
+            <div class="left-side">
+                <span class="rank">#10</span>
+                <span class="divider">|</span>
+                <span class="name">Husky_MultiCraft</span>
+            </div>
+            <div class="right-side">
+                <span class="rank-label">RANK:</span>
+                <div class="tier Cminus">C-</div>
+            </div>
+        </a>
 
-</div>
+    </div>
 
 </body>
 </html>
