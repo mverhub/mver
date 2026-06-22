@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVER - Editors Matrix</title>
+    <title>MVER - Editors</title>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap" rel="stylesheet">
     <style>
         @font-face {
@@ -32,19 +32,48 @@
             border-radius: 6px; padding: 20px; margin-bottom: 20px;
         }
         .shelf-title {
-            font-size: 28px; color: #55efc4; margin: 0 0 15px 0;
+            font-size: 28px; color: #3498db; margin: 0 0 15px 0;
             border-bottom: 2px solid #111; padding-bottom: 5px;
         }
         .sub-row {
             display: flex; align-items: center; gap: 20px;
             padding: 10px 0; border-bottom: 1px solid #111;
         }
+        .sub-row:last-child { border-bottom: none; }
+        
         .badge {
             font-size: 18px; font-weight: bold; width: 50px; height: 34px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 4px; color: black; border: 1px solid #000;
         }
-        .desc { font-family: sans-serif; font-size: 14px; color: #888; }
+        
+        .editors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-family: sans-serif;
+            font-size: 15px;
+        }
+
+        .editor-item-link {
+            color: #fff;
+            text-decoration: none;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 12px;
+            border-radius: 4px;
+            border: 1px solid #222;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .editor-item-link:hover {
+            background: #3498db;
+            color: #fff;
+            border-color: #3498db;
+        }
+
+        .empty-slot {
+            color: #555;
+            font-style: italic;
+        }
 
         /* Tier Division Colors */
         .p-div { background: #dcdde1; }
@@ -68,39 +97,34 @@
     </div>
 
     <script>
-        const divisions = [
-            { name: "PRODIGY DIVISION (P)", prefix: "P", class: "p-div" },
-            { name: "OVERLORD DIVISION (O)", prefix: "O", class: "o-div" },
-            { name: "SUPREME DIVISION (S)", prefix: "S", class: "s-div" },
-            { name: "ALPHA DIVISION (A)", prefix: "A", class: "a-div" },
-            { name: "BETA DIVISION (B)", prefix: "B", class: "b-div" },
-            { name: "COMPETENT DIVISION (C)", prefix: "C", class: "c-div" },
-            { name: "DEVELOPING DIVISION (D)", prefix: "D", class: "d-div" },
-            { name: "ENTRY DIVISION (E)", prefix: "E", class: "e-div" },
-            { name: "FOUNDATION DIVISION (F)", prefix: "F", class: "f-div" }
-        ];
+        // Assigned placements based on your list specs (Supporting both top 10 keys and new members)
+        const assignments = {
+            "P+": [], "P": [], "P-": [],
+            "O+": [], "O": [], "O-": [],
+            "S+": [], "S": [], "S-": [],
+            "A+": [], "A": ["confuxion"], "A-": [],
+            "B+": ["sxmple", "timmyloal", "game1k"], "B": ["vorthexis"], "B-": ["normal"],
+            "C+": ["x9jm", "blade"], "C": [], "C-": [],
+            "D+": [], "D": ["husky_multicraft", "system1117", "aston", "froco"], "D-": [],
+            "E+": [], "E": ["chillpotato"], "E-": [],
+            "F+": [], "F": [], "F-": []
+        };
 
-        const container = document.getElementById("matrix-root");
-        divisions.forEach(div => {
-            let html = `
-                <div class="tier-shelf">
-                    <h3 class="shelf-title">${div.name}</h3>
-                    <div class="sub-row">
-                        <div class="badge ${div.class}">${div.prefix}+</div>
-                        <span class="desc">High tier variants operating in the upper bracket spectrum.</span>
-                    </div>
-                    <div class="sub-row">
-                        <div class="badge ${div.class}">${div.prefix}</div>
-                        <span class="desc">Standard baseline requirements for the ${div.prefix} classification.</span>
-                    </div>
-                    <div class="sub-row">
-                        <div class="badge ${div.class}">${div.prefix}-</div>
-                        <span class="desc">Low tier variants stabilizing their placement metrics.</span>
-                    </div>
-                </div>
-            `;
-            container.insertAdjacentHTML('beforeend', html);
-        });
-    </script>
-</body>
-</html>
+        // Formatted display text mapping for nice labels
+        const nameMapping = {
+            "confuxion": "confuxion",
+            "sxmple": "sxmple",
+            "timmyloal": "TimmyLoal",
+            "game1k": "Game1K",
+            "vorthexis": "Vorthexis",
+            "normal": "Normal",
+            "x9jm": "x9jm",
+            "blade": "Blade",
+            "husky_multicraft": "Husky_MultiCraft",
+            "system1117": "system1117",
+            "aston": "Aston",
+            "froco": "Froco",
+            "chillpotato": "ChillPotato"
+        };
+
+        const divisions
