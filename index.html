@@ -225,7 +225,7 @@
             </a>
             <a href="profiles.html?user=TimmyLoal" class="card">
                 <div class="left-side"><span class="rank">#3</span><span class="divider">|</span><span class="name">TimmyLoal</span></div>
-                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">S+</div></div>
+                <div class="right-side"><span class="rank-label">TIER:</span><div class="tier">B+</div></div>
             </a>
             <a href="profiles.html?user=Game1k" class="card">
                 <div class="left-side"><span class="rank">#4</span><span class="divider">|</span><span class="name">Game1K</span></div>
@@ -316,18 +316,18 @@
             window.scrollTo(0, 0);
         }
 
-        // Updated global array logic to match your updated profile listings!
+        // FIXED USER LIST ROUTING MAP
         const assignments = {
             "P+": [], "P": [], "P-": [],
             "O+": [], "O": [], "O-": [],
-            "S+": ["TimmyLoal"], "S": [], "S-": [],
+            "S+": [], "S": [], "S-": [],
             "A+": [], "A": ["confuxion"], "A-": [],
-            "B+": ["sxmple", "Game1k"], "B": ["Vorthexis"], "B-": ["Normal"],
+            "B+": ["sxmple", "TimmyLoal", "Game1k"], "B": ["Vorthexis"], "B-": ["Normal"],
             "C+": ["x9jm", "Blade", "Possessed_YT"], "C": [], "C-": [],
             "D+": [], "D": ["husky_multicraft", "ItzFroco"], "D-": [],
             "E+": [], "E": [], "E-": [],
-            "F+": [], "F": ["system1117", "chillpotato"], "F-": [],
-            "WAITLIST": ["aston"] // Custom tracking slot for tier "-" users
+            "F+": [], "F": [], "F-": [],
+            "WAITLIST": ["aston", "system1117", "chillpotato"] // Clear dynamic rendering list
         };
 
         const nameMapping = {
@@ -352,7 +352,6 @@
 
         const container = document.getElementById("matrix-root");
         
-        // Render Standard Tiers
         divisions.forEach(div => {
             let shelfHTML = `
                 <div class="tier-shelf">
@@ -385,7 +384,6 @@
             container.insertAdjacentHTML('beforeend', shelfHTML);
         });
 
-        // Dynamic Waitlist Section Attachment
         if(assignments["WAITLIST"] && assignments["WAITLIST"].length > 0) {
             let waitlistHTML = `
                 <div class="tier-shelf" style="border-color: #fff200;">
