@@ -20,7 +20,6 @@
             margin: 0;
             padding: 0;
             font-family: 'MultiCraft', monospace;
-            /* Matches the hazy sky background from the screenshot */
             background: url('mver-bg.png') center/cover no-repeat fixed;
             color: white;
             display: flex;
@@ -31,21 +30,21 @@
         /* HEADER SECTION */
         .header-section {
             width: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Dark tinted overlay for the top header image area */
+            background: rgba(0, 0, 0, 0.4);
             text-align: center;
             padding: 40px 0 20px 0;
-            border-bottom: 4px solid #55efc4; /* Mint green separator line */
+            border-bottom: 4px solid #55efc4;
         }
 
         .header-title-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px; /* Spaces the sword and text apart */
+            gap: 15px;
         }
 
         .header-logo {
-            height: 64px; /* Adjust height to match the title size */
+            height: 64px;
             width: auto;
         }
 
@@ -117,13 +116,13 @@
             text-align: center;
             letter-spacing: 2px;
             margin-bottom: 20px;
-            color: #222; /* Dark text over the light sky background */
+            color: #222;
             text-shadow: 1px 1px 0px #fff;
         }
 
         /* CARD DESIGN */
         .card {
-            background: #0652dd; /* Royal blue container background */
+            background: #0652dd;
             border: 3px solid #000000;
             border-radius: 6px;
             display: flex;
@@ -151,7 +150,7 @@
         }
 
         .rank {
-            color: #ff9f43; /* Orange color for numbers */
+            color: #ff9f43;
             font-weight: bold;
             margin-right: 8px;
         }
@@ -194,7 +193,6 @@
             border: 2px solid #000;
         }
 
-        /* Color classes matching the screenshot tiers */
         .Aminus  { background: #a3cb38; color: black; }
         .Bplus   { background: #fff200; color: black; }
         .B       { background: #ffc312; color: black; }
@@ -202,167 +200,7 @@
         .Cplus   { background: #ff7f50; color: black; }
         .C       { background: #ff4757; color: white; }
         .Cminus  { background: #ee5253; color: white; }
-        .unknown { background: #7f8c8d; color: white; } /* Default gray for unknown rank */
-
-        /* PROFILE MODAL OVERLAYS */
-        .profile-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(42,10,116,0.9) 0%, rgba(13,4,43,0.95) 100%);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Triggers popup visibility when clicked */
-        .profile-overlay:target {
-            display: flex;
-        }
-
-        .profile-box {
-            position: relative;
-            background: #000000;
-            width: 90%;
-            max-width: 720px;
-            border: 3px solid #3895d3;
-            padding: 30px;
-            box-sizing: border-box;
-            text-align: left;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 28px;
-            font-weight: bold;
-            opacity: 0.7;
-        }
-        .close-btn:hover { opacity: 1; }
-
-        .profile-header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .profile-name {
-            font-family: 'MultiCraft', monospace;
-            font-size: 32px;
-            margin: 0;
-            color: #ffffff;
-            letter-spacing: -1px;
-        }
-
-        .profile-tag {
-            font-family: 'Teko', sans-serif;
-            font-size: 36px;
-            color: #55efc4;
-            margin: -5px 0 0 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .big-badge {
-            font-family: 'MultiCraft', monospace;
-            font-size: 42px;
-            width: 90px;
-            height: 90px;
-            border: 3px solid #fff200;
-            color: #fff200;
-            box-shadow: 0 0 15px rgba(255, 242, 0, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-        }
-
-        .profile-divider {
-            border: none;
-            height: 4px;
-            background: #444;
-            margin-bottom: 30px;
-        }
-
-        /* SUB-STATS GRID DESIGN */
-        .stats-row {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-            min-width: 110px;
-        }
-
-        .stat-label {
-            font-size: 10px;
-            font-weight: bold;
-            color: #888;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            text-align: center;
-            height: 12px;
-        }
-
-        .pill-badge {
-            display: flex;
-            align-items: center;
-            background: #111;
-            border-radius: 25px;
-            padding: 2px 14px 2px 2px;
-            border: 2px solid #444;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .stat-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: bold;
-            margin-right: 12px;
-            border: 2px solid transparent;
-        }
-
-        .sub-grade {
-            font-family: 'MultiCraft', monospace;
-            font-size: 18px;
-            margin-left: auto;
-        }
-
-        /* Theme Color variants per sub-stats types */
-        .kf-icon { border-color: #ff4757; color: #fff; }
-        .kf-grade { color: #ee5253; }
-        .kf-pill { border-color: #ee5253; }
-
-        .ct-icon { border-color: #fff200; color: #fff; }
-        .ct-grade { color: #ffc312; }
-        .ct-pill { border-color: #ffc312; }
-
-        .ve-icon { border-color: #fff200; color: #fff; }
-        .ve-grade { color: #ffc312; }
-        .ve-pill { border-color: #ffc312; }
-
-        .te-icon { border-color: #fff200; color: #fff; }
-        .te-grade { color: #ffc312; }
-        .te-pill { border-color: #ffc312; }
+        .unknown { background: #7f8c8d; color: white; }
     </style>
 </head>
 <body>
@@ -388,7 +226,7 @@
         
         <h2 class="main-title">EDITORS LEADERBOARD</h2>
 
-        <a href="editor1.html" class="card">
+        <a href="profiles.html#profile-confuxion" class="card">
             <div class="left-side">
                 <span class="rank">#1</span>
                 <span class="divider">|</span>
@@ -400,7 +238,7 @@
             </div>
         </a>
 
-        <a href="#profile-sxmple" class="card">
+        <a href="profiles.html#profile-sxmple" class="card">
             <div class="left-side">
                 <span class="rank">#2</span>
                 <span class="divider">|</span>
@@ -412,7 +250,7 @@
             </div>
         </a>
 
-        <a href="editor3.html" class="card">
+        <a href="profiles.html#profile-timmyloal" class="card">
             <div class="left-side">
                 <span class="rank">#3</span>
                 <span class="divider">|</span>
@@ -424,7 +262,7 @@
             </div>
         </a>
 
-        <a href="editor4.html" class="card">
+        <a href="profiles.html#profile-game1k" class="card">
             <div class="left-side">
                 <span class="rank">#4</span>
                 <span class="divider">|</span>
@@ -436,7 +274,7 @@
             </div>
         </a>
 
-        <a href="#profile-vorthexis" class="card">
+        <a href="profiles.html#profile-vorthexis" class="card">
             <div class="left-side">
                 <span class="rank">#5</span>
                 <span class="divider">|</span>
@@ -448,7 +286,7 @@
             </div>
         </a>
 
-        <a href="editor6.html" class="card">
+        <a href="profiles.html#profile-normal" class="card">
             <div class="left-side">
                 <span class="rank">#6</span>
                 <span class="divider">|</span>
@@ -460,7 +298,7 @@
             </div>
         </a>
 
-        <a href="editor7.html" class="card">
+        <a href="profiles.html#profile-x9jm" class="card">
             <div class="left-side">
                 <span class="rank">#7</span>
                 <span class="divider">|</span>
@@ -472,7 +310,7 @@
             </div>
         </a>
 
-        <a href="editor8.html" class="card">
+        <a href="profiles.html#profile-posessed" class="card">
             <div class="left-side">
                 <span class="rank">#8</span>
                 <span class="divider">|</span>
@@ -484,7 +322,7 @@
             </div>
         </a>
 
-        <a href="editor9.html" class="card">
+        <a href="profiles.html#profile-blade" class="card">
             <div class="left-side">
                 <span class="rank">#9</span>
                 <span class="divider">|</span>
@@ -496,7 +334,7 @@
             </div>
         </a>
 
-        <a href="editor10.html" class="card">
+        <a href="profiles.html#profile-unknown" class="card">
             <div class="left-side">
                 <span class="rank">#10</span>
                 <span class="divider">|</span>
@@ -508,94 +346,6 @@
             </div>
         </a>
 
-    </div>
-
-    <div id="profile-vorthexis" class="profile-overlay">
-        <div class="profile-box">
-            <a href="#" class="close-btn">&times;</a>
-            <div class="profile-header-container">
-                <div>
-                    <h2 class="profile-name">Vorthexis</h2>
-                    <p class="profile-tag">Profile</p>
-                </div>
-                <div class="big-badge">B</div>
-            </div>
-            <hr class="profile-divider">
-            <div class="stats-row">
-                <div class="stat-item">
-                    <span class="stat-label">Keyframes</span>
-                    <div class="pill-badge kf-pill">
-                        <div class="stat-icon kf-icon">&#9830;</div>
-                        <span class="sub-grade kf-grade">E</span>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Cuts and Transitions</span>
-                    <div class="pill-badge ct-pill">
-                        <div class="stat-icon ct-icon">&#9874;</div>
-                        <span class="sub-grade ct-grade">B</span>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Visual Effects</span>
-                    <div class="pill-badge ve-pill">
-                        <div class="stat-icon ve-icon">&#10022;</div>
-                        <span class="sub-grade ve-grade">B</span>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Text Effects</span>
-                    <div class="pill-badge te-pill">
-                        <div class="stat-icon te-icon">Aa</div>
-                        <span class="sub-grade te-grade">B+</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="profile-sxmple" class="profile-overlay">
-        <div class="profile-box">
-            <a href="#" class="close-btn">&times;</a>
-            <div class="profile-header-container">
-                <div>
-                    <h2 class="profile-name">Sxmple</h2>
-                    <p class="profile-tag">Profile</p>
-                </div>
-                <div class="big-badge">B+</div>
-            </div>
-            <hr class="profile-divider">
-            <div class="stats-row">
-                <div class="stat-item">
-                    <span class="stat-label">Keyframes</span>
-                    <div class="pill-badge kf-pill">
-                        <div class="stat-icon kf-icon">&#9830;</div>
-                        <span class="sub-grade kf-grade">D</span>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Cuts and Transitions</span>
-                    <div class="pill-badge ct-pill">
-                        <div class="stat-icon ct-icon">&#9874;</div>
-                        <span class="sub-grade ct-grade">B+</span>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Visual Effects</span>
-                    <div class="pill-badge ve-pill">
-                        <div class="stat-icon ve-icon">&#10022;</div>
-                        <span class="sub-grade ve-grade">B+</span>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Text Effects</span>
-                    <div class="pill-badge te-pill">
-                        <div class="stat-icon te-icon">Aa</div>
-                        <span class="sub-grade te-grade">C+</span>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </body>
