@@ -16,7 +16,7 @@ const editorsData = [
         tierClass: "Bplus",
         tierLabel: "B+",
         badgeClass: "badge-B",
-        stats: { kf: "D", ct: "B+", ve: "B+", te: "C+" }
+        stats: { kf: "B", ct: "B+", ve: "B+", te: "B" }
     },
     {
         rank: "#3",
@@ -43,7 +43,7 @@ const editorsData = [
         tierClass: "B",
         tierLabel: "B",
         badgeClass: "badge-B",
-        stats: { kf: "E", ct: "B", ve: "B", te: "B+" }
+        stats: { kf: "D+", ct: "B", ve: "B", te: "B+" }
     },
     {
         rank: "#6",
