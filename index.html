@@ -109,61 +109,66 @@
         .generic-box h2 { margin-top: 0; font-size: 48px; color: white; margin-bottom: 15px; }
         .generic-box p { font-family: sans-serif; line-height: 1.6; color: #b2bec3; font-size: 15px; }
 
-        /* EMBEDDED DIRECT DIRECTORY LAYOUT FOR EDITORS VIEW */
+        /* EDITORS BOARD LIST HOVER STYLING */
         .tier-shelf {
-            background: #0a0a0a; border: 2px solid #333;
-            border-radius: 6px; padding: 20px; margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.85); border: 2px solid #3498db;
+            border-radius: 6px; padding: 22px; margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
         .shelf-title {
-            font-size: 28px; color: #3498db; margin: 0 0 15px 0;
-            border-bottom: 2px solid #111; padding-bottom: 5px;
+            font-size: 32px; color: #3498db; margin: 0 0 18px 0;
+            border-bottom: 2px solid #1e3799; padding-bottom: 6px;
+            letter-spacing: 0.5px;
         }
         .sub-row {
             display: flex; align-items: center; gap: 20px;
-            padding: 10px 0; border-bottom: 1px solid #111;
+            padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .sub-row:last-child { border-bottom: none; }
         
         .badge {
-            font-size: 18px; font-weight: bold; width: 50px; height: 34px;
+            font-size: 20px; font-weight: bold; width: 56px; height: 36px;
             display: flex; align-items: center; justify-content: center;
-            border-radius: 4px; color: black; border: 1px solid #000;
+            border-radius: 4px; color: #000000; font-family: 'MultiCraft', monospace;
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
         }
         
         .editors-list {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            font-family: sans-serif;
-            font-size: 15px;
         }
 
         .editor-item-link {
-            color: #fff;
+            color: #ffffff;
+            font-family: 'MultiCraft', monospace;
+            font-size: 18px;
             text-decoration: none;
-            background: rgba(255,255,255,0.05);
-            padding: 4px 12px;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 6px 16px;
             border-radius: 4px;
-            border: 1px solid #222;
-            transition: background 0.2s, border-color 0.2s;
+            border: 1px solid #3498db;
+            transition: all 0.2s ease;
         }
         .editor-item-link:hover {
             background: #3498db;
-            color: #fff;
-            border-color: #3498db;
+            color: #000000;
+            transform: translateY(-1px);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
         }
 
-        .empty-slot { color: #555; font-style: italic; }
+        .empty-slot { color: #444; font-size: 18px; padding-left: 5px; }
 
+        /* Badge Matrix Color Themes */
         .p-div { background: #dcdde1; }
         .o-div { background: #ffeaa7; }
         .s-div { background: #74b9ff; }
         .a-div { background: #55efc4; }
-        .b-div { background: #ffeaa7; }
-        .c-div { background: #ffcaa7; }
-        .d-div { background: #ff7675; }
-        .e-div { background: #a29bfe; }
-        .f-div { background: #2d3436; color: white; }
+        .b-div { background: #fff200; }
+        .c-div { background: #ff9f43; }
+        .d-div { background: #ff7f50; }
+        .e-div { background: #ff4757; }
+        .f-div { background: #2d3436; color: white !important; }
 
         /* CREDITS TYPOGRAPHY */
         .credit-group { margin-bottom: 30px; }
@@ -262,7 +267,7 @@
     <div id="view-editors" class="view-content">
         <div class="generic-box" style="margin-bottom: 25px;">
             <h2 style="font-size: 36px; margin: 0;">Editors Classification Board</h2>
-            <p style="margin: 5px 0 0 0;">Browse our complete active tier directory registry profiles by selecting any name listed below.</p>
+            <p style="margin: 5px 0 0 0; font-family: sans-serif;">Browse our complete active tier directory registry profiles by selecting any name listed below.</p>
         </div>
         <div id="matrix-root"></div>
     </div>
@@ -297,6 +302,9 @@
 
     <script>
         function switchView(viewId) {
+            // Store the currently active tab identifier in browser session state storage
+            sessionStorage.setItem('mver_active_tab', viewId);
+
             document.querySelectorAll('.view-content').forEach(view => view.classList.remove('active-view'));
             document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('active-tab'));
 
@@ -309,7 +317,6 @@
             window.scrollTo(0, 0);
         }
 
-        // Tier Distribution Object Map 
         const assignments = {
             "P+": [], "P": [], "P-": [],
             "O+": [], "O": [], "O-": [],
@@ -342,7 +349,6 @@
             { name: "FOUNDATION DIVISION (F)", prefix: "F", class: "f-div" }
         ];
 
-        // Build list elements inside index structure instantly
         const container = document.getElementById("matrix-root");
         divisions.forEach(div => {
             let shelfHTML = `
@@ -376,10 +382,17 @@
             container.insertAdjacentHTML('beforeend', shelfHTML);
         });
 
+        // Smart routing initialization loop lookup
         const urlParams = new URLSearchParams(window.location.search);
         const pageParam = urlParams.get('page');
+        const storedTab = sessionStorage.getItem('mver_active_tab');
+
         if(pageParam) {
             switchView(pageParam);
+        } else if (storedTab) {
+            switchView(storedTab);
+        } else {
+            switchView('home');
         }
     </script>
 </body>
