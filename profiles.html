@@ -223,21 +223,22 @@
     <div class="profile-card-frame" id="profile-card-output"></div>
 
     <script>
+        // Data entries are stored cleanly in lowercase keys to fix the lookup bug
         const editorsData = {
             "confuxion": { rank: "#1", mainTier: "A",  kf: "A",  ct: "A-", ve: "B+", te: "B"  },
             "sxmple":    { rank: "#2", mainTier: "B+", kf: "D",  ct: "B+", ve: "B+", te: "C+" },
-            "TimmyLoal": { rank: "#3", mainTier: "S+", kf: "B",  ct: "B+", ve: "B",  te: "B-" },
-            "Game1k":    { rank: "#4", mainTier: "B+", kf: "C+", ct: "B+", ve: "B",  te: "B"  },
-            "Vorthexis": { rank: "#5", mainTier: "B",  kf: "E",  ct: "B",  ve: "B",  te: "B+" },
-            "Normal":    { rank: "#6", mainTier: "B-", kf: "C",  ct: "C+", ve: "B-", te: "B-" },
+            "timmyloal": { rank: "#3", mainTier: "S+", kf: "B",  ct: "B+", ve: "B",  te: "B-" },
+            "game1k":    { rank: "#4", mainTier: "B+", kf: "C+", ct: "B+", ve: "B",  te: "B"  },
+            "vorthexis": { rank: "#5", mainTier: "B",  kf: "E",  ct: "B",  ve: "B",  te: "B+" },
+            "normal":    { rank: "#6", mainTier: "B-", kf: "C",  ct: "C+", ve: "B-", te: "B-" },
             "x9jm":      { rank: "#7", mainTier: "C+", kf: "D",  ct: "C+", ve: "C",  te: "C+" },
-            "Possessed_YT":  { rank: "#8", mainTier: "C+", kf: "C",  ct: "C",  ve: "D+", te: "C+" },
-            "Blade":     { rank: "#9", mainTier: "C+", kf: "C-", ct: "C+", ve: "C",  te: "D"  },
+            "possessed_yt":  { rank: "#8", mainTier: "C+", kf: "C",  ct: "C",  ve: "D+", te: "C+" },
+            "blade":     { rank: "#9", mainTier: "C+", kf: "C-", ct: "C+", ve: "C",  te: "D"  },
             
             "husky_multicraft": { rank: "", mainTier: "D", kf: "-", ct: "-", ve: "-", te: "-" },
             "system1117":       { rank: "", mainTier: "F", kf: "-", ct: "-", ve: "-", te: "-" },
             "aston":            { rank: "", mainTier: "-", kf: "-", ct: "C", ve: "-", te: "-" },
-            "ItzFroco":         { rank: "", mainTier: "D", kf: "C-", ct: "D", ve: "D+", te: "D" },
+            "itzfroco":         { rank: "", mainTier: "D", kf: "C-", ct: "D", ve: "D+", te: "D" },
             "chillpotato":      { rank: "", mainTier: "F", kf: "-", ct: "-", ve: "-", te: "-" },
             
             "unknown":   { rank: "#10", mainTier: "?",  kf: "-",  ct: "-",  ve: "-",  te: "-"  }
@@ -246,7 +247,7 @@
         const nameMapping = {
             "confuxion": "confuxion", "sxmple": "sxmple", "timmyloal": "TimmyLoal",
             "game1k": "Game1K", "vorthexis": "Vorthexis", "normal": "Normal",
-            "x9jm": "x9jm", "blade": "Blade", "possessed": "Possessed_YT",
+            "x9jm": "x9jm", "blade": "Blade", "possessed_yt": "Possessed_YT",
             "husky_multicraft": "Husky_MultiCraft", "system1117": "system1117",
             "aston": "Aston", "itzfroco": "ItzFroco", "chillpotato": "ChillPotato"
         };
@@ -258,7 +259,6 @@
             return "t-none";
         }
 
-        // Return Action Handler
         function handleProfileExit() {
             if (document.referrer.includes('index.html')) {
                 window.history.back();
@@ -268,16 +268,16 @@
         }
 
         const params = new URLSearchParams(window.location.search);
-        let userKey = params.get('user');
+        let userQuery = params.get('user');
+        let userKey = userQuery ? userQuery.toLowerCase() : "unknown";
 
-        if (!userKey || !editorsData[userKey]) {
+        if (!editorsData[userKey]) {
             userKey = "unknown"; 
         }
 
         const user = editorsData[userKey];
-        let displayName = userKey === "unknown" ? "???" : (nameMapping[userKey.toLowerCase()] || userKey);
+        let displayName = userKey === "unknown" ? "???" : (nameMapping[userKey] || userQuery);
         
-        // Custom subtitle and styling rules based on rank or waitlist status
         let subtitleText = "Official Editor";
         let titleClass = "";
         
