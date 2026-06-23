@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MVER Profile</title>
+</head>
+<body>
+
+<h1 id="name">Loading...</h1>
+
+<p>Keyframes: <span id="keyframes"></span></p>
+<p>Cuts & Transitions: <span id="cuts"></span></p>
+<p>Visual Effects: <span id="visuals"></span></p>
+<p>Text Effects: <span id="text"></span></p>
+
+<a href="editors.html">Back to Editors</a>
+
+<script>
+const profiles = {
+
+confuxion:{
+keyframes:"A",
+cuts:"A-",
+visuals:"A",
+text:"A"
+},
+
+sxmple:{
+keyframes:"B+",
+cuts:"B+",
+visuals:"B",
+text:"B+"
+},
+
+TimmyLoal:{
+keyframes:"B+",
+cuts:"B",
+visuals:"B+",
+text:"B+"
+},
+
+Game1K:{
+keyframes:"B+",
+cuts:"B+",
+visuals:"B",
+text:"B"
+},
+
+Vorthexis:{
+keyframes:"B",
+cuts:"B",
+visuals:"B",
+text:"B"
+}
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const user = params.get("user");
+
+if(profiles[user]){
+document.getElementById("name").innerText = user;
+document.getElementById("keyframes").innerText = profiles[user].keyframes;
+document.getElementById("cuts").innerText = profiles[user].cuts;
+document.getElementById("visuals").innerText = profiles[user].visuals;
+document.getElementById("text").innerText = profiles[user].text;
+}
+</script>
+
+</body>
+</html>
