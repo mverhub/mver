@@ -1,0 +1,128 @@
+{
+  "tiers": {
+    "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Game1K", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco"],
+    "WAITLIST": ["system1117", "Aston", "ChillPotato", "Afterlyfe"]
+  },
+
+  "tierMeta": {
+    "P": { "label": "PREEMINENT",        "desc": "Absolute Best / High Elite",          "color": "#cb7eff" },
+    "O": { "label": "OPTIMAL",            "desc": "Elite",                          "color": "#ffda79" },
+    "S": { "label": "MASTERY",            "desc": "High Average / Mastery",           "color": "#74b9ff" },
+    "A": { "label": "ADVANCED",           "desc": "Well Above Average",                    "color": "#55efc4" },
+    "B": { "label": "UPPER INTERMEDIATE", "desc": "Above Average",                         "color": "#f1c40f" },
+    "C": { "label": "INTERMEDIATE",       "desc": "Average",                               "color": "#ff9f43" },
+    "D": { "label": "DEVELOPING",         "desc": "Developing Towards Average",            "color": "#ff7f50" },
+    "E": { "label": "BASIC",              "desc": "Basic Editing Knowledge", "color": "#ff4757" },
+    "F": { "label": "ENTRY",              "desc": "New Editor", "color": "#57606f" },
+    "-": { "label": "UNRANKED",           "desc": "Does not use keyframes, cuts/transitions, visual effects, or text effects", "color": "#747d8c" },
+    "WAITLIST": { "label": "WAITLIST",    "desc": "Awaiting first evaluation",             "color": "#2f3542" }
+  },
+
+  "categoryList": ["Keyframes", "Cuts and Transitions", "Visual Effects", "Text Effects"],
+
+  "players": {
+    "confuxion": {
+      "categories": {
+        "Keyframes": "A-",
+        "Cuts and Transitions": "B+",
+        "Visual Effects": "A",
+        "Text Effects": "B+"
+      }
+    },
+    "sxmple": {
+      "categories": {
+        "Keyframes": "B+",
+        "Cuts and Transitions": "B",
+        "Visual Effects": "B+",
+        "Text Effects": "C+"
+      }
+    },
+    "TimmyLoal": {
+      "categories": {
+        "Keyframes": "B+",
+        "Cuts and Transitions": "B+",
+        "Visual Effects": "B",
+        "Text Effects": "B+"
+      }
+    },
+    "Game1K": {
+      "categories": {
+        "Keyframes": "B+",
+        "Cuts and Transitions": "B+",
+        "Visual Effects": "B",
+        "Text Effects": "B"
+      }
+    },
+    "Vorthexis": {
+      "categories": {
+        "Keyframes": "B",
+        "Cuts and Transitions": "B-",
+        "Visual Effects": "B",
+        "Text Effects": "C+"
+      }
+    },
+    "Normal": {
+      "categories": {
+        "Keyframes": "B-",
+        "Cuts and Transitions": "C+",
+        "Visual Effects": "B-",
+        "Text Effects": "C+"
+      }
+    },
+    "x9jm": {
+      "categories": {
+        "Keyframes": "C+",
+        "Cuts and Transitions": "C",
+        "Visual Effects": "C+",
+        "Text Effects": "C"
+      }
+    },
+    "Blade": {
+      "categories": {
+        "Keyframes": "C+",
+        "Cuts and Transitions": "C+",
+        "Visual Effects": "C",
+        "Text Effects": "C+"
+      }
+    },
+    "Possessed_YT": {
+      "categories": {
+        "Keyframes": "C+",
+        "Cuts and Transitions": "B-",
+        "Visual Effects": "C+",
+        "Text Effects": "C"
+      }
+    },
+    "ItzFroco": {
+      "categories": {
+        "Keyframes": "D",
+        "Cuts and Transitions": "D",
+        "Visual Effects": "D",
+        "Text Effects": "E"
+      }
+    }
+  },
+
+  "credits": [
+    {
+      "name": "TimmyLoal",
+      "role": "MVER Founder / Creator",
+      "desc": "Creator of MVER, the tier system logic, and the core structural code design."
+    },
+    {
+      "name": "Vorthexis",
+      "role": "MVER Helper / Website Manager",
+      "desc": "MVER Council Assistant; helped coordinate page layout assets and directory setups."
+    },
+    {
+      "name": "Blade",
+      "role": "Website Helper",
+      "desc": "Helped write advanced responsive rendering blocks and code logic modules."
+    },
+    {
+      "name": "x9jm",
+      "role": "MVER Helper / Website Manager",
+      "desc": "Helped on the website including reworking it."
+    }
+  ]
+}

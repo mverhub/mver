@@ -1,525 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVER - MultiCraft Visual Editing Rankings</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Teko:wght@600&display=swap" rel="stylesheet">
-
-    <style>
-        @font-face {
-            font-family: 'MultiCraft';
-            src: url('fonts/MultiCraftFont.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'VT323', monospace;
-            background-color: #b4cbd9; /* Rebranding to match the bright sky element */
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* TOP NAVIGATION OVERLAY BAR */
-        .top-navbar {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-sizing: border-box;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 100;
-        }
-        .nav-branding {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-        .nav-branding img { height: 20px; }
-        .nav-branding span { font-size: 18px; font-weight: bold; }
-        
-        .nav-menu { display: flex; gap: 15px; }
-        .nav-menu a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 12px;
-            font-family: sans-serif;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .nav-menu a:hover { color: #55efc4; }
-
-        /* REBRANDED MULTICRAFT BANNER (MATCHES PHOTO) */
-        .header-banner-container {
-            width: 100%;
-            height: 220px;
-            background: url('mver-bg.png') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            border-bottom: 4px solid #55efc4;
-            padding-top: 30px;
-            box-sizing: border-box;
-        }
-
-        .header-title {
-            font-family: 'MultiCraft', sans-serif;
-            font-size: 85px;
-            font-style: italic;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin: 0;
-            text-shadow: 4px 4px #000;
-            color: #ffffff;
-        }
-
-        .header-subtitle {
-            font-size: 14px;
-            color: #ffffff;
-            margin-top: -5px;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px #000;
-            font-weight: bold;
-        }
-
-        /* WELCOME MESSAGE STRIP */
-        .welcome-strip {
-            width: 100%;
-            background: #000000;
-            padding: 25px 20px;
-            box-sizing: border-box;
-            border-bottom: 4px solid #111;
-            text-align: center;
-        }
-        .welcome-box-inner {
-            max-width: 700px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-        .welcome-title-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .welcome-title-row img { width: 24px; height: 24px; }
-        .welcome-desc {
-            font-size: 16px;
-            color: #a0a0a0;
-            margin: 0;
-            line-height: 1.4;
-        }
-        .welcome-tiers-btn {
-            background: #3b3123;
-            border: 2px solid #5d4a36;
-            color: #dcdde1;
-            padding: 4px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .welcome-tiers-btn:hover { background: #5d4a36; color: white; }
-
-        /* VIEW CONTAINER SYSTEM */
-        .view-content {
-            display: none;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            box-sizing: border-box;
-        }
-        .view-content.active-view { display: block; }
-
-        /* MAIN EDITORS LEADERBOARD STYLING */
-        .leaderboard-wrapper {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .section-header-title {
-            font-size: 36px;
-            color: #000000;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-            border-bottom: 2px solid rgba(0,0,0,0.2);
-            padding-bottom: 5px;
-            display: inline-block;
-        }
-        
-        .leaderboard-row-item {
-            background: #101726;
-            border: 3px solid #000000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            text-decoration: none;
-            color: white;
-            font-size: 32px;
-        }
-        .leaderboard-row-item:hover {
-            background: #16223b;
-        }
-        .left-meta { display: flex; align-items: center; }
-        .row-rank { color: #f1c40f; font-weight: bold; margin-right: 15px; width: 45px; text-align: left; }
-        .row-pipe { color: #ffffff; margin-right: 15px; opacity: 0.8; }
-        .row-name { font-weight: normal; letter-spacing: 0.5px; }
-        .right-meta { display: flex; align-items: center; gap: 10px; }
-        .row-label { font-size: 14px; font-family: sans-serif; opacity: 0.7; font-weight: bold; }
-        
-        /* TIER ITEM BOXES FROM VISUAL IMAGE */
-        .tier-tag-badge {
-            font-size: 24px;
-            font-weight: bold;
-            width: 50px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            border: 2px solid #000000;
-            color: #000000;
-        }
-
-        /* REBRANDED SPECIFIC MATRIX CLUSTER LINES (TIERS ARCHITECTURE VIEW) */
-        .architecture-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-        .arch-shelf-block {
-            width: 100%;
-            max-width: 480px;
-            background: #0d121d;
-            border: 3px solid #000000;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-sizing: border-box;
-        }
-        .arch-badge {
-            font-size: 28px;
-            font-weight: bold;
-            min-width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid #000000;
-            color: #000000;
-            border-radius: 4px;
-        }
-        .arch-info { text-align: left; }
-        .arch-title { font-size: 28px; margin: 0; font-weight: bold; letter-spacing: 0.5px; }
-        .arch-desc { font-family: sans-serif; font-size: 13px; color: #8a9fc4; margin: 3px 0 0 0; }
-
-        /* ACTIVE ROSTER MATRIX BOXES VIEW */
-        .matrix-grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .matrix-profile-card {
-            background: #000000;
-            border: 3px solid #000000;
-            border-radius: 6px;
-            padding: 20px 10px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-        .matrix-profile-card:hover {
-            transform: scale(1.03);
-        }
-        .matrix-name { font-size: 26px; font-weight: normal; margin: 0; word-break: break-all; }
-        .matrix-rank-status { font-size: 16px; color: #3498db; margin: 0; }
-        .matrix-tier-container { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
-        .matrix-lbl { font-size: 11px; font-family: sans-serif; color: #888; }
-
-        /* BRIGHT REBRAND COLORS (MATCHES SCREENSHOT TIERS) */
-        .color-p { background-color: #cb7eff; color: #000 !important; }
-        .color-o { background-color: #ffda79; color: #000 !important; }
-        .color-s { background-color: #74b9ff; color: #000 !important; }
-        .color-a { background-color: #55efc4; color: #000 !important; border-color: #55efc4; }
-        .color-b { background-color: #f1c40f; color: #000 !important; border-color: #f1c40f; }
-        .color-c { background-color: #ff9f43; color: #000 !important; border-color: #ff9f43; }
-        .color-d { background-color: #ff7f50; color: #000 !important; border-color: #ff7f50; }
-        .color-e { background-color: #ff4757; color: #000 !important; border-color: #ff4757; }
-        .color-f { background-color: #57606f; color: #fff !important; border-color: #57606f; }
-        .color-w { background-color: #2f3542; color: #aaa !important; border-color: #2f3542; }
-
-        /* CREDITS BANNER SYSTEM (MATCHES SCREENSHOT) */
-        .credits-banner-strip {
-            width: 100%;
-            background: #000 url('mver-bg.png') center/cover no-repeat;
-            border: 3px solid #55efc4;
-            padding: 20px;
-            box-sizing: border-box;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .credits-banner-title {
-            font-size: 42px;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 3px 3px #000;
-        }
-        .credits-black-well {
-            background: rgba(0,0,0,0.85);
-            border: 2px solid #222;
-            padding: 25px;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .credit-block-row { display: flex; align-items: flex-start; gap: 15px; }
-        .credit-sword-icon { width: 32px; height: 32px; margin-top: 4px; }
-        .credit-info-meta h3 { margin: 0; font-size: 26px; color: #ffffff; font-style: italic; }
-        .credit-info-meta p { margin: 4px 0 0 0; font-family: sans-serif; font-size: 14px; color: #b2bec3; }
-
-        /* PORTAL WELL */
-        .portal-well { background: #000000; border: 3px solid #000; padding: 40px; text-align: center; }
-        .portal-well h2 { font-size: 42px; margin-top: 0; }
-        .portal-well p { font-family: sans-serif; color: #aaa; margin-bottom: 25px; }
-        .portal-btn { background: #3498db; color: white; padding: 10px 30px; text-decoration: none; font-size: 22px; border: 2px solid #000; font-weight: bold; }
-        .portal-btn:hover { background: #2980b9; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MVER</title>
+<link rel="icon" type="image/png" href="assets/mver-logo.png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="top-navbar">
-        <div class="nav-branding" onclick="switchView('home')">
-            <img src="mver-logo.png" alt="*">
-            <span>MVER SYSTEM</span>
-        </div>
-        <div class="nav-menu">
-            <a id="link-home" onclick="switchView('home')">Leaderboard / Home Page</a>
-            <a id="link-tiers" onclick="switchView('tiers')">[Tiers]</a>
-            <a id="link-editors" onclick="switchView('editors')">[Editors]</a>
-            <a id="link-submit" onclick="switchView('submit')">[Submit Edits]</a>
-            <a id="link-credits" onclick="switchView('credits')">[Credits]</a>
-        </div>
+  <div class="top-navbar">
+    <button class="nav-branding" data-view="home" onclick="switchView('home')">
+      <img src="assets/mver-logo.png" alt="">
+      <span>MVER</span>
+    </button>
+    <div class="nav-menu">
+      <button data-view="home" onclick="switchView('home')">Leaderboard</button>
+      <button data-view="tiers" onclick="switchView('tiers')">Tiers</button>
+      <button data-view="editors" onclick="switchView('editors')">Editors</button>
+      <button data-view="submit" onclick="switchView('submit')">Submit Edits</button>
+      <button data-view="credits" onclick="switchView('credits')">Credits</button>
     </div>
+  </div>
 
+  <!-- HOME / LEADERBOARD -->
+  <div id="view-home" class="view-content active-view view-home-full">
     <div class="header-banner-container">
-        <h1 class="header-title">MVER</h1>
-        <div class="header-subtitle">MultiCraft Visual Editing Rankings</div>
+      <h1 class="header-title">MVER</h1>
+      <div class="header-subtitle">MultiCraft Visual Editing Rankings</div>
     </div>
 
     <div class="welcome-strip">
-        <div class="welcome-box-inner">
-            <div class="welcome-title-row">
-                <img src="mver-logo.png" alt="*">
-                <span>Welcome to MultiCraft Visual Editing Rankings (MVER)</span>
-            </div>
-            <p class="welcome-desc">
-                The MultiCraft Visual Editing Ranking is a tier list system to rank your editing skills.<br>
-                Join and compete with others on our top 10 leaderboard.
-            </p>
-            <button class="welcome-tiers-btn" onclick="switchView('tiers')">Tiers</button>
+      <div class="welcome-box-inner">
+        <div class="welcome-title-row">
+          <img src="assets/mver-logo.png" alt="">
+          <span>Welcome to MVER</span>
         </div>
+        <p class="welcome-desc">
+          The MultiCraft Visual Editing Ranking is a tier list system that ranks editors across Keyframes, Cuts and Transitions, Visual Effects, and Text Effects.<br>
+          Join and compete with others on our leaderboard.
+        </p>
+        <button class="welcome-tiers-btn" onclick="switchView('tiers')">View Tiers</button>
+      </div>
     </div>
 
-    <div id="view-home" class="view-content active-view">
-        <div class="leaderboard-wrapper">
-            <div class="section-header-title">EDITORS LEADERBOARD</div>
-            
-            <a href="profiles.html?user=confuxion" class="leaderboard-row-item" style="border-color: #55efc4;">
-                <div class="left-meta"><span class="row-rank">#1</span><span class="row-pipe">|</span><span class="row-name">confuxion</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-a">A-</div></div>
-            </a>
-            <a href="profiles.html?user=sxmple" class="leaderboard-row-item" style="border-color: #f1c40f;">
-                <div class="left-meta"><span class="row-rank">#2</span><span class="row-pipe">|</span><span class="row-name">sxmple</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-b">B+</div></div>
-            </a>
-            <a href="profiles.html?user=TimmyLoal" class="leaderboard-row-item" style="border-color: #f1c40f;">
-                <div class="left-meta"><span class="row-rank">#3</span><span class="row-pipe">|</span><span class="row-name">TimmyLoal</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-b">B+</div></div>
-            </a>
-            <a href="profiles.html?user=Game1k" class="leaderboard-row-item" style="border-color: #f1c40f;">
-                <div class="left-meta"><span class="row-rank">#4</span><span class="row-pipe">|</span><span class="row-name">Game1K</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-b">B+</div></div>
-            </a>
-            <a href="profiles.html?user=Vorthexis" class="leaderboard-row-item" style="border-color: #f1c40f;">
-                <div class="left-meta"><span class="row-rank">#5</span><span class="row-pipe">|</span><span class="row-name">Vorthexis</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-b">B</div></div>
-            </a>
-            <a href="profiles.html?user=Normal" class="leaderboard-row-item" style="border-color: #f1c40f;">
-                <div class="left-meta"><span class="row-rank">#6</span><span class="row-pipe">|</span><span class="row-name">Normal</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-b">B-</div></div>
-            </a>
-            <a href="profiles.html?user=x9jm" class="leaderboard-row-item" style="border-color: #ff9f43;">
-                <div class="left-meta"><span class="row-rank">#7</span><span class="row-pipe">|</span><span class="row-name">x9jm</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-c">C+</div></div>
-            </a>
-            <a href="profiles.html?user=Possessed_YT" class="leaderboard-row-item" style="border-color: #ff9f43;">
-                <div class="left-meta"><span class="row-rank">#8</span><span class="row-pipe">|</span><span class="row-name">Possessed_YT</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-c">C+</div></div>
-            </a>
-            <a href="profiles.html?user=Blade" class="leaderboard-row-item" style="border-color: #ff9f43;">
-                <div class="left-meta"><span class="row-rank">#9</span><span class="row-pipe">|</span><span class="row-name">Blade</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-c">C+</div></div>
-            </a>
-            <a href="profiles.html?user=unknown" class="leaderboard-row-item" style="border-color: #555;">
-                <div class="left-meta"><span class="row-rank">#10</span><span class="row-pipe">|</span><span class="row-name">???</span></div>
-                <div class="right-meta"><span class="row-label">RANK:</span><div class="tier-tag-badge color-w">?</div></div>
-            </a>
-        </div>
+    <div class="view-home-inner">
+      <div class="podium-wrapper" id="podium-root"></div>
+      <div class="leaderboard-wrapper">
+        <div class="section-header-wrap"><div class="section-header-title">Editors Leaderboard</div></div>
+        <div id="leaderboard-root"></div>
+      </div>
     </div>
+  </div>
 
-    <div id="view-tiers" class="view-content">
-        <center><div class="section-header-title">TIERS ARCHITECTURE SPECIFICATIONS</div></center>
-        <div class="architecture-container">
-            <div class="arch-shelf-block"><div class="arch-badge color-p">P</div><div class="arch-info"><h3 class="arch-title" style="color: #cb7eff;">PREEMINENT</h3><p class="arch-desc">Absolute Best / Top Globally</p></div></div>
-            <div class="arch-shelf-block"><div class="arch-badge color-o">O</div><div class="arch-info"><h3 class="arch-title" style="color: #ffda79;">OPTIMAL</h3><p class="arch-desc">Top Globally</p></div></div>
-            <div class="arch-shelf-block"><div class="arch-badge color-s">S</div><div class="arch-info"><h3 class="arch-title" style="color: #74b9ff;">MASTERY</h3><p class="arch-desc">Exceeding Average / Mastery</p></div></div>
-            <div class="arch-shelf-block"><div class="arch-badge color-a">A</div><div class="arch-info"><h3 class="arch-title" style="color: #55efc4;">ADVANCED</h3><p class="arch-desc">Well Above Average</p></div></div>
-            <div class="arch-shelf-block"><div class="arch-badge color-b">B</div><div class="arch-info"><h3 class="arch-title" style="color: #f1c40f;">UPPER INTERMEDIATE</h3><p class="arch-desc">Above Average</p></div></div>
-            <div class="arch-shelf-block"><div class="arch-badge color-c">C</div><div class="arch-info"><h3 class="arch-title" style="color: #ff9f43;">INTERMEDIATE</h3><p class="arch-desc">Average</p></div></div>
-            <div class="arch-shelf-block"><div class="arch-badge color-d">D</div><div class="arch-info"><h3 class="arch-title" style="color: #ff7f50;">DEVELOPING</h3><p class="arch-desc">Developing Towards Average</p></div></div>
-            <div class="arch-shelf-block"><div class="arch-badge color-e">E</div><div class="arch-info"><h3 class="arch-title" style="color: #ff4757;">BASIC</h3><p class="arch-desc">Below Average / Sync and cuts are limited</p></div></div>
-            <div class="arch-shelf-block"><div class="arch-badge color-f">F</div><div class="arch-info"><h3 class="arch-title" style="color: #57606f;">ENTRY</h3><p class="arch-desc">Novice / Minimal editing understanding</p></div></div>
-        </div>
+  <!-- TIERS -->
+  <div id="view-tiers" class="view-content">
+    <div class="section-header-wrap"><div class="section-header-title">Tiers</div></div>
+    <div class="architecture-container" id="tiers-root"></div>
+  </div>
+
+  <!-- EDITORS ROSTER -->
+  <div id="view-editors" class="view-content">
+    <div class="section-header-wrap"><div class="section-header-title">Editors</div></div>
+    <div class="matrix-grid-layout" id="roster-grid-root"></div>
+
+    <div id="waitlist-section" class="waitlist-section">
+      <div class="section-header-wrap"><div class="section-header-title waitlist-header-title">Waitlist</div></div>
+      <div class="waitlist-names-wrap" id="waitlist-root"></div>
     </div>
+  </div>
 
-    <div id="view-editors" class="view-content">
-        <center><div class="section-header-title">ACTIVE ROSTER ENCYCLOPEDIA</div></center>
-        <div class="matrix-grid-layout" id="roster-grid-root"></div>
+  <!-- SUBMIT -->
+  <div id="view-submit" class="view-content">
+    <div class="portal-well">
+      <h2>Submit Edits</h2>
+      <p>Join the competition:</p>
+      <a href="https://forms.google.com" target="_blank" rel="noopener" class="portal-btn">Open Form Link</a>
     </div>
+  </div>
 
-    <div id="view-submit" class="view-content">
-        <div class="portal-well">
-            <h2>SUBMIT PORTFOLIO EVALUATION</h2>
-            <p>Ready to compete on the leaderboard? Link your high-tier montages or video reels to our review council.</p>
-            <a href="https://forms.google.com" target="_blank" class="portal-btn">OPEN FORM LINK</a>
-        </div>
+  <!-- CREDITS -->
+  <div id="view-credits" class="view-content">
+    <div class="credits-banner-strip"><h2 class="credits-banner-title">Credits</h2></div>
+    <div class="credits-black-well" id="credits-root"></div>
+  </div>
+
+  <!-- PROFILE MODAL -->
+  <div class="profile-modal-overlay" id="profile-modal-overlay" onclick="closeProfileOnOverlay(event)">
+    <div class="profile-modal-box" onclick="event.stopPropagation()">
+      <button class="profile-modal-close" onclick="closeProfile()">&times;</button>
+      <div id="profile-modal-content"></div>
     </div>
+  </div>
 
-    <div id="view-credits" class="view-content">
-        <div class="credits-banner-strip">
-            <h2 class="credits-banner-title">CREDITS</h2>
-        </div>
-        <div class="credits-black-well">
-            <div class="credit-block-row">
-                <img class="credit-sword-icon" src="mver-logo.png" alt="*">
-                <div class="credit-info-meta">
-                    <h3>TimmyLoal (MVER Founder/Creator)</h3>
-                    <p>The creator of MVER, the tier system logic, and the core structural code design.</p>
-                </div>
-            </div>
-            <div class="credit-block-row">
-                <img class="credit-sword-icon" src="mver-logo.png" alt="*">
-                <div class="credit-info-meta">
-                    <h3>Vorthexis (MVER Helper / Website Manager)</h3>
-                    <p>MVER Council Assistant; helped coordinate page layout assets and directory setups.</p>
-                </div>
-            </div>
-            <div class="credit-block-row">
-                <img class="credit-sword-icon" src="mver-logo.png" alt="*">
-                <div class="credit-info-meta">
-                    <h3>Blade (Website Helper)</h3>
-                    <p>Helped write advanced responsive rendering blocks and code logic modules.</p>
-                </div>
-            </div>
-        </div>
+  <!-- MUSIC PLAYER -->
+  <div class="music-player" id="music-player">
+    <div class="music-player-drag-handle" id="music-drag-handle">⠿</div>
+    <div class="music-player-body">
+      <div class="music-track-name" id="music-track-name">No tracks</div>
+      <input type="range" class="music-seek" id="music-seek" min="0" max="100" value="0" step="0.1">
+      <div class="music-time-row">
+        <span id="music-time-current">0:00</span>
+        <span id="music-time-duration">0:00</span>
+      </div>
+      <div class="music-controls">
+        <button class="music-btn" id="music-prev-btn" title="Previous track">⏮</button>
+        <button class="music-btn music-btn-play" id="music-play-btn" title="Play/Pause">▶</button>
+        <button class="music-btn" id="music-next-btn" title="Next track">⏭</button>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // ASSIGNMENTS SCHEMATICS 
-        const assignments = {
-            "A-": ["confuxion"],
-            "B+": ["sxmple", "TimmyLoal", "Game1k"],
-            "B": ["Vorthexis"],
-            "B-": ["Normal"],
-            "C+": ["x9jm", "Blade", "Possessed_YT"],
-            "D": ["ItzFroco"],
-            "WAITLIST": ["system1117", "aston", "chillpotato", "Afterlyfe"]
-        };
+  <script>
+    let DATA = null;
+    // TIER_ORDER lists every possible computed grade, used only for display
+    // ordering on the Tiers page and for color/glow lookups. It is NOT used
+    // to decide who goes in which bucket anymore — see computeOverallTier().
+    const TIER_ORDER = ["P","O","S","A","B+","B","B-","C+","C","C-","D","E","F","-","WAITLIST"];
 
-        const nameMapping = {
-            "confuxion": "confuxion", "sxmple": "sxmple", "timmyloal": "TimmyLoal",
-            "game1k": "Game1K", "vorthexis": "Vorthexis", "normal": "Normal",
-            "x9jm": "x9jm", "blade": "Blade", "possessed_yt": "Possessed_YT",
-            "system1117": "system1117", "aston": "Aston", "itzfroco": "ItzFroco", 
-            "chillpotato": "ChillPotato", "afterlyfe": "Afterlyfe",
-        };
+    function colorClassFor(tierKey) {
+      if (tierKey === "-") return "color-dash";
+      const base = tierKey.replace(/[+-]/g, "").toUpperCase();
+      const map = { P:"color-p", O:"color-o", S:"color-s", A:"color-a", B:"color-b", C:"color-c", D:"color-d", E:"color-e", F:"color-f", WAITLIST:"color-w" };
+      return map[base] || "color-w";
+    }
 
-        const rankMapping = {
-            "confuxion": "Rank #1", "sxmple": "Rank #2", "timmyloal": "Rank #3",
-            "game1k": "Rank #4", "vorthexis": "Rank #5", "normal": "Rank #6",
-            "x9jm": "Rank #7", "possessed_yt": "Rank #8", "blade": "Rank #9",
-            "itzfroco": "Pending Eval", "system1117": "Waitlist", "aston": "Waitlist", 
-            "chillpotato": "Waitlist"
-        };
+    function baseLetterFor(tierKey) {
+      if (tierKey === "-") return "-";
+      return tierKey.replace(/[+-]/g, "").toUpperCase();
+    }
 
-        const colorClasses = {
-            "A-": "color-a", "B+": "color-b", "B": "color-b", "B-": "color-b",
-            "C+": "color-c", "D": "color-d", "WAITLIST": "color-w"
-        };
+    function avatarFor(username) {
+      return `assets/avatars/${username.toLowerCase()}.png`;
+    }
 
-        function switchView(viewId) {
-            document.querySelectorAll('.view-content').forEach(v => v.classList.remove('active-view'));
-            const target = document.getElementById('view-' + viewId);
-            if(target) target.classList.add('active-view');
-            window.scrollTo(0,0);
+    // ---------- TIER ORDINALS (for comparing grades like "A-", "B+", etc.) ----------
+    // Lower number = better. Covers every base letter with +/- modifiers.
+    const TIER_ORDINAL = {};
+    (function buildOrdinals() {
+      const letters = ["P", "O", "S", "A", "B", "C", "D", "E", "F"];
+      let rank = 0;
+      letters.forEach(letter => {
+        TIER_ORDINAL[letter + "+"] = rank++;
+        TIER_ORDINAL[letter] = rank++;
+        TIER_ORDINAL[letter + "-"] = rank++;
+      });
+      TIER_ORDINAL["-"] = rank++; // Unranked, worse than F-
+    })();
+
+    function ordinalFor(grade) {
+      if (TIER_ORDINAL.hasOwnProperty(grade)) return TIER_ORDINAL[grade];
+      return Infinity; // unknown grade strings sort last, never picked as "highest"
+    }
+
+    // A player's overall tier = the best (lowest-ordinal) grade among their categories.
+    function computeOverallTier(username) {
+      const player = DATA.players[username];
+      if (!player || !player.categories) return null;
+      const grades = Object.values(player.categories);
+      if (!grades.length) return null;
+      let best = grades[0];
+      for (const g of grades) {
+        if (ordinalFor(g) < ordinalFor(best)) best = g;
+      }
+      return best;
+    }
+
+    async function loadData() {
+      const res = await fetch('data/rankings.json');
+      DATA = await res.json();
+      buildPodium();
+      buildLeaderboard();
+      buildTiers();
+      buildRoster();
+      buildCredits();
+    }
+
+    // ---------- SHARED RANKING ----------
+    function getRankedList() {
+      // Every player in the RANKED roster gets their tier computed from
+      // their best category grade — no manual letter-bucket needed.
+      const allUsernames = DATA.tiers["RANKED"] || [];
+
+      const withTiers = allUsernames
+        .map(username => ({ username, tierKey: computeOverallTier(username) }))
+        .filter(entry => entry.tierKey !== null)
+        .sort((a, b) => ordinalFor(a.tierKey) - ordinalFor(b.tierKey));
+
+      return withTiers.map((entry, i) => ({ ...entry, rank: i + 1 }));
+    }
+
+    // ---------- PODIUM ----------
+    function buildPodium() {
+      const root = document.getElementById('podium-root');
+      root.innerHTML = '';
+      const ranked = getRankedList().slice(0, 3);
+      if (!ranked.length) return;
+
+      const podiumHeights = { 1: 'podium-tall', 2: 'podium-mid', 3: 'podium-short' };
+
+      ranked.forEach(entry => {
+        const colClass = colorClassFor(entry.tierKey);
+        const heightClass = podiumHeights[entry.rank] || 'podium-short';
+        const isFirst = entry.rank === 1;
+
+        const card = document.createElement('button');
+        card.className = `podium-card ${heightClass}${isFirst ? ' podium-first' : ''}`;
+        card.onclick = () => openProfile(entry.username);
+        card.innerHTML = `
+          <span class="podium-name">${entry.username}</span>
+          <div class="podium-avatar-wrap">
+            <img class="podium-avatar" src="${avatarFor(entry.username)}" alt="" onerror="this.style.visibility='hidden'">
+          </div>
+          <div class="tier-tag-badge podium-tier-badge ${colClass}">${entry.tierKey}</div>
+          <div class="podium-block">${entry.rank}</div>`;
+        root.appendChild(card);
+      });
+    }
+
+    // ---------- LEADERBOARD ----------
+    function buildLeaderboard() {
+      const root = document.getElementById('leaderboard-root');
+      root.innerHTML = '';
+
+      getRankedList().forEach(entry => {
+        const colClass = colorClassFor(entry.tierKey);
+        const meta = DATA.tierMeta[baseLetterFor(entry.tierKey)] || {};
+        const row = document.createElement('button');
+        row.className = 'leaderboard-row-item';
+        row.style.borderColor = meta.color || '#555';
+        row.onclick = () => openProfile(entry.username);
+        row.innerHTML = `
+          <div class="left-meta">
+            <span class="row-rank">#${entry.rank}</span><span class="row-pipe">|</span>
+            <span class="row-name">${entry.username}</span>
+          </div>
+          <div class="right-meta">
+            <span class="row-label">RANK:</span>
+            <div class="tier-tag-badge ${colClass}">${entry.tierKey}</div>
+          </div>`;
+        root.appendChild(row);
+      });
+    }
+
+    // ---------- TIERS ----------
+    function buildTiers() {
+      const root = document.getElementById('tiers-root');
+      root.innerHTML = '';
+      ["P","O","S","A","B","C","D","E","F"].forEach(letter => {
+        const meta = DATA.tierMeta[letter];
+        if (!meta) return;
+        const colClass = colorClassFor(letter);
+        const block = document.createElement('div');
+        block.className = 'arch-shelf-block';
+        block.innerHTML = `
+          <div class="arch-badge ${colClass}">${letter}</div>
+          <div class="arch-info">
+            <h3 class="arch-title" style="color:${meta.color};">${meta.label}</h3>
+            <p class="arch-desc">${meta.desc}</p>
+          </div>`;
+        root.appendChild(block);
+      });
+    }
+
+    // ---------- ROSTER ----------
+    function buildRoster() {
+      const root = document.getElementById('roster-grid-root');
+      root.innerHTML = '';
+
+      const allUsernames = DATA.tiers["RANKED"] || [];
+
+      const withTiers = allUsernames
+        .map(username => ({ username, tierKey: computeOverallTier(username) }))
+        .sort((a, b) => ordinalFor(a.tierKey) - ordinalFor(b.tierKey));
+
+      withTiers.forEach(({ username, tierKey }) => {
+        const displayTier = tierKey || "-";
+        const colClass = colorClassFor(displayTier);
+        const statusLabel = displayTier === "-" ? "Unranked" : `Tier ${displayTier}`;
+
+        const card = document.createElement('button');
+        card.className = 'matrix-profile-card';
+        card.onclick = () => openProfile(username);
+        card.innerHTML = `
+          <h3 class="matrix-name">${username}</h3>
+          <p class="matrix-rank-status">${statusLabel}</p>
+          <div class="matrix-tier-container">
+            <span class="matrix-lbl">TIER:</span>
+            <div class="tier-tag-badge ${colClass}">${displayTier}</div>
+          </div>`;
+        root.appendChild(card);
+      });
+
+      buildWaitlist();
+    }
+
+    // ---------- WAITLIST ----------
+    function buildWaitlist() {
+      const waitlistSection = document.getElementById('waitlist-section');
+      const waitlistRoot = document.getElementById('waitlist-root');
+      const users = DATA.tiers["WAITLIST"] || [];
+
+      if (!users.length) {
+        waitlistSection.style.display = 'none';
+        return;
+      }
+
+      waitlistSection.style.display = '';
+      waitlistRoot.innerHTML = users.map(username =>
+        `<span class="waitlist-name">${username}</span>`
+      ).join('');
+      // Plain text only — no click handlers, no avatars, no tier badges for waitlist.
+    }
+
+    // ---------- CREDITS ----------
+    function buildCredits() {
+      const root = document.getElementById('credits-root');
+      root.innerHTML = '';
+      (DATA.credits || []).forEach(c => {
+        const row = document.createElement('div');
+        row.className = 'credit-block-row';
+        row.innerHTML = `
+          <img class="credit-sword-icon" src="assets/mver-logo.png" alt="">
+          <div class="credit-info-meta">
+            <h3>${c.name} (${c.role})</h3>
+            <p>${c.desc}</p>
+          </div>`;
+        root.appendChild(row);
+      });
+    }
+
+    // ---------- PROFILE MODAL ----------
+    function findTierFor(username) {
+      if ((DATA.tiers["WAITLIST"] || []).includes(username)) return "WAITLIST";
+      return computeOverallTier(username); // null if no categories yet
+    }
+
+    function glowClassFor(tierKey) {
+      if (tierKey === '-') return 'glow-dash';
+      if (tierKey === 'WAITLIST') return 'glow-w';
+      return 'glow-' + baseLetterFor(tierKey).toLowerCase();
+    }
+
+    function openProfile(username) {
+      const player = DATA.players[username] || { categories: {} };
+      const tierKey = findTierFor(username);
+      const colClass = tierKey ? colorClassFor(tierKey) : 'color-w';
+      const glowClass = tierKey ? glowClassFor(tierKey) : '';
+      const badgeText = tierKey === 'WAITLIST' ? '-' : tierKey;
+
+      const categoryEntries = Object.entries(player.categories || {});
+      const categoriesHTML = categoryEntries.length
+        ? categoryEntries.map(([cat, grade]) => `
+            <div class="profile-kit-card">
+              <span class="profile-kit-card-name">${cat}</span>
+              <span class="profile-kit-card-grade" style="color:${(DATA.tierMeta[baseLetterFor(grade)]||{}).color || '#fff'};">${grade}</span>
+            </div>`).join('')
+        : `<p class="profile-empty-state">No category evaluations yet.</p>`;
+
+      document.getElementById('profile-modal-content').innerHTML = `
+        <div class="profile-modal-header">
+          <div class="profile-modal-identity">
+            <h2 class="profile-modal-name">${username}</h2>
+            <div class="profile-modal-subtitle">Profile</div>
+          </div>
+          ${tierKey ? `
+            <div class="profile-modal-overall ${colClass} ${glowClass}">${badgeText}</div>` : ''
+          }
+        </div>
+        <div class="profile-modal-body">
+          <div class="profile-kits-grid">${categoriesHTML}</div>
+        </div>`;
+
+      document.getElementById('profile-modal-overlay').classList.add('open');
+    }
+
+    function closeProfile() {
+      document.getElementById('profile-modal-overlay').classList.remove('open');
+    }
+
+    function closeProfileOnOverlay(e) {
+      if (e.target.id === 'profile-modal-overlay') closeProfile();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeProfile();
+    });
+
+    // ---------- VIEW SWITCHING ----------
+    function switchView(viewId) {
+      document.querySelectorAll('.view-content').forEach(v => v.classList.remove('active-view'));
+      const target = document.getElementById('view-' + viewId);
+      if (target) target.classList.add('active-view');
+
+      document.querySelectorAll('.nav-menu button').forEach(b => b.classList.remove('active'));
+      const navBtn = document.querySelector(`.nav-menu button[data-view="${viewId}"]`);
+      if (navBtn) navBtn.classList.add('active');
+
+      window.scrollTo(0, 0);
+    }
+
+    // ---------- CLICK SOUND EFFECTS ----------
+    const clickAudio = new Audio('sounds/click.mp3');
+    clickAudio.volume = 0.5;
+
+    document.addEventListener('click', (e) => {
+      const interactive = e.target.closest('button, a, .leaderboard-row-item, .matrix-profile-card, .podium-card');
+      if (!interactive) return;
+      // Don't let drag-handle clicks or the music transport buttons double up with their own SFX timing
+      const sfx = clickAudio.cloneNode();
+      sfx.volume = 0.5;
+      sfx.play().catch(() => {});
+    });
+
+    // ---------- MUSIC PLAYER ----------
+    let TRACKS = [];
+    let currentTrackIndex = 0;
+    const musicAudio = new Audio();
+    musicAudio.volume = 0.6;
+
+    function trackNameFromFile(filename) {
+      // Strip the .mp3 extension only, preserving original case exactly.
+      return filename.replace(/\.mp3$/i, '');
+    }
+
+    async function loadTracklist() {
+      try {
+        const res = await fetch('audio/tracklist.json');
+        const data = await res.json();
+        TRACKS = (data.tracks || []).filter(Boolean);
+      } catch (err) {
+        TRACKS = [];
+      }
+      setupMusicPlayer();
+    }
+
+    function setupMusicPlayer() {
+      const nameEl = document.getElementById('music-track-name');
+      const playBtn = document.getElementById('music-play-btn');
+      const prevBtn = document.getElementById('music-prev-btn');
+      const nextBtn = document.getElementById('music-next-btn');
+      const playerEl = document.getElementById('music-player');
+      const seekEl = document.getElementById('music-seek');
+      const curTimeEl = document.getElementById('music-time-current');
+      const durTimeEl = document.getElementById('music-time-duration');
+
+      if (!TRACKS.length) {
+        nameEl.textContent = 'No tracks';
+        playBtn.disabled = true;
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        seekEl.disabled = true;
+        return;
+      }
+
+      // Single track: loop it forever. Multiple tracks: advance to the next on end.
+      musicAudio.loop = TRACKS.length === 1;
+
+      musicAudio.addEventListener('ended', () => {
+        if (TRACKS.length > 1) {
+          currentTrackIndex = (currentTrackIndex + 1) % TRACKS.length;
+          loadTrack(currentTrackIndex, true);
         }
+      });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const rosterRoot = document.getElementById("roster-grid-root");
-            if(rosterRoot) {
-                Object.keys(assignments).forEach(tierKey => {
-                    const users = assignments[tierKey];
-                    users.forEach(username => {
-                        const printableName = nameMapping[username] || username;
-                        const statusLabel = rankMapping[username] || "Active Member";
-                        const badgeValue = tierKey === "WAITLIST" ? "-" : tierKey;
-                        const colClass = colorClasses[tierKey] || "color-w";
+      prevBtn.onclick = () => {
+        if (TRACKS.length < 2) return;
+        currentTrackIndex = (currentTrackIndex - 1 + TRACKS.length) % TRACKS.length;
+        loadTrack(currentTrackIndex, true);
+      };
 
-                        const cardHTML = `
-                            <a href="profiles.html?user=${username}" class="matrix-profile-card">
-                                <h3 class="matrix-name">${printableName}</h3>
-                                <p class="matrix-rank-status">${statusLabel}</p>
-                                <div class="matrix-tier-container">
-                                    <span class="matrix-lbl">TIER:</span>
-                                    <div class="tier-tag-badge ${colClass}">${badgeValue}</div>
-                                </div>
-                            </a>
-                        `;
-                        rosterRoot.insertAdjacentHTML('beforeend', cardHTML);
-                    });
-                });
-            }
-            switchView('home');
+      nextBtn.onclick = () => {
+        if (TRACKS.length < 2) return;
+        currentTrackIndex = (currentTrackIndex + 1) % TRACKS.length;
+        loadTrack(currentTrackIndex, true);
+      };
+
+      prevBtn.disabled = TRACKS.length < 2;
+      nextBtn.disabled = TRACKS.length < 2;
+
+      playBtn.onclick = () => {
+        if (musicAudio.paused) {
+          musicAudio.play().catch(() => {});
+        } else {
+          musicAudio.pause();
+        }
+      };
+
+      musicAudio.addEventListener('play', () => { playBtn.textContent = '⏸'; });
+      musicAudio.addEventListener('pause', () => { playBtn.textContent = '▶'; });
+
+      // ---- seek bar ----
+      const formatTime = (secs) => {
+        if (!isFinite(secs) || secs < 0) return '0:00';
+        const m = Math.floor(secs / 60);
+        const s = Math.floor(secs % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+      };
+
+      musicAudio.addEventListener('loadedmetadata', () => {
+        seekEl.max = musicAudio.duration || 0;
+        durTimeEl.textContent = formatTime(musicAudio.duration);
+      });
+
+      let isScrubbing = false;
+
+      musicAudio.addEventListener('timeupdate', () => {
+        if (isScrubbing) return;
+        seekEl.value = musicAudio.currentTime;
+        curTimeEl.textContent = formatTime(musicAudio.currentTime);
+      });
+
+      seekEl.addEventListener('input', () => {
+        isScrubbing = true;
+        curTimeEl.textContent = formatTime(parseFloat(seekEl.value));
+      });
+
+      seekEl.addEventListener('change', () => {
+        musicAudio.currentTime = parseFloat(seekEl.value);
+        isScrubbing = false;
+      });
+
+      loadTrack(currentTrackIndex, false);
+      makeDraggable(playerEl, document.getElementById('music-drag-handle'));
+      attemptAutoplay();
+    }
+
+    function attemptAutoplay() {
+      const playPromise = musicAudio.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {
+          // Most browsers block audio-with-sound autoplay until the user
+          // interacts with the page at least once. Start it on that first
+          // interaction instead, anywhere on the page.
+          const startOnFirstInteraction = () => {
+            musicAudio.play().catch(() => {});
+            document.removeEventListener('click', startOnFirstInteraction);
+            document.removeEventListener('keydown', startOnFirstInteraction);
+            document.removeEventListener('touchstart', startOnFirstInteraction);
+          };
+          document.addEventListener('click', startOnFirstInteraction, { once: true });
+          document.addEventListener('keydown', startOnFirstInteraction, { once: true });
+          document.addEventListener('touchstart', startOnFirstInteraction, { once: true });
         });
-    </script>
+      }
+    }
+
+    function loadTrack(index, autoplay) {
+      const nameEl = document.getElementById('music-track-name');
+      const filename = TRACKS[index];
+      musicAudio.src = `audio/${filename}`;
+      nameEl.textContent = trackNameFromFile(filename);
+      if (autoplay) musicAudio.play().catch(() => {});
+    }
+
+    function makeDraggable(el, handle) {
+      let isDragging = false;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      const startDrag = (clientX, clientY) => {
+        isDragging = true;
+        const rect = el.getBoundingClientRect();
+        offsetX = clientX - rect.left;
+        offsetY = clientY - rect.top;
+        el.style.transition = 'none';
+      };
+
+      const moveDrag = (clientX, clientY) => {
+        if (!isDragging) return;
+        const x = clientX - offsetX;
+        const y = clientY - offsetY;
+        const maxX = window.innerWidth - el.offsetWidth;
+        const maxY = window.innerHeight - el.offsetHeight;
+        el.style.left = `${Math.max(0, Math.min(x, maxX))}px`;
+        el.style.top = `${Math.max(0, Math.min(y, maxY))}px`;
+        el.style.right = 'auto';
+        el.style.bottom = 'auto';
+      };
+
+      const endDrag = () => { isDragging = false; };
+
+      handle.addEventListener('mousedown', (e) => { startDrag(e.clientX, e.clientY); e.preventDefault(); });
+      document.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
+      document.addEventListener('mouseup', endDrag);
+
+      handle.addEventListener('touchstart', (e) => {
+        const t = e.touches[0];
+        startDrag(t.clientX, t.clientY);
+      }, { passive: true });
+      document.addEventListener('touchmove', (e) => {
+        const t = e.touches[0];
+        moveDrag(t.clientX, t.clientY);
+      }, { passive: true });
+      document.addEventListener('touchend', endDrag);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadData();
+      loadTracklist();
+      switchView('home');
+    });
+  </script>
 </body>
 </html>
