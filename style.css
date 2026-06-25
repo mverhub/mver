@@ -1,3 +1,8 @@
+/* ===================================================================
+   MVER — MultiCraft Visual Editing Rankings
+   Typography: MultiCraftFont (display) + JetBrains Mono Nerd Font (body/data)
+   =================================================================== */
+
 @font-face {
   font-family: 'MultiCraft';
   src: url('fonts/MultiCraftFont.ttf') format('truetype');
@@ -723,18 +728,24 @@ button {
 
 .profile-modal-close {
   position: absolute;
-  top: 16px;
-  right: 18px;
-  background: none;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
   border: none;
   color: var(--ink-faint);
-  font-size: 22px;
+  font-size: 20px;
   cursor: pointer;
   line-height: 1;
-  z-index: 2;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.profile-modal-close:hover { color: var(--accent); }
+.profile-modal-close:hover { color: var(--accent); background: rgba(85,239,196,0.1); }
 
 .profile-modal-header {
   display: flex;
@@ -742,6 +753,7 @@ button {
   justify-content: space-between;
   gap: 20px;
   padding-bottom: 22px;
+  padding-right: 44px; /* keeps the tier badge clear of the close button above it */
   border-bottom: 2px solid #1a2235;
   margin-bottom: 22px;
 }
