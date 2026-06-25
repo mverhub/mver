@@ -31,7 +31,7 @@
     },
     "sxmple": {
       "categories": {
-        "Keyframes": "B+",
+        "Keyframes": "C",
         "Cuts and Transitions": "B",
         "Visual Effects": "B+",
         "Text Effects": "C+"
@@ -39,23 +39,23 @@
     },
     "TimmyLoal": {
       "categories": {
-        "Keyframes": "B+",
+        "Keyframes": "C",
         "Cuts and Transitions": "B+",
         "Visual Effects": "B",
-        "Text Effects": "B+"
+        "Text Effects": "A-"
       }
     },
     "Game1K": {
       "categories": {
-        "Keyframes": "B+",
-        "Cuts and Transitions": "B+",
+        "Keyframes": "-",
+        "Cuts and Transitions": "B",
         "Visual Effects": "B",
-        "Text Effects": "B"
+        "Text Effects": "B+"
       }
     },
     "Vorthexis": {
       "categories": {
-        "Keyframes": "B",
+        "Keyframes": "D",
         "Cuts and Transitions": "B-",
         "Visual Effects": "B",
         "Text Effects": "C+"
@@ -63,7 +63,7 @@
     },
     "Normal": {
       "categories": {
-        "Keyframes": "B-",
+        "Keyframes": "C",
         "Cuts and Transitions": "C+",
         "Visual Effects": "B-",
         "Text Effects": "C+"
@@ -71,7 +71,7 @@
     },
     "x9jm": {
       "categories": {
-        "Keyframes": "C+",
+        "Keyframes": "C",
         "Cuts and Transitions": "C",
         "Visual Effects": "C+",
         "Text Effects": "C"
@@ -79,7 +79,7 @@
     },
     "Blade": {
       "categories": {
-        "Keyframes": "C+",
+        "Keyframes": "C",
         "Cuts and Transitions": "C+",
         "Visual Effects": "C",
         "Text Effects": "C+"
@@ -87,7 +87,7 @@
     },
     "Possessed_YT": {
       "categories": {
-        "Keyframes": "C+",
+        "Keyframes": "C",
         "Cuts and Transitions": "B-",
         "Visual Effects": "C+",
         "Text Effects": "C"
@@ -95,7 +95,7 @@
     },
     "ItzFroco": {
       "categories": {
-        "Keyframes": "D",
+        "Keyframes": "-",
         "Cuts and Transitions": "D",
         "Visual Effects": "D",
         "Text Effects": "E"
