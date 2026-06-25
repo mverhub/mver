@@ -1,7 +1,7 @@
 {
   "tiers": {
-    "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Game1K", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco"],
-    "WAITLIST": ["system1117", "Aston", "ChillPotato", "Afterlyfe"]
+    "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco", "Afterlyfe"],
+    "WAITLIST": ["Game1K", "Aston", "ChillPotato"]
   },
 
   "tierMeta": {
@@ -24,46 +24,46 @@
     "confuxion": {
       "categories": {
         "Keyframes": "A-",
-        "Cuts and Transitions": "B+",
+        "Cuts and Transitions": "A-",
         "Visual Effects": "A",
         "Text Effects": "B+"
       }
     },
     "sxmple": {
       "categories": {
-        "Keyframes": "B+",
-        "Cuts and Transitions": "B",
+        "Keyframes": "B",
+        "Cuts and Transitions": "B+",
         "Visual Effects": "B+",
-        "Text Effects": "C+"
+        "Text Effects": "B"
       }
     },
     "TimmyLoal": {
       "categories": {
-        "Keyframes": "B+",
+        "Keyframes": "A-",
         "Cuts and Transitions": "B+",
-        "Visual Effects": "B",
+        "Visual Effects": "B+",
         "Text Effects": "B+"
       }
     },
     "Game1K": {
       "categories": {
-        "Keyframes": "B+",
-        "Cuts and Transitions": "B+",
-        "Visual Effects": "B",
-        "Text Effects": "B"
+        "Keyframes": "-",
+        "Cuts and Transitions": "-",
+        "Visual Effects": "-",
+        "Text Effects": "-"
       }
     },
     "Vorthexis": {
       "categories": {
-        "Keyframes": "B",
-        "Cuts and Transitions": "B-",
+        "Keyframes": "C-",
+        "Cuts and Transitions": "B",
         "Visual Effects": "B",
-        "Text Effects": "C+"
+        "Text Effects": "B+"
       }
     },
     "Normal": {
       "categories": {
-        "Keyframes": "B-",
+        "Keyframes": "C",
         "Cuts and Transitions": "C+",
         "Visual Effects": "B-",
         "Text Effects": "C+"
@@ -71,7 +71,7 @@
     },
     "x9jm": {
       "categories": {
-        "Keyframes": "C+",
+        "Keyframes": "C",
         "Cuts and Transitions": "C",
         "Visual Effects": "C+",
         "Text Effects": "C"
@@ -79,7 +79,7 @@
     },
     "Blade": {
       "categories": {
-        "Keyframes": "C+",
+        "Keyframes": "C",
         "Cuts and Transitions": "C+",
         "Visual Effects": "C",
         "Text Effects": "C+"
@@ -87,15 +87,23 @@
     },
     "Possessed_YT": {
       "categories": {
-        "Keyframes": "C+",
+        "Keyframes": "C",
         "Cuts and Transitions": "B-",
         "Visual Effects": "C+",
         "Text Effects": "C"
       }
     },
+    "Afterlyfe": {
+      "categories": {
+        "Keyframes": "B+",
+        "Cuts and Transitions": "C",
+        "Visual Effects": "B-",
+        "Text Effects": "C"
+      }
+    },
     "ItzFroco": {
       "categories": {
-        "Keyframes": "D",
+        "Keyframes": "-",
         "Cuts and Transitions": "D",
         "Visual Effects": "D",
         "Text Effects": "E"
@@ -107,17 +115,17 @@
     {
       "name": "TimmyLoal",
       "role": "MVER Founder / Creator",
-      "desc": "Creator of MVER, the tier system logic, and the core structural code design."
+      "desc": "Creator of MVER, the tier system logic, and the core structural code design. Assists and adds minor changes/fixes to website"
     },
     {
       "name": "Vorthexis",
       "role": "MVER Helper / Website Manager",
-      "desc": "MVER Council Assistant; helped coordinate page layout assets and directory setups."
+      "desc": "MVER Council Assistant, helped moving the site from google sites to github, coordinate page layout, assets and directory setups."
     },
     {
       "name": "Blade",
       "role": "Website Helper",
-      "desc": "Helped write advanced responsive rendering blocks and code logic modules."
+      "desc": "Major website assistant, helped write advanced responsive rendering blocks and code logic modules."
     },
     {
       "name": "x9jm",
