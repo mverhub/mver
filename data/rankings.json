@@ -24,41 +24,41 @@
     "confuxion": {
       "categories": {
         "Keyframes": "A-",
-        "Cuts and Transitions": "B+",
+        "Cuts and Transitions": "A-",
         "Visual Effects": "A",
-        "Text Effects": "A-"
+        "Text Effects": "B+"
       }
     },
     "sxmple": {
       "categories": {
-        "Keyframes": "C",
-        "Cuts and Transitions": "B",
+        "Keyframes": "C+",
+        "Cuts and Transitions": "B+",
         "Visual Effects": "B+",
-        "Text Effects": "C+"
+        "Text Effects": "B"
       }
     },
     "TimmyLoal": {
       "categories": {
-        "Keyframes": "C",
+        "Keyframes": "A-",
         "Cuts and Transitions": "B+",
-        "Visual Effects": "B",
+        "Visual Effects": "B+",
         "Text Effects": "B+"
       }
     },
     "Game1K": {
       "categories": {
         "Keyframes": "-",
-        "Cuts and Transitions": "B",
-        "Visual Effects": "B",
-        "Text Effects": "B+"
+        "Cuts and Transitions": "B+",
+        "Visual Effects": "B+",
+        "Text Effects": "A"
       }
     },
     "Vorthexis": {
       "categories": {
-        "Keyframes": "D",
-        "Cuts and Transitions": "B-",
+        "Keyframes": "C-",
+        "Cuts and Transitions": "B",
         "Visual Effects": "B",
-        "Text Effects": "C+"
+        "Text Effects": "A-"
       }
     },
     "Normal": {
