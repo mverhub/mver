@@ -1,8 +1,3 @@
-/* ===================================================================
-   MVER — MultiCraft Visual Editing Rankings
-   Typography: MultiCraftFont (display) + JetBrains Mono Nerd Font (body/data)
-   =================================================================== */
-
 @font-face {
   font-family: 'MultiCraft';
   src: url('fonts/MultiCraftFont.ttf') format('truetype');
