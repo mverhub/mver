@@ -1,7 +1,7 @@
 {
   "tiers": {
-    "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Game1K", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco", "Afterlyfe"],
-    "WAITLIST": ["system1117", "Aston", "ChillPotato"]
+    "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco", "Afterlyfe"],
+    "WAITLIST": ["Game1K", "Aston", "ChillPotato"]
   },
 
   "tierMeta": {
@@ -48,9 +48,9 @@
     "Game1K": {
       "categories": {
         "Keyframes": "-",
-        "Cuts and Transitions": "B+",
-        "Visual Effects": "B+",
-        "Text Effects": "A-"
+        "Cuts and Transitions": "-",
+        "Visual Effects": "-",
+        "Text Effects": "-"
       }
     },
     "Vorthexis": {
