@@ -9,6 +9,14 @@
 </head>
 <body>
 
+  <div class="welcome-overlay" id="welcome-overlay" onclick="dismissWelcomeOverlay()">
+    <div class="welcome-overlay-box">
+      <img src="assets/mver-logo.png" alt="" class="welcome-overlay-logo">
+      <h1 class="welcome-overlay-title">Welcome to MVER!</h1>
+      <p class="welcome-overlay-sub">Click to enter...</p>
+    </div>
+  </div>
+
   <div class="top-navbar">
     <button class="nav-branding" data-view="home" onclick="switchView('home')">
       <img src="assets/mver-logo.png" alt="">
@@ -606,6 +614,14 @@
       }, { passive: true });
       document.addEventListener('touchend', endDrag);
     }
+
+    // ---------- WELCOME OVERLAY ----------
+    function dismissWelcomeOverlay() {
+      const overlay = document.getElementById('welcome-overlay');
+      if (overlay) overlay.classList.add('dismissed');
+    }
+
+    document.addEventListener('keydown', dismissWelcomeOverlay, { once: true });
 
     document.addEventListener('DOMContentLoaded', () => {
       loadData();

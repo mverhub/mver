@@ -998,6 +998,74 @@ button {
 .music-btn-play:hover { filter: brightness(1.1); background: var(--accent); }
 
 /* ===================================================================
+   WELCOME OVERLAY (click-to-enter)
+   =================================================================== */
+
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  background: radial-gradient(circle at 50% 40%, #0d121d 0%, #050709 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: fade-in 0.2s ease;
+}
+
+.welcome-overlay.dismissed {
+  display: none;
+}
+
+.welcome-overlay-box {
+  text-align: center;
+  padding: 40px;
+  animation: welcome-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.welcome-overlay-logo {
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 0 16px rgba(85, 239, 196, 0.5));
+}
+
+.welcome-overlay-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  color: var(--ink);
+  margin: 0 0 12px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 24px rgba(85, 239, 196, 0.35);
+}
+
+.welcome-overlay-sub {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+  animation: welcome-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes welcome-pop {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes welcome-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .welcome-overlay-title { font-size: 30px; }
+  .welcome-overlay-logo { width: 48px; height: 48px; }
+}
+
+/* ===================================================================
    RESPONSIVE
    =================================================================== */
 
