@@ -1,7 +1,7 @@
 {
   "tiers": {
     "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco"],
-    "WAITLIST": ["Game1K", "Aston", "ChillPotato", "Afterlyfe"]
+    "WAITLIST": [ "Aston", "Afterlyfe"]
   },
 
   "tierMeta": {
@@ -31,7 +31,7 @@
     },
     "sxmple": {
       "categories": {
-        "Keyframes": "B",
+        "Keyframes": "C+",
         "Cuts and Transitions": "B+",
         "Visual Effects": "B+",
         "Text Effects": "B"
@@ -48,9 +48,9 @@
     "Game1K": {
       "categories": {
         "Keyframes": "-",
-        "Cuts and Transitions": "-",
-        "Visual Effects": "-",
-        "Text Effects": "-"
+        "Cuts and Transitions": "B",
+        "Visual Effects": "B+",
+        "Text Effects": "A-"
       }
     },
     "Vorthexis": {
@@ -58,7 +58,7 @@
         "Keyframes": "C-",
         "Cuts and Transitions": "B",
         "Visual Effects": "B",
-        "Text Effects": "B+"
+        "Text Effects": "A-"
       }
     },
     "Normal": {
@@ -79,18 +79,26 @@
     },
     "Blade": {
       "categories": {
-        "Keyframes": "C",
-        "Cuts and Transitions": "C+",
-        "Visual Effects": "C",
+        "Keyframes": "-",
+        "Cuts and Transitions": "E",
+        "Visual Effects": "D-",
         "Text Effects": "C+"
       }
     },
     "Possessed_YT": {
       "categories": {
-        "Keyframes": "C",
-        "Cuts and Transitions": "B-",
+        "Keyframes": "-",
+        "Cuts and Transitions": "C+",
         "Visual Effects": "C+",
         "Text Effects": "C"
+      }
+    },
+    "Hypixel": {
+      "categories": {
+        "Keyframes": "B",
+        "Cuts and Transitions": "B-",
+        "Visual Effects": "B",
+        "Text Effects": "B"
       }
     },
     "Afterlyfe": {
@@ -101,10 +109,26 @@
         "Text Effects": "-"
       }
     },
+    "ChillPotato": {
+      "categories": {
+        "Keyframes": "-",
+        "Cuts and Transitions": "E+",
+        "Visual Effects": "E",
+        "Text Effects": "D+"
+      }
+    },
+    "Constantine": {
+      "categories": {
+        "Keyframes": "-",
+        "Cuts and Transitions": "B",
+        "Visual Effects": "-",
+        "Text Effects": "-"
+      }
+    },
     "ItzFroco": {
       "categories": {
         "Keyframes": "-",
-        "Cuts and Transitions": "D",
+        "Cuts and Transitions": "E",
         "Visual Effects": "D",
         "Text Effects": "E"
       }
