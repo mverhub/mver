@@ -274,7 +274,8 @@
     "confuxion": {
       "categories": {
         "Text Effects": "A-",
-        "Visual Effects": "A"
+        "Visual Effects": "A",
+        "Keyframes": "A"
       }
     }
   },
