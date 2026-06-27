@@ -121,9 +121,6 @@
 
   <script>
     let DATA = null;
-    // TIER_ORDER lists every possible computed grade, used only for display
-    // ordering on the Tiers page and for color/glow lookups. It is NOT used
-    // to decide who goes in which bucket anymore — see computeOverallTier().
     const TIER_ORDER = ["P","O","S","A","B+","B","B-","C+","C","C-","D","E","F","-","WAITLIST"];
 
     function colorClassFor(tierKey) {
@@ -142,38 +139,6 @@
       return `assets/avatars/${username.toLowerCase()}.png`;
     }
 
-    // ---------- TIER ORDINALS (for comparing grades like "A-", "B+", etc.) ----------
-    // Lower number = better. Covers every base letter with +/- modifiers.
-    const TIER_ORDINAL = {};
-    (function buildOrdinals() {
-      const letters = ["P", "O", "S", "A", "B", "C", "D", "E", "F"];
-      let rank = 0;
-      letters.forEach(letter => {
-        TIER_ORDINAL[letter + "+"] = rank++;
-        TIER_ORDINAL[letter] = rank++;
-        TIER_ORDINAL[letter + "-"] = rank++;
-      });
-      TIER_ORDINAL["-"] = rank++; // Unranked, worse than F-
-    })();
-
-    function ordinalFor(grade) {
-      if (TIER_ORDINAL.hasOwnProperty(grade)) return TIER_ORDINAL[grade];
-      return Infinity; // unknown grade strings sort last, never picked as "highest"
-    }
-
-    // A player's overall tier = the best (lowest-ordinal) grade among their categories.
-    function computeOverallTier(username) {
-      const player = DATA.players[username];
-      if (!player || !player.categories) return null;
-      const grades = Object.values(player.categories);
-      if (!grades.length) return null;
-      let best = grades[0];
-      for (const g of grades) {
-        if (ordinalFor(g) < ordinalFor(best)) best = g;
-      }
-      return best;
-    }
-
     async function loadData() {
       const res = await fetch('data/rankings.json');
       DATA = await res.json();
@@ -186,16 +151,16 @@
 
     // ---------- SHARED RANKING ----------
     function getRankedList() {
-      // Every player in the RANKED roster gets their tier computed from
-      // their best category grade — no manual letter-bucket needed.
-      const allUsernames = DATA.tiers["RANKED"] || [];
-
-      const withTiers = allUsernames
-        .map(username => ({ username, tierKey: computeOverallTier(username) }))
-        .filter(entry => entry.tierKey !== null)
-        .sort((a, b) => ordinalFor(a.tierKey) - ordinalFor(b.tierKey));
-
-      return withTiers.map((entry, i) => ({ ...entry, rank: i + 1 }));
+      const ordered = TIER_ORDER.filter(t => t !== "WAITLIST" && t !== "-" && DATA.tiers[t] && DATA.tiers[t].length);
+      const list = [];
+      let rank = 1;
+      ordered.forEach(tierKey => {
+        DATA.tiers[tierKey].forEach(username => {
+          list.push({ username, tierKey, rank });
+          rank++;
+        });
+      });
+      return list;
     }
 
     // ---------- PODIUM ----------
@@ -276,28 +241,25 @@
       const root = document.getElementById('roster-grid-root');
       root.innerHTML = '';
 
-      const allUsernames = DATA.tiers["RANKED"] || [];
+      TIER_ORDER.filter(t => t !== "WAITLIST").forEach(tierKey => {
+        const users = DATA.tiers[tierKey];
+        if (!users || !users.length) return;
+        users.forEach(username => {
+          const colClass = colorClassFor(tierKey);
+          const statusLabel = tierKey === "-" ? "Unranked" : `Tier ${tierKey}`;
 
-      const withTiers = allUsernames
-        .map(username => ({ username, tierKey: computeOverallTier(username) }))
-        .sort((a, b) => ordinalFor(a.tierKey) - ordinalFor(b.tierKey));
-
-      withTiers.forEach(({ username, tierKey }) => {
-        const displayTier = tierKey || "-";
-        const colClass = colorClassFor(displayTier);
-        const statusLabel = displayTier === "-" ? "Unranked" : `Tier ${displayTier}`;
-
-        const card = document.createElement('button');
-        card.className = 'matrix-profile-card';
-        card.onclick = () => openProfile(username);
-        card.innerHTML = `
-          <h3 class="matrix-name">${username}</h3>
-          <p class="matrix-rank-status">${statusLabel}</p>
-          <div class="matrix-tier-container">
-            <span class="matrix-lbl">TIER:</span>
-            <div class="tier-tag-badge ${colClass}">${displayTier}</div>
-          </div>`;
-        root.appendChild(card);
+          const card = document.createElement('button');
+          card.className = 'matrix-profile-card';
+          card.onclick = () => openProfile(username);
+          card.innerHTML = `
+            <h3 class="matrix-name">${username}</h3>
+            <p class="matrix-rank-status">${statusLabel}</p>
+            <div class="matrix-tier-container">
+              <span class="matrix-lbl">TIER:</span>
+              <div class="tier-tag-badge ${colClass}">${tierKey}</div>
+            </div>`;
+          root.appendChild(card);
+        });
       });
 
       buildWaitlist();
@@ -340,8 +302,10 @@
 
     // ---------- PROFILE MODAL ----------
     function findTierFor(username) {
-      if ((DATA.tiers["WAITLIST"] || []).includes(username)) return "WAITLIST";
-      return computeOverallTier(username); // null if no categories yet
+      for (const tierKey of TIER_ORDER) {
+        if (DATA.tiers[tierKey] && DATA.tiers[tierKey].includes(username)) return tierKey;
+      }
+      return null;
     }
 
     function glowClassFor(tierKey) {
