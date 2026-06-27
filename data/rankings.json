@@ -75,9 +75,9 @@
   "players": {
     "confuxion": {
       "categories": {
-        "Keyframes": "A-",
-        "Cuts and Transitions": "B+",
-        "Visual Effects": "A",
+        "Keyframes": "A",
+        "Cuts and Transitions": "A-",
+        "Visual Effects": "A-",
         "Text Effects": "B+"
       }
     },
