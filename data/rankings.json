@@ -1,7 +1,7 @@
 {
   "tiers": {
-    "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Game1K", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco", "Hypixel", "Constantine", "ChillPotato", "bob", "Bobby_Jr"],
-    "WAITLIST": [ "Aston", "Afterlyfe"]
+    "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Game1K", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco", "Hypixel", "ChillPotato", "bob", "Bobby_Jr"],
+    "WAITLIST": [ "Aston", "Afterlyfe", "Constantine"]
   },
 
   "tierMeta": {
@@ -128,7 +128,7 @@
     "Constantine": {
       "categories": {
         "Keyframes": "-",
-        "Cuts and Transitions": "C",
+        "Cuts and Transitions": "-",
         "Visual Effects": "-",
         "Text Effects": "-"
       }
