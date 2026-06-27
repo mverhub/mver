@@ -1,6 +1,6 @@
 {
   "tiers": {
-    "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Game1K", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco", "Hypixel", "Constantine", "ChillPotato"],
+    "RANKED": ["confuxion", "sxmple", "TimmyLoal", "Game1K", "Vorthexis", "Normal", "x9jm", "Blade", "Possessed_YT", "ItzFroco", "Hypixel", "Constantine", "ChillPotato", "bob"],
     "WAITLIST": [ "Aston", "Afterlyfe"]
   },
 
@@ -123,6 +123,14 @@
         "Cuts and Transitions": "C",
         "Visual Effects": "-",
         "Text Effects": "-"
+      }
+    },
+    "bob": {
+      "categories": {
+        "Keyframes": "P+",
+        "Cuts and Transitions": "P+",
+        "Visual Effects": "P+",
+        "Text Effects": "P+"
       }
     },
     "ItzFroco": {
