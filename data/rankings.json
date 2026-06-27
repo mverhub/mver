@@ -5,9 +5,7 @@
     "S": [],
     "A+": [],
     "A": [],
-    "A-": [
-      "confuxion"
-    ],
+    "A-": [],
     "B+": [
       "sxmple",
       "TimmyLoal",
@@ -118,14 +116,6 @@
     "Text Effects"
   ],
   "players": {
-    "confuxion": {
-      "categories": {
-        "Keyframes": "A-",
-        "Cuts and Transitions": "B+",
-        "Visual Effects": "A",
-        "Text Effects": "B+"
-      }
-    },
     "sxmple": {
       "categories": {
         "Keyframes": "C+",
