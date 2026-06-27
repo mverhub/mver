@@ -1,8 +1,6 @@
 {
   "tiers": {
-    "P": [
-      "x9jm"
-    ],
+    "P": [],
     "O": [],
     "S": [],
     "A+": [],
@@ -28,7 +26,8 @@
       "Blade",
       "Possessed_YT",
       "Skattered",
-      "Husky"
+      "Husky",
+      "x9jm"
     ],
     "C": [],
     "C-": [],
