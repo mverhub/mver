@@ -52,7 +52,8 @@
       "Aston",
       "ChillPotato",
       "Afterlyfe",
-      "AsTo"
+      "AsTo",
+      "test"
     ]
   },
   "tierMeta": {
@@ -263,14 +264,6 @@
         "Text Effects": "C+"
       }
     },
-    "bob": {
-      "categories": {
-        "Keyframes": "Z",
-        "Cuts and Transitions": "Z",
-        "Visual Effects": "Z",
-        "Text Effects": "Z"
-      }
-    },
     "ItzFroco": {
       "categories": {
         "Keyframes": "E",
@@ -280,6 +273,9 @@
       }
     },
     "AsTo": {
+      "categories": {}
+    },
+    "test": {
       "categories": {}
     }
   },
