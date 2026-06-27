@@ -167,10 +167,10 @@
     },
     "bob": {
       "categories": {
-        "Keyframes": "F",
-        "Cuts and Transitions": "F",
-        "Visual Effects": "F",
-        "Text Effects": "F"
+        "Keyframes": "Z",
+        "Cuts and Transitions": "Z",
+        "Visual Effects": "Z",
+        "Text Effects": "Z"
       }
     },
     "ItzFroco": {
