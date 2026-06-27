@@ -52,7 +52,8 @@
       "Aston",
       "ChillPotato",
       "Afterlyfe",
-      "AsTo"
+      "AsTo",
+      "confuxion"
     ]
   },
   "tierMeta": {
@@ -267,6 +268,9 @@
       "categories": {}
     },
     "test": {
+      "categories": {}
+    },
+    "confuxion": {
       "categories": {}
     }
   },
