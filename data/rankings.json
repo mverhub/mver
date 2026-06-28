@@ -6,7 +6,6 @@
     "A+": [],
     "A": [],
     "A-": [
-      "test",
       "confuxion"
     ],
     "B+": [
@@ -252,9 +251,6 @@
         "Visual Effects": "D",
         "Text Effects": "E+"
       }
-    },
-    "test": {
-      "categories": {}
     },
     "confuxion": {
       "categories": {
