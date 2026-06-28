@@ -12,28 +12,26 @@
       "sxmple",
       "TimmyLoal",
       "Game1K",
-      "Vorthexis",
-      "Hypixel"
+      "Hypixel",
+      "MultiC12"
     ],
-    "B": [],
+    "B": [
+      "Vorthexis"
+    ],
     "B-": [
-      "MultiC12",
-      "Normal"
-    ],
-    "C+": [
-      "Possessed_YT",
-      "x9jm",
-      "Husky",
-      "Skattered",
+      "Normal",
       "KhiBietNoi"
     ],
+    "C+": [
+      "x9jm",
+      "Blade",
+      "Possessed_YT",
+      "Skattered",
+      "Husky"
+    ],
     "C": [],
-    "C-": [
-      "Blade"
-    ],
-    "D+": [
-      "t"
-    ],
+    "C-": [],
+    "D+": [],
     "D": [
       "ItzFroco"
     ],
@@ -41,98 +39,58 @@
     "E+": [],
     "E": [],
     "E-": [],
-    "F+": [],
-    "F": [],
-    "F-": [
+    "F": [
       "Bobby_Jr"
     ],
-    "-": [],
+    "-": [
+      "Constantine"
+    ],
     "WAITLIST": [
       "system1117",
       "Aston",
-      "Afterlyfe",
-      "Constantine",
-      "AsTo"
+      "ChillPotato",
+      "Afterlyfe"
     ]
   },
   "tierMeta": {
-    "P": {
-      "label": "PREEMINENT",
-      "desc": "Absolute Best / High Elite",
-      "color": "#cb7eff"
-    },
-    "O": {
-      "label": "OPTIMAL",
-      "desc": "Elite",
-      "color": "#ffda79"
-    },
-    "S": {
-      "label": "MASTERY",
-      "desc": "Exceeding Average",
-      "color": "#74b9ff"
-    },
-    "A": {
-      "label": "ADVANCED",
-      "desc": "Well Above Average",
-      "color": "#55efc4"
-    },
-    "B": {
-      "label": "UPPER INTERMEDIATE",
-      "desc": "Above Average",
-      "color": "#f1c40f"
-    },
-    "C": {
-      "label": "INTERMEDIATE",
-      "desc": "Within Average range",
-      "color": "#ff9f43"
-    },
-    "D": {
-      "label": "DEVELOPING",
-      "desc": "Developing Towards Standard",
-      "color": "#ff7f50"
-    },
-    "E": {
-      "label": "BASIC",
-      "desc": "Basic Editing Knowledge",
-      "color": "#ff4757"
-    },
-    "F": {
-      "label": "ENTRY",
-      "desc": "New Editor",
-      "color": "#57606f"
-    },
-    "-": {
-      "label": "UNRANKED",
-      "desc": "Does not use keyframes, cuts/transitions, visual effects, or text effects",
-      "color": "#747d8c"
-    },
-    "WAITLIST": {
-      "label": "WAITLIST",
-      "desc": "Awaiting first evaluation",
-      "color": "#2f3542"
-    }
+    "P": { "label": "PREEMINENT",        "desc": "Absolute Best / High Elite",          "color": "#cb7eff" },
+    "O": { "label": "OPTIMAL",            "desc": "Elite",                          "color": "#ffda79" },
+    "S": { "label": "MASTERY",            "desc": "Exceeding Average",           "color": "#74b9ff" },
+    "A": { "label": "ADVANCED",           "desc": "Well Above Average",                    "color": "#55efc4" },
+    "B": { "label": "UPPER INTERMEDIATE", "desc": "Above Average",                         "color": "#f1c40f" },
+    "C": { "label": "INTERMEDIATE",       "desc": "Within Average range",                               "color": "#ff9f43" },
+    "D": { "label": "DEVELOPING",         "desc": "Developing Towards Standard",            "color": "#ff7f50" },
+    "E": { "label": "BASIC",              "desc": "Basic Editing Knowledge", "color": "#ff4757" },
+    "F": { "label": "ENTRY",              "desc": "New Editor", "color": "#57606f" },
+    "-": { "label": "UNRANKED",           "desc": "Does not use keyframes, cuts/transitions, visual effects, or text effects", "color": "#747d8c" },
+    "WAITLIST": { "label": "WAITLIST",    "desc": "Awaiting first evaluation",             "color": "#2f3542" }
   },
-  "categoryList": [
-    "Keyframes",
-    "Cuts and Transitions",
-    "Visual Effects",
-    "Text Effects"
-  ],
+
+  "categoryList": ["Keyframes", "Cuts and Transitions", "Visual Effects", "Text Effects"],
+
   "players": {
+    "confuxion": {
+      "categories": {
+        "Keyframes": "A-",
+        "Cuts and Transitions": "B+",
+        "Visual Effects": "A",
+        "Text Effects": "B+"
+      }
+    },
     "sxmple": {
       "categories": {
         "Keyframes": "C+",
-        "Cuts and Transitions": "A-",
+        "Cuts and Transitions": "B+",
         "Visual Effects": "B+",
-        "Text Effects": "B+"
+        "Text Effects": "C+"
       }
     },
     "Bobby_Jr": {
       "categories": {
-        "Keyframes": "F-",
-        "Cuts and Transitions": "F-",
-        "Visual Effects": "F-",
-        "Text Effects": "F-"
+        "Keyframes": "F",
+        "Cuts and Transitions": "F",
+        "Visual Effects": "F",
+        "Text Effects": "F"
       }
     },
     "TimmyLoal": {
@@ -215,6 +173,14 @@
         "Text Effects": "E"
       }
     },
+    "Constantine": {
+      "categories": {
+        "Keyframes": "-",
+        "Cuts and Transitions": "-",
+        "Visual Effects": "-",
+        "Text Effects": "-"
+      }
+    },
     "Husky": {
       "categories": {
         "Keyframes": "-",
@@ -247,6 +213,14 @@
         "Text Effects": "C+"
       }
     },
+    "bob": {
+      "categories": {
+        "Keyframes": "Z",
+        "Cuts and Transitions": "Z",
+        "Visual Effects": "Z",
+        "Text Effects": "Z"
+      }
+    },
     "ItzFroco": {
       "categories": {
         "Keyframes": "E",
@@ -254,25 +228,9 @@
         "Visual Effects": "D",
         "Text Effects": "E+"
       }
-    },
-    "confuxion": {
-      "categories": {
-        "Keyframes": "A",
-        "Cuts and Transitions": "A-",
-        "Visual Effects": "A-",
-        "Text Effects": "B+"
-      }
-    },
-    "Constantine": {
-      "categories": {}
-    },
-    "AsTo": {
-      "categories": {}
-    },
-    "t": {
-      "categories": {}
     }
   },
+
   "credits": [
     {
       "name": "TimmyLoal",

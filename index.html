@@ -83,7 +83,7 @@
     <div class="portal-well">
       <h2>Submit Edits</h2>
       <p>Join the competition:</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf53gri3gPaUoNruxWjGBx3Yg7l4RYA11F61679cb2jpb5Wlw/viewform?usp=dialog" target="_blank" rel="noopener" class="portal-btn">Open Form Link</a>
+      <a href="https://forms.google.com" target="_blank" rel="noopener" class="portal-btn">Open Form Link</a>
     </div>
   </div>
 
@@ -140,7 +140,7 @@
     }
 
     async function loadData() {
-      const res = await fetch('data/rankings.json');
+      const res = await fetch(`data/rankings.json?v=${Date.now()}`);
       DATA = await res.json();
       buildPodium();
       buildLeaderboard();
