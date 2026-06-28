@@ -5,7 +5,9 @@
     "S": [],
     "A+": [],
     "A": [],
-    "A-": [],
+    "A-": [
+      "test"
+    ],
     "B+": [
       "sxmple",
       "TimmyLoal",
@@ -50,8 +52,7 @@
     "WAITLIST": [
       "system1117",
       "Aston",
-      "Afterlyfe",
-      "test"
+      "Afterlyfe"
     ]
   },
   "tierMeta": {
