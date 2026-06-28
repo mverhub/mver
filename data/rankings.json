@@ -6,7 +6,9 @@
     "A+": [
       "test8"
     ],
-    "A": [],
+    "A": [
+      "test111"
+    ],
     "A-": [
       "confuxion",
       "Test3"
@@ -52,8 +54,7 @@
       "system1117",
       "Aston",
       "Afterlyfe",
-      "Constantine",
-      "test111"
+      "Constantine"
     ]
   },
   "tierMeta": {
