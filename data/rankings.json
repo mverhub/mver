@@ -54,7 +54,8 @@
       "system1117",
       "Aston",
       "Afterlyfe",
-      "Constantine"
+      "Constantine",
+      "AsTo"
     ]
   },
   "tierMeta": {
@@ -275,6 +276,9 @@
       "categories": {}
     },
     "test111": {
+      "categories": {}
+    },
+    "AsTo": {
       "categories": {}
     }
   },
