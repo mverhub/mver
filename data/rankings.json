@@ -15,10 +15,11 @@
       "TimmyLoal",
       "Game1K",
       "Hypixel",
-      "MultiC12",
       "Vorthexis"
     ],
-    "B": [],
+    "B": [
+      "MultiC12"
+    ],
     "B-": [
       "Normal",
       "KhiBietNoi"
