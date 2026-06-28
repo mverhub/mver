@@ -50,7 +50,8 @@
     "WAITLIST": [
       "system1117",
       "Aston",
-      "Afterlyfe"
+      "Afterlyfe",
+      "confuxion"
     ]
   },
   "tierMeta": {
@@ -262,6 +263,9 @@
       }
     },
     "test": {
+      "categories": {}
+    },
+    "confuxion": {
       "categories": {}
     }
   },
