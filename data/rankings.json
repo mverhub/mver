@@ -44,9 +44,7 @@
     "F-": [
       "Bobby_Jr"
     ],
-    "-": [
-      "Constantine"
-    ],
+    "-": [],
     "WAITLIST": [
       "system1117",
       "Aston",
@@ -212,14 +210,6 @@
         "Cuts and Transitions": "E+",
         "Visual Effects": "E",
         "Text Effects": "E"
-      }
-    },
-    "Constantine": {
-      "categories": {
-        "Keyframes": "-",
-        "Cuts and Transitions": "-",
-        "Visual Effects": "-",
-        "Text Effects": "-"
       }
     },
     "Husky": {
