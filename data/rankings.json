@@ -39,7 +39,9 @@
     "D": [
       "ItzFroco"
     ],
-    "D-": [],
+    "D-": [
+      "test123"
+    ],
     "E+": [],
     "E": [],
     "E-": [],
@@ -54,8 +56,7 @@
       "Aston",
       "Afterlyfe",
       "Constantine",
-      "AsTo",
-      "test123"
+      "AsTo"
     ]
   },
   "tierMeta": {
