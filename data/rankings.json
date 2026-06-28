@@ -6,8 +6,7 @@
     "A+": [],
     "A": [],
     "A-": [
-      "test",
-      "confuxion"
+      "test"
     ],
     "B+": [
       "sxmple",
@@ -260,14 +259,6 @@
         "Cuts and Transitions": "D",
         "Visual Effects": "D",
         "Text Effects": "E+"
-      }
-    },
-    "confuxion": {
-      "categories": {
-        "Text Effects": "B+",
-        "Keyframes": "A",
-        "Visual Effects": "A-",
-        "Cuts and Transitions": "A-"
       }
     },
     "test": {
