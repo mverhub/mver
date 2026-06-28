@@ -49,7 +49,8 @@
       "system1117",
       "Aston",
       "ChillPotato",
-      "Afterlyfe"
+      "Afterlyfe",
+      "gas"
     ]
   },
   "tierMeta": {
@@ -275,6 +276,9 @@
         "Visual Effects": "D",
         "Text Effects": "E+"
       }
+    },
+    "gas": {
+      "categories": {}
     }
   },
   "credits": [
