@@ -7,9 +7,7 @@
     "A": [
       "confuxion"
     ],
-    "A-": [
-      "gas"
-    ],
+    "A-": [],
     "B+": [
       "sxmple",
       "TimmyLoal",
@@ -277,9 +275,6 @@
         "Visual Effects": "D",
         "Text Effects": "E+"
       }
-    },
-    "gas": {
-      "categories": {}
     }
   },
   "credits": [
