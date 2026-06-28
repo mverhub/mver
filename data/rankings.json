@@ -280,7 +280,8 @@
     "confuxion": {
       "categories": {
         "Keyframes": "A",
-        "Text Effects": "B+"
+        "Text Effects": "B+",
+        "Cuts and Transitions": "A-"
       }
     }
   },
