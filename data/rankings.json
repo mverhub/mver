@@ -49,25 +49,73 @@
       "system1117",
       "Aston",
       "ChillPotato",
-      "Afterlyfe"
+      "Afterlyfe",
+      "aurafarmer52"
     ]
   },
   "tierMeta": {
-    "P": { "label": "PREEMINENT",        "desc": "Absolute Best / High Elite",          "color": "#cb7eff" },
-    "O": { "label": "OPTIMAL",            "desc": "Elite",                          "color": "#ffda79" },
-    "S": { "label": "MASTERY",            "desc": "Exceeding Average",           "color": "#74b9ff" },
-    "A": { "label": "ADVANCED",           "desc": "Well Above Average",                    "color": "#55efc4" },
-    "B": { "label": "UPPER INTERMEDIATE", "desc": "Above Average",                         "color": "#f1c40f" },
-    "C": { "label": "INTERMEDIATE",       "desc": "Within Average range",                               "color": "#ff9f43" },
-    "D": { "label": "DEVELOPING",         "desc": "Developing Towards Standard",            "color": "#ff7f50" },
-    "E": { "label": "BASIC",              "desc": "Basic Editing Knowledge", "color": "#ff4757" },
-    "F": { "label": "ENTRY",              "desc": "New Editor", "color": "#57606f" },
-    "-": { "label": "UNRANKED",           "desc": "Does not use keyframes, cuts/transitions, visual effects, or text effects", "color": "#747d8c" },
-    "WAITLIST": { "label": "WAITLIST",    "desc": "Awaiting first evaluation",             "color": "#2f3542" }
+    "P": {
+      "label": "PREEMINENT",
+      "desc": "Absolute Best / High Elite",
+      "color": "#cb7eff"
+    },
+    "O": {
+      "label": "OPTIMAL",
+      "desc": "Elite",
+      "color": "#ffda79"
+    },
+    "S": {
+      "label": "MASTERY",
+      "desc": "Exceeding Average",
+      "color": "#74b9ff"
+    },
+    "A": {
+      "label": "ADVANCED",
+      "desc": "Well Above Average",
+      "color": "#55efc4"
+    },
+    "B": {
+      "label": "UPPER INTERMEDIATE",
+      "desc": "Above Average",
+      "color": "#f1c40f"
+    },
+    "C": {
+      "label": "INTERMEDIATE",
+      "desc": "Within Average range",
+      "color": "#ff9f43"
+    },
+    "D": {
+      "label": "DEVELOPING",
+      "desc": "Developing Towards Standard",
+      "color": "#ff7f50"
+    },
+    "E": {
+      "label": "BASIC",
+      "desc": "Basic Editing Knowledge",
+      "color": "#ff4757"
+    },
+    "F": {
+      "label": "ENTRY",
+      "desc": "New Editor",
+      "color": "#57606f"
+    },
+    "-": {
+      "label": "UNRANKED",
+      "desc": "Does not use keyframes, cuts/transitions, visual effects, or text effects",
+      "color": "#747d8c"
+    },
+    "WAITLIST": {
+      "label": "WAITLIST",
+      "desc": "Awaiting first evaluation",
+      "color": "#2f3542"
+    }
   },
-
-  "categoryList": ["Keyframes", "Cuts and Transitions", "Visual Effects", "Text Effects"],
-
+  "categoryList": [
+    "Keyframes",
+    "Cuts and Transitions",
+    "Visual Effects",
+    "Text Effects"
+  ],
   "players": {
     "confuxion": {
       "categories": {
@@ -228,9 +276,11 @@
         "Visual Effects": "D",
         "Text Effects": "E+"
       }
+    },
+    "aurafarmer52": {
+      "categories": {}
     }
   },
-
   "credits": [
     {
       "name": "TimmyLoal",
