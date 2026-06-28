@@ -278,7 +278,9 @@
       }
     },
     "yes": {
-      "categories": {}
+      "categories": {
+        "Keyframes": "A-"
+      }
     }
   },
   "credits": [
