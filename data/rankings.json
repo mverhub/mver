@@ -39,9 +39,7 @@
     "D": [
       "ItzFroco"
     ],
-    "D-": [
-      "test123"
-    ],
+    "D-": [],
     "E+": [],
     "E": [],
     "E-": [],
@@ -277,9 +275,6 @@
       "categories": {}
     },
     "AsTo": {
-      "categories": {}
-    },
-    "test123": {
       "categories": {}
     }
   },
