@@ -50,7 +50,8 @@
     "WAITLIST": [
       "system1117",
       "Aston",
-      "Afterlyfe"
+      "Afterlyfe",
+      "test"
     ]
   },
   "tierMeta": {
@@ -267,6 +268,9 @@
         "Keyframes": "A",
         "Visual Effects": "A-"
       }
+    },
+    "test": {
+      "categories": {}
     }
   },
   "credits": [
