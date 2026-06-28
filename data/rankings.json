@@ -1,6 +1,8 @@
 {
   "tiers": {
-    "P": [],
+    "P": [
+      "aurafarmer52"
+    ],
     "O": [],
     "S": [],
     "A+": [],
@@ -49,8 +51,7 @@
       "system1117",
       "Aston",
       "ChillPotato",
-      "Afterlyfe",
-      "aurafarmer52"
+      "Afterlyfe"
     ]
   },
   "tierMeta": {
