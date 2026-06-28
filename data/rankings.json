@@ -3,7 +3,9 @@
     "P": [],
     "O": [],
     "S": [],
-    "A+": [],
+    "A+": [
+      "test8"
+    ],
     "A": [],
     "A-": [
       "confuxion"
@@ -50,8 +52,7 @@
       "Aston",
       "Afterlyfe",
       "Constantine",
-      "Test3",
-      "test8"
+      "Test3"
     ]
   },
   "tierMeta": {
