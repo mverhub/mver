@@ -51,7 +51,8 @@
       "system1117",
       "Aston",
       "ChillPotato",
-      "Afterlyfe"
+      "Afterlyfe",
+      "Constantine"
     ]
   },
   "tierMeta": {
@@ -277,6 +278,9 @@
         "Cuts and Transitions": "A-",
         "Visual Effects": "A-"
       }
+    },
+    "Constantine": {
+      "categories": {}
     }
   },
   "credits": [
