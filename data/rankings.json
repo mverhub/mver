@@ -278,7 +278,9 @@
       }
     },
     "confuxion": {
-      "categories": {}
+      "categories": {
+        "Keyframes": "A-"
+      }
     }
   },
   "credits": [
