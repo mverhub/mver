@@ -54,7 +54,8 @@
       "Aston",
       "Afterlyfe",
       "Constantine",
-      "AsTo"
+      "AsTo",
+      "test123"
     ]
   },
   "tierMeta": {
@@ -275,6 +276,9 @@
       "categories": {}
     },
     "AsTo": {
+      "categories": {}
+    },
+    "test123": {
       "categories": {}
     }
   },
