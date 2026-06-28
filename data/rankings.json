@@ -4,9 +4,7 @@
     "O": [],
     "S": [],
     "A+": [],
-    "A": [
-      "confuxion"
-    ],
+    "A": [],
     "A-": [
       "yes"
     ],
@@ -118,14 +116,6 @@
     "Text Effects"
   ],
   "players": {
-    "confuxion": {
-      "categories": {
-        "Keyframes": "A-",
-        "Cuts and Transitions": "B+",
-        "Visual Effects": "A",
-        "Text Effects": "B+"
-      }
-    },
     "sxmple": {
       "categories": {
         "Keyframes": "C+",
