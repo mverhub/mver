@@ -1,8 +1,6 @@
 {
   "tiers": {
-    "P": [
-      "aurafarmer52"
-    ],
+    "P": [],
     "O": [],
     "S": [],
     "A+": [],
@@ -276,14 +274,6 @@
         "Cuts and Transitions": "D",
         "Visual Effects": "D",
         "Text Effects": "E+"
-      }
-    },
-    "aurafarmer52": {
-      "categories": {
-        "Keyframes": "P",
-        "Cuts and Transitions": "P",
-        "Visual Effects": "P",
-        "Text Effects": "P"
       }
     }
   },
