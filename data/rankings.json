@@ -7,9 +7,7 @@
     "A": [
       "confuxion"
     ],
-    "A-": [
-      "yes"
-    ],
+    "A-": [],
     "B+": [
       "sxmple",
       "TimmyLoal",
@@ -261,14 +259,6 @@
         "Cuts and Transitions": "D",
         "Visual Effects": "D",
         "Text Effects": "E+"
-      }
-    },
-    "yes": {
-      "categories": {
-        "Keyframes": "A-",
-        "Cuts and Transitions": "A-",
-        "Visual Effects": "A-",
-        "Text Effects": "A-"
       }
     },
     "confuxion": {
