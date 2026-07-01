@@ -256,7 +256,8 @@
     },
     "ChillPotato": {
       "categories": {
-        "Visual Effects": "E"
+        "Visual Effects": "E",
+        "Text Effects": "D-"
       }
     }
   },
