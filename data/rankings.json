@@ -48,7 +48,8 @@
       "Aston",
       "ChillPotato",
       "Afterlyfe",
-      "Constantine"
+      "Constantine",
+      "AsTo"
     ]
   },
   "tierMeta": {
@@ -252,6 +253,9 @@
       }
     },
     "Constantine": {
+      "categories": {}
+    },
+    "AsTo": {
       "categories": {}
     }
   },
