@@ -49,7 +49,8 @@
       "Afterlyfe",
       "Constantine",
       "AsTo",
-      "NotManuVerse"
+      "NotManuVerse",
+      "ChillPotato"
     ]
   },
   "tierMeta": {
@@ -251,6 +252,9 @@
       "categories": {}
     },
     "NotManuVerse": {
+      "categories": {}
+    },
+    "ChillPotato": {
       "categories": {}
     }
   },
