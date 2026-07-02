@@ -41,9 +41,7 @@
     "E+": [
       "ChillPotato"
     ],
-    "E": [
-      "Aston"
-    ],
+    "E": [],
     "E-": [],
     "F": [],
     "-": [],
@@ -260,11 +258,6 @@
       "categories": {
         "Visual Effects": "E",
         "Text Effects": "D-"
-      }
-    },
-    "Aston": {
-      "categories": {
-        "Cuts and Transitions": "E"
       }
     }
   },
