@@ -50,8 +50,7 @@
       "Afterlyfe",
       "Constantine",
       "AsTo",
-      "NotManuVerse",
-      "Aston"
+      "NotManuVerse"
     ]
   },
   "tierMeta": {
@@ -259,14 +258,6 @@
       "categories": {
         "Visual Effects": "E",
         "Text Effects": "D-"
-      }
-    },
-    "Aston": {
-      "categories": {
-        "Keyframes": "-",
-        "Cuts and Transitions": "E",
-        "Visual Effects": "-",
-        "Text Effects": "-"
       }
     }
   },
