@@ -263,7 +263,8 @@
     },
     "Aston": {
       "categories": {
-        "Cuts and Transitions": "E"
+        "Cuts and Transitions": "E",
+        "Keyframes": "-"
       }
     }
   },
