@@ -52,7 +52,8 @@
       "Afterlyfe",
       "Constantine",
       "AsTo",
-      "NotManuVerse"
+      "NotManuVerse",
+      "YTVideo123"
     ]
   },
   "tierMeta": {
@@ -271,6 +272,9 @@
         "Visual Effects": "-",
         "Text Effects": "-"
       }
+    },
+    "YTVideo123": {
+      "categories": {}
     }
   },
   "credits": [
