@@ -41,9 +41,7 @@
     "E+": [
       "ChillPotato"
     ],
-    "E": [
-      "Aston"
-    ],
+    "E": [],
     "E-": [],
     "F": [],
     "-": [],
@@ -264,14 +262,6 @@
         "Text Effects": "D-",
         "Keyframes": "-",
         "Cuts and Transitions": "-"
-      }
-    },
-    "Aston": {
-      "categories": {
-        "Cuts and Transitions": "E",
-        "Keyframes": "-",
-        "Visual Effects": "-",
-        "Text Effects": "-"
       }
     },
     "YTVideo123": {
