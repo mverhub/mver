@@ -272,7 +272,9 @@
       "categories": {}
     },
     "Aston": {
-      "categories": {}
+      "categories": {
+        "Keyframes": "-"
+      }
     }
   },
   "credits": [
