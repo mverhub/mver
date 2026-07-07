@@ -283,6 +283,11 @@
     },
     "YamiAm": {
       "categories": {}
+    },
+    "Yami": {
+      "categories": {
+        "Keyframes": "F"
+      }
     }
   },
   "credits": [
