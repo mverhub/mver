@@ -27,11 +27,12 @@
     ],
     "C": [
       "Husky",
-      "MultiC12",
       "Skattered",
       "x9jm"
     ],
-    "C-": [],
+    "C-": [
+      "MultiC12"
+    ],
     "D+": [
       "Blade"
     ],
