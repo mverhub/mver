@@ -251,7 +251,9 @@
       }
     },
     "Constantine": {
-      "categories": {}
+      "categories": {
+        "Keyframes": "C-"
+      }
     },
     "AsTo": {
       "categories": {}
