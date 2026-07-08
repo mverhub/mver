@@ -299,22 +299,22 @@
   "credits": [
     {
       "name": "TimmyLoal",
-      "role": "MVER Founder / Creator",
+      "role": "MVER Founder / Creator / Edit Reviewer",
       "desc": "Creator of MVER, the tier system logic, and the core structural code design."
     },
     {
       "name": "Vorthexis",
-      "role": "MVER Co-Owner / Website Manager",
+      "role": "MVER Co-Founder / Website Manager / Edit Reviewer",
       "desc": "MVER Council Assistant, helped coordinate page layout assets and directory setups."
     },
     {
       "name": "Blade",
-      "role": "Website Helper",
+      "role": "MVER Developer / Website Helper / Edit Reviewer",
       "desc": "Helped write advanced responsive rendering blocks and code logic modules."
     },
     {
       "name": "x9jm",
-      "role": "MVER Helper / Website Manager",
+      "role": "MVER Developer / Website Manager",
       "desc": "Helped on the website including reworking it."
     }
   ]
