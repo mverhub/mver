@@ -9,8 +9,8 @@
       "confuxion"
     ],
     "B+": [
-      "TimmyLoal",
       "sxmple",
+      "TimmyLoal",
       "Game1K",
       "Vorthexis"
     ],
@@ -315,16 +315,12 @@
     {
       "name": "x9jm",
       "role": "MVER Developer / Website Manager",
-<<<<<<< HEAD
-      "desc": "Helped on the website including reworking it, Creator of MVER Bot"
-=======
-      "desc": "Helped on the website including reworking it."
+      "desc": "Helped on the website including reworking it. Also the developer of the MVER bot."
     },
     {
       "name": "ziadlive",
       "role": "MVER Developer",
       "desc": "Will be helping with MVER In the future."
->>>>>>> fa04968 (auto update from discord)
     }
   ]
 }
