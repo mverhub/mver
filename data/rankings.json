@@ -315,7 +315,16 @@
     {
       "name": "x9jm",
       "role": "MVER Developer / Website Manager",
+<<<<<<< HEAD
       "desc": "Helped on the website including reworking it, Creator of MVER Bot"
+=======
+      "desc": "Helped on the website including reworking it."
+    },
+    {
+      "name": "ziadlive",
+      "role": "MVER Developer",
+      "desc": "Will be helping with MVER In the future."
+>>>>>>> fa04968 (auto update from discord)
     }
   ]
 }
