@@ -480,48 +480,85 @@ button {
 }
 
 /* ===================================================================
-   TIERS ARCHITECTURE VIEW
+   TIERS GRID VIEW
    =================================================================== */
 
-.architecture-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.arch-shelf-block {
-  width: 100%;
-  max-width: 500px;
-  background: var(--bg-panel);
-  border: 3px solid var(--line);
-  border-radius: var(--radius);
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
+  width: 100%;
   box-sizing: border-box;
 }
 
-.arch-badge {
+.tier-card {
+  background: var(--bg-panel);
+  border: 3px solid #000;
+  border-top: 5px solid var(--tier-color, var(--accent));
+  border-radius: 8px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tier-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 10px 24px rgba(0, 0, 0, 0.4), 
+    0 0 18px color-mix(in srgb, var(--tier-color, var(--accent)) 25%, transparent);
+}
+
+.tier-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tier-card-badge {
   font-family: var(--font-display);
-  font-size: 15px;
-  min-width: 110px;
-  height: 48px;
+  font-size: 14px;
+  min-width: 100px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid #000000;
+  border: 2px solid #000000;
   color: #000000;
   border-radius: var(--radius);
-  flex-shrink: 0;
-  padding: 0 10px;
+  padding: 0 8px;
   white-space: nowrap;
+  font-weight: bold;
 }
 
-.arch-info { text-align: left; }
-.arch-title { font-family: var(--font-display); font-size: 22px; margin: 0; letter-spacing: 0.5px; }
-.arch-desc { font-size: 12px; color: var(--ink-dim); margin: 4px 0 0; }
+.tier-card-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-dim);
+  font-weight: 700;
+}
+
+.tier-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tier-card-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.tier-card-desc {
+  font-size: 12px;
+  color: var(--ink-dim);
+  margin: 0;
+  line-height: 1.5;
+}
 
 /* ===================================================================
    ROSTER GRID

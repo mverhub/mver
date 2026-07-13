@@ -64,7 +64,7 @@
   <!-- TIERS -->
   <div id="view-tiers" class="view-content">
     <div class="section-header-wrap"><div class="section-header-title">Tiers</div></div>
-    <div class="architecture-container" id="tiers-root"></div>
+    <div id="tiers-root"></div>
   </div>
 
   <!-- EDITORS ROSTER -->
@@ -233,21 +233,42 @@
     function buildTiers() {
       const root = document.getElementById('tiers-root');
       root.innerHTML = '';
+      
+      const grid = document.createElement('div');
+      grid.className = 'tiers-grid';
+
       ["P","O","S","A","B","C","D","E","F"].forEach(letter => {
         const meta = DATA.tierMeta[letter];
         if (!meta) return;
+        
         const colClass = colorClassFor(letter);
         const displayName = BASE_TIER_DISPLAY_NAMES[letter] || letter;
-        const block = document.createElement('div');
-        block.className = 'arch-shelf-block';
-        block.innerHTML = `
-          <div class="arch-badge ${colClass}">${displayName}</div>
-          <div class="arch-info">
-            <h3 class="arch-title" style="color:${meta.color};">${meta.label}</h3>
-            <p class="arch-desc">${meta.desc}</p>
+
+        // Calculate count including sub-tiers
+        let count = 0;
+        if (letter === "P" || letter === "O" || letter === "S" || letter === "F") {
+          count = (DATA.tiers[letter] || []).length;
+        } else {
+          count = (DATA.tiers[letter + "+"] || []).length +
+                  (DATA.tiers[letter] || []).length +
+                  (DATA.tiers[letter + "-"] || []).length;
+        }
+
+        const card = document.createElement('div');
+        card.className = 'tier-card';
+        card.style.setProperty('--tier-color', meta.color);
+        card.innerHTML = `
+          <div class="tier-card-header">
+            <div class="tier-card-badge ${colClass}">${displayName}</div>
+            <div class="tier-card-count">${count} ${count === 1 ? 'Editor' : 'Editors'}</div>
+          </div>
+          <div class="tier-card-body">
+            <h3 class="tier-card-title" style="color:${meta.color};">${meta.label}</h3>
+            <p class="tier-card-desc">${meta.desc}</p>
           </div>`;
-        root.appendChild(block);
+        grid.appendChild(card);
       });
+      root.appendChild(grid);
     }
 
     // ---------- ROSTER ----------
