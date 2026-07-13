@@ -72,7 +72,7 @@
     },
     "S": {
       "label": "MASTERY",
-      "desc": "Exceeding Average",
+      "desc": "Mastery of editing skill",
       "color": "#74b9ff"
     },
     "A": {
@@ -81,7 +81,7 @@
       "color": "#55efc4"
     },
     "B": {
-      "label": "UPPER INTERMEDIATE",
+      "label": "PROFICIENT",
       "desc": "Above Average",
       "color": "#f1c40f"
     },
