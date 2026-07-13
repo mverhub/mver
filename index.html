@@ -217,6 +217,19 @@
     }
 
     // ---------- TIERS ----------
+    const BASE_TIER_DISPLAY_NAMES = {
+      "P": "Tier: P",
+      "O": "Tier: O",
+      "S": "Tier S:",
+      "A": "Tier A:",
+      "B": "Tier B:",
+      "C": "Tier C:",
+      "D": "Tier D:",
+      "E": "Tier: E",
+      "F": "Tier F:"
+    };
+
+    // ---------- TIERS ----------
     function buildTiers() {
       const root = document.getElementById('tiers-root');
       root.innerHTML = '';
@@ -224,10 +237,11 @@
         const meta = DATA.tierMeta[letter];
         if (!meta) return;
         const colClass = colorClassFor(letter);
+        const displayName = BASE_TIER_DISPLAY_NAMES[letter] || letter;
         const block = document.createElement('div');
         block.className = 'arch-shelf-block';
         block.innerHTML = `
-          <div class="arch-badge ${colClass}">${letter}</div>
+          <div class="arch-badge ${colClass}">${displayName}</div>
           <div class="arch-info">
             <h3 class="arch-title" style="color:${meta.color};">${meta.label}</h3>
             <p class="arch-desc">${meta.desc}</p>
@@ -314,30 +328,57 @@
       return 'glow-' + baseLetterFor(tierKey).toLowerCase();
     }
 
+    const CATEGORY_ICONS = {
+      "Keyframes": `<span class="cat-icon-text">♦</span>`,
+      "Cuts and Transitions": `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21.7 19.3L13 10.6c.8-2.1.3-4.7-1.4-6.4-1.9-1.9-4.8-2.3-7.1-1.2l3.8 3.8-2.8 2.8-3.8-3.8C.6 8.1 1 11 2.9 12.9c1.7 1.7 4.3 2.2 6.4 1.4l8.7 8.7c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1 0-1.4z"/></svg>`,
+      "Visual Effects": `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 3c0 4.5 3.5 8 8 8-4.5 0-8 3.5-8 8 0-4.5-3.5-8-8-8 4.5 0 8-3.5 8-8z"/></svg>`,
+      "Text Effects": `<span class="cat-icon-text text-Aa">Aa</span>`
+    };
+
     function openProfile(username) {
       const player = DATA.players[username] || { categories: {} };
       const tierKey = findTierFor(username);
-      const colClass = tierKey ? colorClassFor(tierKey) : 'color-w';
-      const glowClass = tierKey ? glowClassFor(tierKey) : '';
+      const baseTierLetter = tierKey ? baseLetterFor(tierKey) : '-';
+      const meta = DATA.tierMeta[baseTierLetter] || {};
+      const themeColor = meta.color || '#747d8c';
       const badgeText = tierKey === 'WAITLIST' ? '-' : tierKey;
 
-      const categoryEntries = Object.entries(player.categories || {});
-      const categoriesHTML = categoryEntries.length
-        ? categoryEntries.map(([cat, grade]) => `
-            <div class="profile-kit-card">
-              <span class="profile-kit-card-name">${cat}</span>
-              <span class="profile-kit-card-grade" style="color:${(DATA.tierMeta[baseLetterFor(grade)]||{}).color || '#fff'};">${grade}</span>
-            </div>`).join('')
-        : `<p class="profile-empty-state">No category evaluations yet.</p>`;
+      const categoriesOrder = ["Keyframes", "Cuts and Transitions", "Visual Effects", "Text Effects"];
+      
+      const categoriesHTML = categoriesOrder.map(cat => {
+        const grade = (player.categories && player.categories[cat]) ? player.categories[cat] : "-";
+        const gradeBase = baseLetterFor(grade);
+        const gradeMeta = DATA.tierMeta[gradeBase] || {};
+        const gradeColor = gradeMeta.color || '#747d8c';
+        const icon = CATEGORY_ICONS[cat] || '';
+        return `
+          <div class="profile-category-item" style="--category-color: ${gradeColor};">
+            <span class="profile-category-label">${cat}</span>
+            <div class="profile-category-badge-wrap">
+              <div class="profile-category-icon-circle">
+                ${icon}
+              </div>
+              <div class="profile-category-grade-pill">
+                <span class="profile-category-grade">${grade}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const modalBox = document.querySelector('.profile-modal-box');
+      if (modalBox) {
+        modalBox.style.setProperty('--profile-theme-color', themeColor);
+      }
 
       document.getElementById('profile-modal-content').innerHTML = `
         <div class="profile-modal-header">
           <div class="profile-modal-identity">
             <h2 class="profile-modal-name">${username}</h2>
-            <div class="profile-modal-subtitle">Profile</div>
+            <div class="profile-modal-subtitle">PROFILE</div>
           </div>
           ${tierKey ? `
-            <div class="profile-modal-overall ${colClass} ${glowClass}">${badgeText}</div>` : ''
+            <div class="profile-modal-overall" style="--tier-color: ${themeColor};">${badgeText}</div>` : ''
           }
         </div>
         <div class="profile-modal-body">
