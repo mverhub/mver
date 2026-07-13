@@ -81,13 +81,13 @@
       "color": "#55efc4"
     },
     "B": {
-      "label": "PROFICIENT",
+      "label": "INTERMEDIATE",
       "desc": "Above Average",
       "color": "#f1c40f"
     },
     "C": {
-      "label": "INTERMEDIATE",
-      "desc": "Within Average range",
+      "label": "CAPABLE",
+      "desc": "Average",
       "color": "#ff9f43"
     },
     "D": {
