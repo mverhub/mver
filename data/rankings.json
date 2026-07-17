@@ -1,6 +1,8 @@
 {
   "tiers": {
-    "P": [],
+    "P": [
+      "ziadlive"
+    ],
     "O": [],
     "S": [],
     "A+": [],
@@ -123,6 +125,14 @@
     "Text Effects"
   ],
   "players": {
+    "ziadlive": {
+      "categories": {
+        "Keyframes": "P",
+        "Cuts and Transitions": "P",
+        "Visual Effects": "P",
+        "Text Effects": "P"
+      }
+    },
     "sxmple": {
       "categories": {
         "Keyframes": "B-",
