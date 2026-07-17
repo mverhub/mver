@@ -58,7 +58,8 @@
       "AsTo",
       "NotManuVerse",
       "YTVideo123",
-      "AnnualvilGXKyt"
+      "AnnualvilGXKyt",
+      "ziadlive"
     ]
   },
   "tierMeta": {
@@ -304,6 +305,9 @@
         "Text Effects": "E",
         "Keyframes": "F"
       }
+    },
+    "ziadlive": {
+      "categories": {}
     }
   },
   "credits": [
