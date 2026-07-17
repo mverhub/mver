@@ -1,8 +1,6 @@
 {
   "tiers": {
-    "P": [
-      "ziadlive"
-    ],
+    "P": [],
     "O": [],
     "S": [],
     "A+": [],
@@ -58,8 +56,7 @@
       "AsTo",
       "NotManuVerse",
       "YTVideo123",
-      "AnnualvilGXKyt",
-      "ziadlive"
+      "AnnualvilGXKyt"
     ]
   },
   "tierMeta": {
@@ -126,14 +123,6 @@
     "Text Effects"
   ],
   "players": {
-    "ziadlive": {
-      "categories": {
-        "Keyframes": "P",
-        "Cuts and Transitions": "P",
-        "Visual Effects": "P",
-        "Text Effects": "P"
-      }
-    },
     "sxmple": {
       "categories": {
         "Keyframes": "B-",
@@ -305,9 +294,6 @@
         "Text Effects": "E",
         "Keyframes": "F"
       }
-    },
-    "ziadlive": {
-      "categories": {}
     }
   },
   "credits": [
