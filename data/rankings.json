@@ -58,7 +58,8 @@
       "AsTo",
       "NotManuVerse",
       "YTVideo123",
-      "AnnualvilGXKyt"
+      "AnnualvilGXKyt",
+      "Ice_pup"
     ]
   },
   "tierMeta": {
@@ -304,6 +305,9 @@
         "Visual Effects": "D",
         "Text Effects": "C-"
       }
+    },
+    "Ice_pup": {
+      "categories": {}
     }
   },
   "credits": [
